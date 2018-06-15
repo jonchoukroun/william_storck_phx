@@ -1,0 +1,39 @@
+<%= form_for @conn,
+    contact_path(@conn, :capture_email),
+    [as: :contact, class: "text-left"], fn f -> %>
+
+  <div class="form-group">
+    <label class="text-white" for="contact_name">Your name</label>
+
+    <%= text_input f, :name,
+        required: true,
+        class: "form-control",
+        placeholder: "What's your name?" %>
+
+  </div>
+
+  <div class="form-group">
+    <label class="text-white" for="contact_email">Your email address</label>
+
+    <%= email_input f, :email,
+        required: true,
+        class: "form-control",
+        placeholder: "Enter your email..." %>
+
+    <small class="form-text text-muted">
+      We'll never share your email with anyone else.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label class="text-white" for="messageInput">Tell us what you think!</label>
+
+    <%= textarea f, :message,
+        required: true,
+        rows: "5",
+        class: "form-control" %>
+  </div>
+
+  <%= submit "Send", class: "btn btn-default btn-lg btn-block" %>
+
+<% end %>

@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-dark">
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-black">
   <a href="<%= home_path(@conn, :index) %>" class="navbar-brand">
     <h1 class="d-md-none heading-text text-white">William Storck</h1>
     <h1 class="d-none d-md-block display-4 heading-text text-white">William Penniman Storck</h1>
@@ -19,7 +19,7 @@
         <a href="<%= paintings_path(@conn, :index) %>" class="nav link">Portfolio</a>
       </li>
       <li class="nav-item mr-lg-4">
-        <a href="#" class="nav link">Contact</a>
+        <a href="<%= contact_path(@conn, :index) %>" class="nav link">Contact</a>
       </li>
     </ul>
   </div>

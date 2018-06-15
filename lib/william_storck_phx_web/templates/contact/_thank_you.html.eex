@@ -1,0 +1,6 @@
+<p class="display-4 text-white mt-5">Thank you <%= @conn.params["contact"]["name"] %></p>
+<p class="lead text-white">We appreciate your visit and message.</p>
+
+<a href="<%= paintings_path(@conn, :index)%>" class="btn btn-default btn-lg mt-5">
+  Back to portfolio
+</a>

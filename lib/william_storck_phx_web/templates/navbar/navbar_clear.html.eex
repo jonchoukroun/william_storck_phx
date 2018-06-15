@@ -19,7 +19,7 @@
         <a href="<%= paintings_path(@conn, :index) %>" class="nav link">Portfolio</a>
       </li>
       <li class="nav-item mr-lg-4">
-        <a href="#" class="nav link">Contact</a>
+        <a href="<%= contact_path(@conn, :index) %>" class="nav link">Contact</a>
       </li>
     </ul>
   </div>

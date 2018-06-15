@@ -19,6 +19,10 @@ defmodule WilliamStorckPhxWeb.Router do
     get "/", HomeController, :index
 
     resources "/paintings", PaintingsController, only: [:index, :show]
+
+    get "/contact", ContactController, :index
+
+    post "/contact", ContactController, :capture_email
   end
 
   # Other scopes may use custom stacks.
