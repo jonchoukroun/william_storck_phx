@@ -1,0 +1,15 @@
+@import '../utilities';
+
+#navbar-menu {
+  a {
+    color: $brand-white;
+  }
+}
+
+.navbar-clear {
+  background-color: none;
+}
+
+.navbar-black {
+  background-color: black;
+}

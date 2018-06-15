@@ -1,0 +1,72 @@
+@import '../utilities';
+
+@keyframes increaseOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#home-hero {
+  height: 100vh;
+  background-image: url('https://s3.amazonaws.com/storck/magnolias-18x24-oil_linen-2016-sold.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+#home-hero a {
+  text-decoration: none;
+  transition: color 0.3s ease-in,
+              text-shadow 0.3s ease-in;
+}
+
+.large-hero {
+
+  &:hover .hero-link {
+    opacity: 0;
+    border-color: transparent;
+  }
+
+  &:hover .first-link {
+    transform: translateX(-150px);
+  }
+
+  &:hover .second-link {
+    transform: translateX(150px);
+  }
+
+  .hero-link {
+    width: 400px;
+    transition: opacity 0.3s 0.1s ease-out,
+                border-color 0.1s 0.35s ease-out,
+                transform 0.3s 0.1s ease-out;
+
+    &:hover {
+      opacity: 1;
+      transform: none;
+      transition: border-color 0s 0.1s ease-in;
+    }
+
+    &:hover a {
+      color: $brand-white;
+      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    }
+  }
+
+  .first-link {
+    padding-right: 40px;
+    text-align: right;
+    border-right: 2px solid $light-grey;
+  }
+
+  .second-link {
+    padding-left: 40px;
+    text-align: left;
+    border-left: 2px solid $light-grey;
+  }
+
+  animation: 3.5s ease 0s 1 increaseOpacity;
+}
