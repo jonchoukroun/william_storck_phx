@@ -56,3 +56,7 @@ config :william_storck_phx, WilliamStorckPhx.Repo,
   database: "william_storck_phx_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :ex_aws,
+  access_key_id: ["AKIAIMNIFA3NUSKLEVQQ", :instance_role],
+  secret_access_key: ["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", :instance_role]
