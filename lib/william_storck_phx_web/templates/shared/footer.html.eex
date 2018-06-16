@@ -1,0 +1,18 @@
+<div id="footer" class="mt-5 mb-0 py-5 border-top border-muted">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <span class="nav-link">
+        William Penniman Storck&nbsp;
+        <i class="far fa-copyright"></i>&nbsp;
+        <%= DateTime.utc_now.year %>
+      </span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-muted" href="<%= home_path(@conn, :index) %>">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-muted" href="<%= contact_path(@conn, :index) %>">Contact Us</a>
+    </li>
+  </ul>
+</div>
