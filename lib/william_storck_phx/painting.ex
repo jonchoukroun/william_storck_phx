@@ -4,6 +4,7 @@ defmodule WilliamStorckPhx.Painting do
 
 
   schema "paintings" do
+    field :slug
     field :featured, :boolean, default: false
     field :height, :integer
     field :material, :string
@@ -20,7 +21,8 @@ defmodule WilliamStorckPhx.Painting do
   @doc false
   def changeset(painting, attrs) do
     painting
-    |> cast(attrs, [:name, :src, :material, :year, :size, :status, :featured, :height, :width])
+    |> cast(attrs, [
+      :slug, :name, :src, :material, :year, :size, :status, :featured, :height, :width])
     |> validate_required([:name, :src, :material, :year, :size, :status, :featured, :height, :width])
   end
 end
