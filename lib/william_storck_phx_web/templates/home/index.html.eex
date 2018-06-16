@@ -1,4 +1,4 @@
-<%= render WilliamStorckPhxWeb.NavbarView, "navbar_clear.html", assigns %>
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_clear.html", assigns %>
 
 <div class="container-fluid m-0 p-0">
   <div id="home-hero" class="jumbotron jumbtron-fluid d-flex justify-content-center">

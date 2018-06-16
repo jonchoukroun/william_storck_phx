@@ -1,4 +1,4 @@
-<%= render WilliamStorckPhxWeb.NavbarView, "navbar_light.html", assigns %>
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_light.html", assigns %>
 
 <div id="painting-page">
   <div class="d-flex container-fluid flex-column justify-content-center" style="padding-top: 100px;">

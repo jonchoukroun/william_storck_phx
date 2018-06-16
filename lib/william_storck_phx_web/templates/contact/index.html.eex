@@ -1,4 +1,4 @@
-<%= render WilliamStorckPhxWeb.NavbarView, "navbar_dark.html", assigns %>
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_dark.html", assigns %>
 
 <div class="container-fluid mx-auto text-center" style="padding-top: 100px;">
   <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto">

@@ -1,4 +1,4 @@
-<%= render WilliamStorckPhxWeb.NavbarView, "navbar_dark.html", assigns %>
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_dark.html", assigns %>
 
 <div class="container-fluid mx-auto text-center" style="padding-top: 100px;">
   <div class="painting-grid d-flex flex-wrap justify-content-between">
