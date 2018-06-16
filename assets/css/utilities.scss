@@ -67,13 +67,24 @@ img {
 
 .btn-default {
   background: none;
-  border-color: $light-grey;
-  border-radius: 0px;
+  border-color: $dark-grey;
+  border-radius: 2px;
   border-width: 2px;
-  color: $brand-white;
+  color: $light-grey;
 
   &:hover {
     background-color: $brand-blue;
     border-color: transparent;
   }
+}
+
+input {
+  border-radius: 2px !important;
+  background-color: black !important;
+  border: 2px solid $brand-muted !important;
+  color: $dark-grey !important;
+}
+
+textarea {
+  @extend input;
 }

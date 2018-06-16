@@ -15,7 +15,7 @@ defmodule WilliamStorckPhxWeb.ContactController do
       message: params["contact"]["message"]
     }
 
-    response = HTTPotion.post!(url, [body: body, headers: headers])
+    response = HTTPotion.post(url, [body: body, headers: headers])
     IO.inspect(response)
 
     case response.status_code do

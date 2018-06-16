@@ -1,10 +1,9 @@
-<p class="display-4 text-white mt-5">Thank you <%= @conn.params["contact"]["name"] %></p>
-<p class="lead text-white">Don't forget to&nbsp;
-  <a class= "text-blue" href="https://www.instagram.com/wpstorck/">follow me</a>&nbsp;
-and see my work in progress!</p>
-
-<a class="text-blue" href="https://www.instagram.com/wpstorck/">
-  <i class="fab fa-instagram"></i></a>
+<h2 class="text-display text-grey mt-5">Thank you <%= @conn.params["contact"]["name"] %>!</h2>
+<p class="lead text-grey mb-0">Do you want to see more of my work?</p>
+<p class="lead text-grey">
+  <a class= "text-blue" href="https://www.instagram.com/wpstorck/">Follow me</a>&nbsp;
+  for a look at my newest pieces.
+</p>
 
 <div style="margin-top: 80px;">
   <a class="display-text text-grey"
