@@ -2,8 +2,9 @@
 
 <div class="container-fluid mx-auto text-center" style="padding-top: 100px;">
   <div class="painting-grid d-flex flex-wrap justify-content-between">
-    <%= for painting <- assigns[:paintings] do %>
-      <%= render WilliamStorckPhxWeb.PaintingsView, "_painting_preview.html", painting: painting %>
+    <%= for painting <- @paintings do %>
+      <%= render WilliamStorckPhxWeb.PaintingsView,
+        "_painting_preview.html", %{painting: painting, conn: @conn} %>
     <% end %>
   </div>
 </div>

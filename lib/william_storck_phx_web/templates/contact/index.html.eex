@@ -9,7 +9,6 @@
     <%= if assigns[:success] do %>
       <%= render WilliamStorckPhxWeb.ContactView, "_thank_you.html", assigns %>
     <% else %>
-      <p><%= :error_message %></p>
       <p class="display-4 text-white mt-5">Email Us</p>
       <%= render WilliamStorckPhxWeb.ContactView, "_capture_form.html", assigns %>
     <% end %>

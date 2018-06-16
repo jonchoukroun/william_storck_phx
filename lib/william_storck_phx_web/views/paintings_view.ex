@@ -21,6 +21,6 @@ defmodule WilliamStorckPhxWeb.PaintingsView do
   end
 
   def estimate_width(aspect_ratio) do
-    round(aspect_ratio * 235)    # starting height
+    round(aspect_ratio * 240)    # starting height
   end
 end

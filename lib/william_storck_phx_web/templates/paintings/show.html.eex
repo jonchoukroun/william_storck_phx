@@ -1,0 +1,35 @@
+<div id="painting-page">
+  <div class="d-flex container-fluid flex-column justify-content-center" style="padding-top: 20px;">
+    <div class="d-flex container-fluid flex-column align-items-center mb-5">
+      <a class="align-self-end mr-3 text-grey" href="<%= paintings_path(@conn, :index) %>">
+        <i class="fas fa-long-arrow-alt-left"></i> Portfolio
+      </a>
+      <h1 class="display-2 text-center text-blue">
+        <%= @painting.name %>
+      </h1>
+    </div>
+
+    <div id="painting-preview" class="d-flex justify-content-center">
+      <img src="<%= @painting.src %>" alt="<%= @painting.name %>">
+    </div>
+
+    <div id="painting-details" class="d-flex flex-column justify-content-center align-items-center my-5">
+      <h3 class="display-text text-blue">
+        <%= @painting.name %>,
+        <span class="lead"><%= @painting.year %></span>
+      </h3>
+      <h4 class="display-text text-blue">
+        <%= @painting.material %> |
+        <%= @painting.size %> |
+        <%= String.capitalize(@painting.status) %>
+      </h4>
+
+      <a class="my-3 display-text text-grey"
+         style="font-size: 1.2em;"
+         href="<%= paintings_path(@conn, :index) %>">
+        <i class="fas fa-long-arrow-alt-left"></i> Return to Portfolio
+      </a>
+    </div>
+
+  </div>
+</div>

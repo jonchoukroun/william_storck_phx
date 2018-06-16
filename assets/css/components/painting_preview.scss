@@ -1,0 +1,11 @@
+@import '../utilities';
+
+#painting-page {
+  background-color: $brand-beige;
+}
+
+#painting-preview {
+  img {
+    // max-height: 85vh;
+  }
+}
