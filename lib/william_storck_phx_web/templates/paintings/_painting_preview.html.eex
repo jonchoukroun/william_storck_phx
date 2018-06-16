@@ -1,0 +1,8 @@
+<%= if assigns[:painting].height do %>
+  <div class="painting-grid-item align-self-center"
+       style="<%= compute_style(assigns[:painting]) %>">
+    <figure class="grid-image">
+      <img src="<%= assigns[:painting].src %>" alt="<%= assigns[:painting].name %>" class="img-fluid">
+    </figure>
+  </div>
+<% end %>

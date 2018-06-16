@@ -1,0 +1,31 @@
+.painting-grid {
+  clear: both;
+  margin: -15px -15px 20px;
+
+  &:after {
+    content: "";
+    flex-grow: 999999999;
+  }
+}
+
+.painting-grid-item {
+  position: relative;
+  margin: 15px;
+  overflow: hidden;
+  text-align: left;
+}
+
+figure.grid-image {
+  margin: 0;
+  background-color: black;
+}
+
+figcaption.figure-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.5);
+  padding: 1rem;
+}
