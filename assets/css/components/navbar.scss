@@ -1,10 +1,22 @@
 @import '../utilities';
 
+.navbar a {
+  text-decoration: none;
+}
+
+a.navbar-brand:hover {
+  transform: none;
+}
+
 .navbar-clear {
   background-color: none;
 
   a {
-    color: $brand-white;
+    color: $light-grey;
+
+    &:hover {
+      color: $brand-white !important;
+    }
   }
 }
 

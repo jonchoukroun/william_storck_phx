@@ -1,6 +1,15 @@
 <p class="display-4 text-white mt-5">Thank you <%= @conn.params["contact"]["name"] %></p>
-<p class="lead text-white">We appreciate your visit and message.</p>
+<p class="lead text-white">Don't forget to&nbsp;
+  <a class= "text-blue" href="https://www.instagram.com/wpstorck/">follow me</a>&nbsp;
+and see my work in progress!</p>
 
-<a href="<%= paintings_path(@conn, :index)%>" class="btn btn-default btn-lg mt-5">
-  Back to portfolio
-</a>
+<a class="text-blue" href="https://www.instagram.com/wpstorck/">
+  <i class="fab fa-instagram"></i></a>
+
+<div style="margin-top: 80px;">
+  <a class="display-text text-grey"
+  style="font-size: 1.2em;"
+  href="<%= paintings_path(@conn, :index) %>">
+    <i class="fas fa-long-arrow-alt-left"></i> Return to Portfolio
+  </a>
+</div>

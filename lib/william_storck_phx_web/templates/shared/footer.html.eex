@@ -1,18 +1,28 @@
-<div id="footer" class="mt-5 mb-0 py-5 border-top border-muted">
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <span class="nav-link">
-        William Penniman Storck&nbsp;
-        <i class="far fa-copyright"></i>&nbsp;
-        <%= DateTime.utc_now.year %>
-      </span>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-muted" href="<%= home_path(@conn, :index) %>">Home</a>
-    </li>
+<div id="footer" class="container-fluid p-2 border-top border-dark">
+  <div class="d-flex align-items-center justify-content-between">
+    <p class="mb-0 text-muted">
+      <i class="far fa-copyright"></i>&nbsp;
+      <%= DateTime.utc_now.year %>
+      William Penniman Storck
+    </p>
 
-    <li class="nav-item">
-      <a class="nav-link text-muted" href="<%= contact_path(@conn, :index) %>">Contact Us</a>
-    </li>
-  </ul>
+    <a class="text-muted" href="https://instagram.com/wpstorck">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link text-muted" href="#">Privacy Policy</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-muted" href="#">Sitemap</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-muted" href="<%= contact_path(@conn, :index) %>">Contact</a>
+      </li>
+    </ul>
+
+  </div>
 </div>

@@ -1,7 +1,7 @@
 <%= render WilliamStorckPhxWeb.SharedView, "navbar_dark.html", assigns %>
 
 <div class="container-fluid mx-auto text-center" style="padding-top: 100px;">
-  <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto">
+  <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto py-5">
     <%= if assigns[:error_message] do %>
       <div class="alert alert-danger" role="alert"><%= assigns[:error_message] %></div>
     <% end %>
@@ -9,9 +9,11 @@
     <%= if assigns[:success] do %>
       <%= render WilliamStorckPhxWeb.ContactView, "_thank_you.html", assigns %>
     <% else %>
-      <p class="display-4 text-white mt-5">Email Us</p>
+      <p class="display-4 text-white mt-5">We'd love to hear from you.</p>
       <%= render WilliamStorckPhxWeb.ContactView, "_capture_form.html", assigns %>
     <% end %>
 
   </div>
 </div>
+
+<%= render WilliamStorckPhxWeb.SharedView, "footer.html", assigns %>
