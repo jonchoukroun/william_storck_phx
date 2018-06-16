@@ -24,10 +24,7 @@ defmodule WilliamStorckPhxWeb.Router do
     post "/contact", ContactController, :capture_email
 
     get "/sitemap", SitemapController, :index
+    get "/privacy", PrivacyController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", WilliamStorckPhxWeb do
-  #   pipe_through :api
-  # end
 end

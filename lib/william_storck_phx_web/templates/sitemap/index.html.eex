@@ -1,0 +1,45 @@
+<div class="bg-beige">
+  <%= render WilliamStorckPhxWeb.SharedView, "navbar_dark.html", assigns %>
+
+  <div class="container text-left" style="padding-top: 120px; padding-bottom: 80px;">
+    <h3 class="display-text text-blue">Sitemap</h3>
+
+    <ul>
+      <li>
+        <a href="<%= home_path(@conn, :index) %>">
+          <span class="text-blue">William Penniman Storck</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= paintings_path(@conn, :index) %>">
+          <span class="text-blue">Portfolio:</span>
+        </a>
+        <ul>
+          <%= for painting <- @paintings do %>
+            <li>
+              <a href="<%= paintings_path(@conn, :show, painting.slug) %>">
+                <span class="text-blue">
+                  <%= painting.name %>, <%= painting.year %>
+                </span>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+      <li>
+        <a href="<%= contact_path(@conn, :index) %>">
+          <span class="text-blue">Contact</span>
+        </a>
+      </li>
+      <li>
+        <a href="<%= privacy_path(@conn, :index) %>">
+          <span class="text-blue">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<%= render WilliamStorckPhxWeb.SharedView, "footer.html", assigns %>

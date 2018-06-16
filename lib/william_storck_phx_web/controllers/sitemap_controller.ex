@@ -1,9 +1,8 @@
 defmodule WilliamStorckPhxWeb.SitemapController do
   use WilliamStorckPhxWeb, :controller
+  alias WilliamStorckPhx.{Repo, Painting}
 
   def index(conn, _params) do
-    paintings = Repo.all(Painting)
-    |> Enum.map(:name)
-    render conn, "index.html", paintings: paintings
+    render conn, "index.html", paintings: Repo.all(Painting)
   end
 end
