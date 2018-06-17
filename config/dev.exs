@@ -57,8 +57,9 @@ config :william_storck_phx, WilliamStorckPhx.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :ex_aws,
-  access_key_id: ["AKIAIMNIFA3NUSKLEVQQ", :instance_role],
-  secret_access_key: ["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", :instance_role]
+config :william_storck_phx, WilliamStorckPhx.Mailer,
+  adapter: Bamboo.SendgridAdapter,
+  api_key: "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"
 
 System.put_env("HASHID_SALT", "too salty for me")
+System.put_env("EMAIL_ADDRESS", "swancovestudio@gmail.com")
