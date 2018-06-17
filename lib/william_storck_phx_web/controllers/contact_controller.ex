@@ -9,7 +9,7 @@ defmodule WilliamStorckPhxWeb.ContactController do
 
   def capture_email(conn, params) do
     email = new_email()
-    |> to(System.get_env("EMAIL_ADDRESS"))
+    |> to("swancovestudio@gmail.com")
     |> from(params["contact"]["email"])
     |> subject("New message from #{params["contact"]["name"]}")
     |> text_body(params["contact"]["message"])
