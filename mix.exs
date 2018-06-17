@@ -20,7 +20,7 @@ defmodule WilliamStorckPhx.Mixfile do
   def application do
     [
       mod: {WilliamStorckPhx.Application, []},
-      extra_applications: [:logger, :runtime_tools, :httpotion]
+      extra_applications: [:logger, :runtime_tools, :httpotion, :bamboo]
     ]
   end
 
@@ -49,7 +49,8 @@ defmodule WilliamStorckPhx.Mixfile do
       {:sweet_xml, "~> 0.6.5"},
       {:fastimage, "~> 0.0.7"},
       {:hashids, "~> 2.0"},
-      {:distillery, "~> 1.5"}
+      {:distillery, "~> 1.5"},
+      {:bamboo, "~> 0.8"},
     ]
   end
 

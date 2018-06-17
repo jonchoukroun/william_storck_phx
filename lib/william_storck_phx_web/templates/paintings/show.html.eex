@@ -2,14 +2,16 @@
 
 <div id="painting-page">
   <div class="d-flex container-fluid flex-column justify-content-center" style="padding-top: 100px;">
-    <div class="d-flex container-fluid flex-column align-items-center mb-5">
-      <h1 class="display-2 text-center text-blue">
-        <%= @painting.name %>
-      </h1>
-    </div>
+    <h1 class="d-inline-block d-sm-none display-5 text-center text-blue">
+      <%= @painting.name %>
+    </h1>
 
-    <div id="painting-preview" class="d-flex justify-content-center">
-      <img src="<%= @painting.src %>" alt="<%= @painting.name %>">
+    <h1 class="d-none d-sm-inline-block display-2 text-center text-blue">
+      <%= @painting.name %>
+    </h1>
+
+    <div class="my-5 mx-auto">
+      <img src="<%= @painting.src %>" alt="<%= @painting.name %>" class="img-fluid">
     </div>
 
     <div id="painting-details" class="d-flex flex-column justify-content-center align-items-center my-5">
