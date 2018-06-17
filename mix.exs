@@ -49,6 +49,7 @@ defmodule WilliamStorckPhx.Mixfile do
       {:sweet_xml, "~> 0.6.5"},
       {:fastimage, "~> 0.0.7"},
       {:hashids, "~> 2.0"},
+      {:distillery, "~> 1.5"},
       {:bamboo, "~> 0.8"},
     ]
   end

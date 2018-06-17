@@ -57,9 +57,4 @@ config :william_storck_phx, WilliamStorckPhx.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :william_storck_phx, WilliamStorckPhx.Mailer,
-  adapter: Bamboo.SendgridAdapter,
-  api_key: "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"
-
 System.put_env("HASHID_SALT", "too salty for me")
-System.put_env("EMAIL_ADDRESS", "swancovestudio@gmail.com")
