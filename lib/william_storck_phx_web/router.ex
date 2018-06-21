@@ -25,6 +25,8 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/sitemap", SitemapController, :index
     get "/privacy", PrivacyController, :index
+
+    get "/*path", PaintingsController, :index
   end
 
 end
