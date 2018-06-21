@@ -2,4 +2,15 @@
 
 #painting-page {
   background-color: $brand-beige;
+  height: 100vh;
+}
+
+#painting-image-full {
+  height: 90vh;
+
+  img {
+    max-width: 90%;
+    max-height: 90vh;
+
+  }
 }

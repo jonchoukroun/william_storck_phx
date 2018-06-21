@@ -50,7 +50,8 @@ defmodule WilliamStorckPhx.Mixfile do
       {:fastimage, "~> 0.0.7"},
       {:hashids, "~> 2.0"},
       {:distillery, "~> 1.5"},
-      {:sendgrid, "~> 1.8.0"}
+      {:sendgrid, "~> 1.8.0"},
+      {:phoenix_slime, "~> 0.10.1"}
     ]
   end
 
