@@ -8,11 +8,31 @@
   }
 }
 
+.shade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0,0,0,0.24);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .painting-grid-item {
   position: relative;
   margin: 15px;
   overflow: hidden;
   text-align: left;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 }
 
 figure.grid-image {
