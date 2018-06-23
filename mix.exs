@@ -51,7 +51,8 @@ defmodule WilliamStorckPhx.Mixfile do
       {:hashids, "~> 2.0"},
       {:distillery, "~> 1.5"},
       {:sendgrid, "~> 1.8.0"},
-      {:phoenix_slime, "~> 0.10.1"}
+      {:phoenix_slime, "~> 0.10.1"},
+      {:pid_file, "~> 0.1.1"}
     ]
   end
 
