@@ -1,5 +1,0 @@
-<nav id="navbar" class="navbar fixed-top navbar-light justify-content-end">
-  <a class="navbar-brand" style="font-size: 1.24rem;" href="<%= paintings_path(@conn, :index) %>">
-    <p class="m-0 text-grey"><i class="fas fa-long-arrow-alt-left"></i> Portfolio</p>
-  </a>
-</nav>
