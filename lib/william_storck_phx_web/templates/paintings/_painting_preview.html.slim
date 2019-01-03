@@ -1,6 +1,0 @@
-<%= if assigns[:painting].height do %>
-  .painting-grid-item.align-self-center style="<%= compute_style(assigns[:painting]) %>"
-    a.grid-image href="<%= paintings_path(@conn, :show, assigns[:painting].slug) %>"
-      .shade-overlay.d-none.d-lg-block
-      img.img-fluid src="<%= assigns[:painting].src %>" alt="<%= assigns[:painting].name %>"
-<% end %>

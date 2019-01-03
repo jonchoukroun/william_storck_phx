@@ -1,7 +1,8 @@
 defmodule WilliamStorckPhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :william_storck_phx
 
-  socket "/socket", WilliamStorckPhxWeb.UserSocket
+  socket "/socket", WilliamStorckPhxWeb.UserSocket,
+    websocket: true
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -24,7 +25,7 @@ defmodule WilliamStorckPhxWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head

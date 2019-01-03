@@ -21,15 +21,17 @@ defmodule WilliamStorckPhxWeb do
     quote do
       use Phoenix.Controller, namespace: WilliamStorckPhxWeb
       import Plug.Conn
-      import WilliamStorckPhxWeb.Router.Helpers
       import WilliamStorckPhxWeb.Gettext
+
+      alias WilliamStorckPhxWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/william_storck_phx_web/templates",
-                        namespace: WilliamStorckPhxWeb
+      use Phoenix.View,
+        root: "lib/william_storck_phx_web/templates",
+        namespace: WilliamStorckPhxWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -37,9 +39,9 @@ defmodule WilliamStorckPhxWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import WilliamStorckPhxWeb.Router.Helpers
       import WilliamStorckPhxWeb.ErrorHelpers
       import WilliamStorckPhxWeb.Gettext
+      alias WilliamStorckPhxWeb.Router.Helpers, as: Routes
     end
   end
 

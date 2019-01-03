@@ -8,7 +8,7 @@
 <div style="margin-top: 80px;">
   <a class="display-text text-grey"
   style="font-size: 1.2em;"
-  href="<%= paintings_path(@conn, :index) %>">
+  href="<%= Routes.paintings_path(@conn, :index) %>">
     <i class="fas fa-long-arrow-alt-left"></i> Return to Portfolio
   </a>
 </div>
