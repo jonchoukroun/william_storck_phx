@@ -33,16 +33,18 @@ defmodule WilliamStorckPhx.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.2"},
+      {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:ecto_sql, "~> 3.0"},
+      {:phoenix_ecto, "~> 4.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.7"},
       {:httpotion, "~> 3.1.0"},
-      {:poison, "~> 3.1"},
+      {:jason, "~> 1.0"},
       {:ex_aws, "~> 2.0"},
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
@@ -50,9 +52,7 @@ defmodule WilliamStorckPhx.Mixfile do
       {:fastimage, "~> 0.0.7"},
       {:hashids, "~> 2.0"},
       {:distillery, "~> 1.5"},
-      {:sendgrid, "~> 1.8.0"},
-      {:phoenix_slime, "~> 0.10.1"},
-      {:pid_file, "~> 0.1.1"}
+      {:sendgrid, "~> 1.8.0"}
     ]
   end
 
@@ -66,7 +66,7 @@ defmodule WilliamStorckPhx.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end
