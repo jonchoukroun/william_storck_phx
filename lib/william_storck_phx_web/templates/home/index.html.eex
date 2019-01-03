@@ -1,0 +1,29 @@
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_clear.html", assigns %>
+
+<div class="container-fluid m-0 p-0">
+  <div id="home-hero" class="jumbotron jumbotron-fluid d-flex justify-content-center">
+    <div class="small-hero d-flex d-md-none flex-column justify-content-end mb-4">
+      <a href="<%= paintings_path(@conn, :index) %>" class="display-4 heading-text text-center text-white">
+        Portfolio
+      </a>
+
+      <a href="https://www.hsprints.com/william-storck" target="_blank" class="display-4 heading-text text-center text-white">
+        Prints
+      </a>
+    </div>
+
+    <div class="large-hero d-none d-md-flex flex-row align-self-end justify-content-center">
+      <div class="first-link hero-link">
+        <a href="<%= paintings_path(@conn, :index) %>" class="align-self-end display-4 heading-text text-center text-grey">
+          Portfolio
+        </a>
+      </div>
+
+      <div class="second-link hero-link">
+        <a  href="https://www.hsprints.com/william-storck" target="_blank" class="align-self-end display-4 heading-text text-center text-grey">
+          Prints
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
