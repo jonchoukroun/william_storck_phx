@@ -21,8 +21,9 @@ defmodule WilliamStorckPhxWeb do
     quote do
       use Phoenix.Controller, namespace: WilliamStorckPhxWeb
       import Plug.Conn
-      import WilliamStorckPhxWeb.Router.Helpers
       import WilliamStorckPhxWeb.Gettext
+
+      alias WilliamStorckPhxWeb.Router.Helpers, as: Routes
     end
   end
 

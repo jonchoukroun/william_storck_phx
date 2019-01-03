@@ -3,7 +3,7 @@
 <div class="container-fluid m-0 p-0">
   <div id="home-hero" class="jumbotron jumbotron-fluid d-flex justify-content-center">
     <div class="small-hero d-flex d-md-none flex-column justify-content-end mb-4">
-      <a href="<%= paintings_path(@conn, :index) %>" class="display-4 heading-text text-center text-white">
+      <a href="<%= Routes.paintings_path(@conn, :index) %>" class="display-4 heading-text text-center text-white">
         Portfolio
       </a>
 
@@ -14,7 +14,7 @@
 
     <div class="large-hero d-none d-md-flex flex-row align-self-end justify-content-center">
       <div class="first-link hero-link">
-        <a href="<%= paintings_path(@conn, :index) %>" class="align-self-end display-4 heading-text text-center text-grey">
+        <a href="<%= Routes.paintings_path(@conn, :index) %>" class="align-self-end display-4 heading-text text-center text-grey">
           Portfolio
         </a>
       </div>

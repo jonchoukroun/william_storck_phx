@@ -6,18 +6,18 @@
 
     <ul>
       <li>
-        <a href="<%= home_path(@conn, :index) %>">
+        <a href="<%= Routes.home_path(@conn, :index) %>">
           <span class="text-blue">William Penniman Storck</span>
         </a>
       </li>
       <li>
-        <a href="<%= paintings_path(@conn, :index) %>">
+        <a href="<%= Routes.paintings_path(@conn, :index) %>">
           <span class="text-blue">Portfolio:</span>
         </a>
         <ul>
           <%= for painting <- @paintings do %>
             <li>
-              <a href="<%= paintings_path(@conn, :show, painting.slug) %>">
+              <a href="<%= Routes.paintings_path(@conn, :show, painting.slug) %>">
                 <span class="text-blue">
                   <%= painting.name %>, <%= painting.year %>
                 </span>
@@ -27,12 +27,12 @@
         </ul>
       </li>
       <li>
-        <a href="<%= contact_path(@conn, :index) %>">
+        <a href="<%= Routes.contact_path(@conn, :index) %>">
           <span class="text-blue">Contact</span>
         </a>
       </li>
       <li>
-        <a href="<%= privacy_path(@conn, :index) %>">
+        <a href="<%= Routes.privacy_path(@conn, :index) %>">
           <span class="text-blue">Privacy Policy</span>
         </a>
       </li>

@@ -1,5 +1,5 @@
 <div id="navbar" class="navbar navbar-expand-lg fixed-top navbar-clear">
-  <a href="<%= home_path(@conn, :index) %>" class="navbar-brand">
+  <a href="<%= Routes.home_path(@conn, :index) %>" class="navbar-brand">
     <h2 class="d-md-none heading-text text-white">
       William Storck
     </h2>
@@ -18,7 +18,7 @@
   <div id="navbar-menu" class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto align-items-end">
       <li class="nav-item my-2 mr-lg-4">
-        <a href="<%= home_path(@conn, :index) %>" class="nav-link">
+        <a href="<%= Routes.home_path(@conn, :index) %>" class="nav-link">
           <h4 class="d-lg-none heading-text text-white">
             Home
           </h4>
@@ -30,7 +30,7 @@
         </a>
 
       <li class="nav-item my-2 mr-lg-4">
-        <a href="<%= paintings_path(@conn, :index) %>" class="nav-link">
+        <a href="<%= Routes.paintings_path(@conn, :index) %>" class="nav-link">
           <h4 class="d-lg-none heading-text text-white">
             Portfolio
           </h4>
@@ -42,7 +42,7 @@
         </a>
 
       <li class="nav-item my-2 mr-lg-4">
-        <a href="<%= contact_path(@conn, :index) %>" class="nav-link">
+        <a href="<%= Routes.contact_path(@conn, :index) %>" class="nav-link">
           <h4 class="d-lg-none heading-text text-white">
             Contact
           </h4>

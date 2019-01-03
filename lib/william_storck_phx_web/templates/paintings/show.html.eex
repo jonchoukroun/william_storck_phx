@@ -1,7 +1,7 @@
 <div id="painting-page">
 
   <div class="navbar navbar_light justify-content-end py-0">
-    <a style="font-size: 1.24rem;" href="<%= paintings_path(@conn, :index) %>" class="navbar-brand">
+    <a style="font-size: 1.24rem;" href="<%= Routes.paintings_path(@conn, :index) %>" class="navbar-brand">
       <p class="m-0 text-grey">
         <i class="fas fa-long-arrow-alt-left"></i>
         Portfolio

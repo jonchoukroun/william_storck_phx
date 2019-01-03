@@ -1,5 +1,5 @@
 <%= form_for @conn,
-    contact_path(@conn, :capture_email),
+    Routes.contact_path(@conn, :capture_email),
     [as: :contact, class: "text-left"], fn f -> %>
 
   <div class="form-group">

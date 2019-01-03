@@ -13,17 +13,17 @@
 
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a href="<%= privacy_path(@conn, :index) %>" class="nav-link text-dark">
+        <a href="<%= Routes.privacy_path(@conn, :index) %>" class="nav-link text-dark">
           Privacy Policy
         </a>
       </li>
       <li class="nav-item">
-        <a href="<%= sitemap_path(@conn, :index) %>" class="nav-link text-dark">
+        <a href="<%= Routes.sitemap_path(@conn, :index) %>" class="nav-link text-dark">
           Sitemap
         </a>
       </li>
       <li class="nav-item">
-        <a href="<%= contact_path(@conn, :index) %>" class="nav-link text-dark">
+        <a href="<%= Routes.contact_path(@conn, :index) %>" class="nav-link text-dark">
           Contact
         </a>
       </li>
