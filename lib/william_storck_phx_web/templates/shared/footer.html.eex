@@ -5,7 +5,6 @@
       <%= DateTime.utc_now.year %>
       William Penniman Storck
     </p>
-  </div>
 
     <a href="https://instagram.com/wpstorck" class="text-dark">
       <i class="fab fa-instagram"></i>
@@ -28,4 +27,5 @@
         </a>
       </li>
     </ul>
+  </div>
 </div>

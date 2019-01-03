@@ -1,5 +1,7 @@
 defmodule WilliamStorckPhx.Repo do
-  use Ecto.Repo, otp_app: :william_storck_phx
+  use Ecto.Repo,
+    otp_app: :william_storck_phx,
+    adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the
