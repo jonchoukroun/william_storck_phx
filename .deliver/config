@@ -1,0 +1,34 @@
+APP="william_storck_phx"
+
+BUILD_HOST="williamstorck.com"
+BUILD_USER="deploy"
+BUILD_AT="/home/deploy/app_build/phx"
+
+PRODUCTION_HOSTS="williamstorck.com"
+PRODUCTION_USER="deploy"
+DELIVER_TO="/home/deploy/app_release/phx"
+
+pre_erlang_get_and_update_deps() {
+  local _prod_secret_path="/home/deploy/app_config/phx/prod.secret.exs"
+  if [ "$TARGET_MIX_ENV" = "prod" ]; then
+  __sync_remote "
+    ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+  "
+  fi
+}
+
+pre_erlang_clean_compile() {
+  status "Running phoenix.digest" # log output prepended with "----->"
+  __sync_remote " # runs the commands on the build host
+    set -e # fail if any command fails (recommended)
+    cd '$BUILD_AT/assets' # enter the build directory on the build host (required)
+    # prepare something
+    mkdir -p priv/static # required by the phx.digest task
+    npm install
+    npm run deploy
+
+    cd '$BUILD_AT' # enter the build directory on the build host (required)
+    # run your custom task
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
+  "
+}
