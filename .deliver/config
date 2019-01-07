@@ -25,6 +25,7 @@ pre_erlang_clean_compile() {
     # prepare something
     mkdir -p priv/static # required by the phx.digest task
     npm install
+    npm rebuild node-sass # necessary for some reason
     npm run deploy
 
     cd '$BUILD_AT' # enter the build directory on the build host (required)
