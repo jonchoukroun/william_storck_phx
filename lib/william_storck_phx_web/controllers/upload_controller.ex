@@ -16,9 +16,7 @@ defmodule WilliamStorckPhxWeb.UploadController do
     "year" => year,
     "status" => status,
     "image_file" => file} = params}) do
-    payload = %{name: name, file: file}
-
-    with {:ok, filename} <- UploadService.upload_file(payload),
+    with {:ok, filename} <- UploadService.upload_file(%{name: name, file: file}),
       {:ok} <- DBService.create_and_persist_painting(params, filename) do
 
       conn
