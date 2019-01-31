@@ -6,7 +6,7 @@ defmodule WilliamStorckPhx.SlugGenerator do
     |> Enum.map(fn(p) -> create_and_persist_slug(p) end)
   end
 
-  defp create_and_persist_slug(painting) do
+  def create_and_persist_slug(painting) do
     changeset = Ecto.Changeset.change painting, slug: generate_slug(painting)
     Repo.update! changeset
   end
