@@ -3,6 +3,20 @@ defmodule WilliamStorckPhx.DBService do
 
   @base_url "https://s3.amazonaws.com/storck/paintings"
 
+  def update_painting_source do
+    Repo.all(Painting)
+    |> Enum.map(fn painting -> create_painting_changeset(painting) end)
+    |> Enum.map(fn changeset -> Repo.update!(changeset) end)
+  end
+
+  defp create_painting_changeset(painting) do
+    source = painting.src
+    |> String.split("storck")
+    |> Enum.join("storck/paintings")
+
+    Ecto.Changeset.change painting, src: source
+  end
+
   def create_and_persist_painting(params, filename) do
     image_name = params["image_file"].filename
     with {:ok, src} <- set_source(image_name, filename),
