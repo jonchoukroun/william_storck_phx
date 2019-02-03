@@ -39,6 +39,12 @@ environment :prod do
   set include_src: false
   set cookie: :"]/.}iVnrRr=O}T9:ony4!d~/OwNRt)?Kb`aPF~(0TT^Ga&g$?y8}O~>,[4,?Tfz4"
   set vm_args: "rel/vm.args"
+  set config_providers: [
+    {Mix.Releases.Config.Providers.Elixir, ["/home/deploy/app_config/phx/runtime.exs"]}
+  ]
+  set overlays: [
+    {:copy, "rel/config/config.exs", "/home/deploy/app_config/phx/runtime.exs"}
+  ]
 end
 
 # You may define one or more releases in this file.
@@ -52,4 +58,3 @@ release :william_storck_phx do
     :runtime_tools
   ]
 end
-
