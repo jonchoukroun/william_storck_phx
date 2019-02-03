@@ -19,12 +19,14 @@ defmodule WilliamStorckPhxWeb.Router do
     get "/", HomeController, :index
 
     resources "/paintings", PaintingsController, only: [:index, :show]
+    resources "/upload", UploadController, only: [:create, :new]
 
     get "/contact", ContactController, :index
     post "/contact", ContactController, :capture_email
 
     get "/sitemap", SitemapController, :index
     get "/privacy", PrivacyController, :index
+
 
     get "/*path", PaintingsController, :index
   end
