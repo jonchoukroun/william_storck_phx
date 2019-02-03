@@ -17,3 +17,5 @@ config :william_storck_phx, WilliamStorckPhx.Repo,
   database: "william_storck_phx_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+System.put_env("HASHID_SALT", "too salty for me")

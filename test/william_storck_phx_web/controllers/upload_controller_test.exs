@@ -12,7 +12,10 @@ defmodule WilliamStorckPhxWeb.PageControllerTest do
       painting_width: 300,
       year: 2001,
       status: "sold",
-      image_file: <<0, 1, 2, 4>>
+      image_file: %Plug.Upload{
+        path: "test/fixtures/test-image.jpg",
+        filename: "test-image.jpg"
+      }
     }
 
     test "with invalid params returns error", %{conn: conn} do
@@ -26,9 +29,14 @@ defmodule WilliamStorckPhxWeb.PageControllerTest do
     test "with valid params creates painting and signals success", %{conn: conn} do
       conn = post conn, "/upload", [painting: @valid_params]
 
-      assert get_flash(conn, :info) == "#{@valid_params.name} uploaded successfully. You can upload another painting now"
+      assert get_flash(conn, :info) == "#{@valid_params.name} uploaded successfully. You can upload another painting now."
 
-      assert Repo.all(Painting) |> Enum.count === 0
+      assert Repo.all(Painting) |> Enum.count === 1
+
+      painting = Repo.all(Painting) |> List.first
+      assert painting.name === @valid_params.name
+      assert painting.size ===
+        "#{@valid_params.painting_height}\" x #{@valid_params.painting_width}\""
     end
 
   end
