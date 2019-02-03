@@ -1,6 +1,8 @@
 defmodule WilliamStorckPhx.SlugGenerator do
   alias WilliamStorckPhx.{Repo, Painting}
 
+  @salt "YBPKJijFI5Q755FWDeWQDLZKOqYFOY06UQgI1t8/wbVNLGCMy3blewYGS+wvAFWn"
+
   def update_with_slugs do
     Repo.all(Painting)
     |> Enum.map(fn(p) -> create_and_persist_slug(p) end)
@@ -23,7 +25,7 @@ defmodule WilliamStorckPhx.SlugGenerator do
   end
 
   defp hash_id(id) do
-    Hashids.new(salt: System.get_env("HASHID_SALT"))
+    Hashids.new(salt: @salt)
     |> Hashids.encode(id)
   end
 end
