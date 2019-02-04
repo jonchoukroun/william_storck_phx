@@ -7,27 +7,24 @@ defmodule WilliamStorckPhx.UploadService do
 
   def upload_file(%{name: name, file: file}) do
     uid = Ecto.UUID.generate()
-    filename = "#{uid}-#{format(name)}"
+    image_source = "#{uid}-#{format(name)}"
+    full_source = "#{image_source}#{Path.extname(file.filename)}"
 
-    with {:ok, image_binary} <- File.read(file.path) do
+    with {:ok, image_binary} <- File.read(file.path),
+    %{width: _width, height: _height} = dimensions <- Fastimage.size(file.path) do
       if Mix.env() !== :test do
-        full_filename = "#{filename}#{Path.extname(file.filename)}"
         opts = %{content_type: file.content_type, acl: :public_read}
-
-        S3.put_object(@bucket_name, full_filename, image_binary, opts)
+        S3.put_object(@bucket_name, full_source, image_binary, opts)
         |> ExAws.request!
       end
 
-      {:ok, filename}
+      {:ok, full_source, dimensions}
     else
-      _env -> {:ok, filename}
       {:error, _reason} -> {:error, "Cannot read file"}
     end
   end
 
   def upload_file(_params), do: {:error, :invalid_upload_params}
 
-  defp format(string) do
-    String.downcase(string) |> String.split() |> Enum.join("-")
-  end
+  defp format(string), do: String.downcase(string) |> String.split() |> Enum.join("-")
 end

@@ -10,14 +10,14 @@ defmodule WilliamStorckPhxWeb.UploadController do
 
   def create(conn, %{"painting" =>
   %{"name" => name,
-    "material" => material,
-    "painting_height" => painting_height,
-    "painting_width" => painting_width,
-    "year" => year,
-    "status" => status,
+    "material" => _material,
+    "painting_height" => _painting_height,
+    "painting_width" => _painting_width,
+    "year" => _year,
+    "status" => _status,
     "image_file" => file} = params}) do
-    with {:ok, filename} <- UploadService.upload_file(%{name: name, file: file}),
-      {:ok} <- DBService.create_and_persist_painting(params, filename) do
+    with {:ok, source_url, dimensions} <- UploadService.upload_file(%{name: name, file: file}),
+    {:ok} <- DBService.create_and_persist_painting(params, source_url, dimensions) do
 
       conn
       |> put_flash(:info, "#{name} uploaded successfully. You can upload another painting now.")

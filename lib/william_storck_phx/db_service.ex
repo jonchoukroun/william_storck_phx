@@ -3,26 +3,10 @@ defmodule WilliamStorckPhx.DBService do
 
   @base_url "https://s3.amazonaws.com/storck/paintings"
 
-  def update_painting_source do
-    Repo.all(Painting)
-    |> Enum.map(fn painting -> create_painting_changeset(painting) end)
-    |> Enum.map(fn changeset -> Repo.update!(changeset) end)
-  end
-
-  defp create_painting_changeset(painting) do
-    source = painting.src
-    |> String.split("storck")
-    |> Enum.join("storck/paintings")
-
-    Ecto.Changeset.change painting, src: source
-  end
-
-  def create_and_persist_painting(params, filename) do
-    image_name = params["image_file"].filename
-    with {:ok, src} <- set_source(image_name, filename),
-      {:ok, [width, height]} <- get_file_dimensions(src),
-      {:ok, size} <- set_painting_size(params["painting_height"], params["painting_width"]) do
-        generate_payload(params, src, width, height, size)
+  def create_and_persist_painting(params, source_url, dimensions) do
+    with {:ok, src} <- set_source(source_url),
+    {:ok, size} <- set_painting_size(params["painting_height"], params["painting_width"]) do
+        generate_payload(params, src, dimensions.width, dimensions.height, size)
         |> create_painting()
     end
   end
@@ -52,18 +36,8 @@ defmodule WilliamStorckPhx.DBService do
     }
   end
 
-  defp set_source(filename, image_name) when is_binary(filename) and is_binary(image_name) do
-    {:ok, "#{@base_url}/#{filename}#{Path.extname(image_name)}"}
-  end
-  defp set_source(_, _), do: {:error, "Invalid filename"}
-
-  defp get_file_dimensions(src) do
-    with :test <- Mix.env() do
-      {:ok, [200, 300]}
-    else
-      _env -> {:ok, Fastimage.size(src)}
-    end
-  end
+  defp set_source(source_url) when is_binary(source_url), do: {:ok, "#{@base_url}/#{source_url}"}
+  defp set_source(_), do: {:error, "Invalid filename"}
 
   defp set_painting_size(height, width), do: {:ok, "#{height}\" x #{width}\""}
 end
