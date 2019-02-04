@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Lora|Lato');
+
+$brand-blue: rgb(76,93,123);
+$dark-grey: #666666;
+$light-grey: #c3c3c3;
+$brand-white: #e1e1e1;
+$text-color: black;
+$brand-beige: #f6f0eb;
+$brand-muted: #212529;
+$brand-dark: #171819;
+
+html, body {
+  background-color: black;
+}
+
+h1, h2, h3, h4, h5, h6, {
+  font-family: 'Lora', sans-serif;
+}
+
+p, a {
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    text-decoration: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+
+.btn-default {
+  background: none;
+  border-color: $dark-grey;
+  border-radius: 2px;
+  border-width: 2px;
+  color: $light-grey;
+
+  &:hover {
+    background-color: $brand-blue;
+    border-color: transparent;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Form elements
+// -----------------------------------------------------------------------------
+
+input {
+  border-radius: 2px !important;
+  background-color: black !important;
+  border: 2px solid $brand-muted !important;
+  color: $dark-grey !important;
+}
+
+textarea {
+  @extend input;
+}
