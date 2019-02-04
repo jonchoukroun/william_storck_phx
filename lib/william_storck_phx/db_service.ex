@@ -57,7 +57,13 @@ defmodule WilliamStorckPhx.DBService do
   end
   defp set_source(_, _), do: {:error, "Invalid filename"}
 
-  defp get_file_dimensions(src), do: {:ok, Fastimage.size(src)}
+  defp get_file_dimensions(src) do
+    with :test <- Mix.env() do
+      {:ok, [200, 300]}
+    else
+      _env -> {:ok, Fastimage.size(src)}
+    end
+  end
 
   defp set_painting_size(height, width), do: {:ok, "#{height}\" x #{width}\""}
 end

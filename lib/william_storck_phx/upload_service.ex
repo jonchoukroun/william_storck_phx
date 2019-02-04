@@ -10,14 +10,17 @@ defmodule WilliamStorckPhx.UploadService do
     filename = "#{uid}-#{format(name)}"
 
     with {:ok, image_binary} <- File.read(file.path) do
-      full_filename = "#{filename}#{Path.extname(file.filename)}"
-      opts = %{content_type: file.content_type, acl: :public_read}
+      if Mix.env() !== :test do
+        full_filename = "#{filename}#{Path.extname(file.filename)}"
+        opts = %{content_type: file.content_type, acl: :public_read}
 
-      S3.put_object(@bucket_name, full_filename, image_binary, opts)
-      |> ExAws.request!
+        S3.put_object(@bucket_name, full_filename, image_binary, opts)
+        |> ExAws.request!
+      end
 
       {:ok, filename}
     else
+      _env -> {:ok, filename}
       {:error, _reason} -> {:error, "Cannot read file"}
     end
   end
