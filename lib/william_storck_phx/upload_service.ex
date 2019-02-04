@@ -9,8 +9,7 @@ defmodule WilliamStorckPhx.UploadService do
     uid = Ecto.UUID.generate()
     filename = "#{uid}-#{format(name)}"
 
-    with :prod <- Mix.env(),
-      {:ok, image_binary} <- File.read(file.path) do
+    with {:ok, image_binary} <- File.read(file.path) do
       full_filename = "#{filename}#{Path.extname(file.filename)}"
       opts = %{content_type: file.content_type, acl: :public_read}
 
@@ -19,7 +18,6 @@ defmodule WilliamStorckPhx.UploadService do
 
       {:ok, filename}
     else
-      _env -> {:ok, filename}
       {:error, _reason} -> {:error, "Cannot read file"}
     end
   end
