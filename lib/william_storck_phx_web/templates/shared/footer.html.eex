@@ -2,7 +2,36 @@
   id="footer"
   class="container-fluid px-4 py-2 border-top border-secondary"
 >
-  <div class="d-flex align-items-center justify-content-between">
+  <div class="d-md-none d-flex flex-column align-items-center justify-content-center">
+    <div class="d-flex flex-row align-items-center justify-content-around my-2">
+      <a href="<%= Routes.contact_path(@conn, :index) %>">Contact Us</a>
+
+      <span class="mx-2">|</span>
+
+      <a href="<%= Routes.privacy_path(@conn, :index) %>">Privacy Policy</a>
+
+      <span class="mx-2">|</span>
+
+      <a href="<%= Routes.sitemap_path(@conn, :index) %>">Sitemap</a>
+    </div>
+
+    <div class="my-2">
+      <a
+        href="https://instagram.com/wpstorck"
+        class="text-secondary"
+      >
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+
+    <p>
+      <i class="far fa-copyright"></i>
+      <%= DateTime.utc_now.year %>
+      William Penniman Storck
+    </p>
+  </div>
+
+  <div class="d-none d-md-flex align-items-center justify-content-between">
     <p class="mb-0">
       <i class="far fa-copyright"></i>
       <%= DateTime.utc_now.year %>

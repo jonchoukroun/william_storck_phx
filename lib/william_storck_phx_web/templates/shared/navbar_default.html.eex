@@ -6,6 +6,10 @@
     href="<%= Routes.home_path(@conn, :index) %>"
     class="navbar-brand"
   >
+    <h4 class="d-md-none heading-text text-primary mb-0">
+      WS
+    </h4>
+
     <h1 class="d-none d-md-block display-4 heading-text text-primary">
       William Penniman Storck
     </h1>

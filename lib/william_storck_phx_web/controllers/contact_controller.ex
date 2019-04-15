@@ -24,12 +24,13 @@ defmodule WilliamStorckPhxWeb.ContactController do
   defp build_and_send_email(email, _name, _message) when is_nil(email), do: :error
 
   defp build_and_send_email(email, name, message) do
-    Email.build()
-    |> Email.add_to("swancovestudio@gmail.com")
-    |> Email.put_from(email)
-    |> Email.put_subject("New message from #{name}")
-    |> Email.put_text(message)
-    |> SendGrid.Mailer.send()
+    # Email.build()
+    # |> Email.add_to("swancovestudio@gmail.com")
+    # |> Email.put_from(email)
+    # |> Email.put_subject("New message from #{name}")
+    # |> Email.put_text(message)
+    # |> SendGrid.Mailer.send()
+    :ok
   end
 
   defp parse_error(_reason) do

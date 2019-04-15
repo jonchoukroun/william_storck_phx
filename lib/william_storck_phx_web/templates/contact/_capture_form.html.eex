@@ -18,7 +18,12 @@
         placeholder: "Enter your email..." %>
 
     <small class="form-text text-muted">
-      We'll never share your email with anyone else.
+      We'll never share your email with anyone else. For more details read our
+      <a
+        href="<%= Routes.privacy_path(@conn, :index) %>"
+        class="text-underline"
+      >
+        privacy policy</a>.
     </small>
   </div>
 

@@ -1,57 +1,80 @@
-<div id="navbar" class="navbar navbar-expand-lg fixed-top navbar-clear">
-  <a href="<%= Routes.home_path(@conn, :index) %>" class="navbar-brand">
-    <h2 class="d-md-none heading-text text-secondary">
+<div
+  id="navbar"
+  class="navbar navbar-expand-lg fixed-top navbar-clear"
+>
+  <a
+    href="<%= Routes.home_path(@conn, :index) %>"
+    class="navbar-brand"
+  >
+    <h4 class="d-md-none heading-text text-secondary">
       William Storck
-    </h2>
+    </h4>
 
     <h1 class="d-none d-md-block display-4 heading-text text-secondary">
       William Penniman Storck
     </h1>
   </a>
 
-  <button type="button" data-toggle="collapse" data-target="#navbar-menu" class="navbar-toggler">
+  <button
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbar-menu"
+    class="navbar-toggler"
+  >
     <span class="navbar-toggler-icon">
-      <i class="fa fa-bars text-white"></i>
+      <i class="fa fa-bars text-secondary"></i>
     </span>
   </button>
 
-  <div id="navbar-menu" class="collapse navbar-collapse">
+  <div
+    id="navbar-menu"
+    class="collapse navbar-collapse"
+  >
     <ul class="navbar-nav ml-auto align-items-end">
       <li class="nav-item my-2 mr-lg-4">
-        <a href="<%= Routes.home_path(@conn, :index) %>" class="nav-link">
-          <h4 class="d-lg-none text-white">
+        <a
+          href="<%= Routes.home_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <h4 class="d-lg-none text-secondary">
             Home
           </h4>
 
-          <div class="d-none d-lg-inline-block text-grey">
+          <div class="d-none d-lg-inline-block text-white">
             Home
           </div>
       </li>
         </a>
 
       <li class="nav-item my-2 mr-lg-4">
-        <a href="<%= Routes.paintings_path(@conn, :index) %>" class="nav-link">
-          <h4 class="d-lg-none text-white">
+        <a
+          href="<%= Routes.paintings_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <h4 class="d-lg-none text-secondary">
             Portfolio
           </h4>
 
-          <div class="d-none d-lg-inline-block text-grey">
+          <div class="d-none d-lg-inline-block text-white">
             Portfolio
           </div>
       </li>
         </a>
 
       <li class="nav-item my-2 mr-lg-4">
-        <a href="<%= Routes.contact_path(@conn, :index) %>" class="nav-link">
-          <h4 class="d-lg-none heading-text text-white">
+        <a
+          href="<%= Routes.contact_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <h4 class="d-lg-none heading-text text-secondary">
             Contact
           </h4>
 
-          <div class="d-none d-lg-inline-block heading-text text-grey">
+          <div class="d-none d-lg-inline-block heading-text text-white">
             Contact
           </div>
-      </li>
         </a>
+      </li>
     </ul>
   </div>
 </div>

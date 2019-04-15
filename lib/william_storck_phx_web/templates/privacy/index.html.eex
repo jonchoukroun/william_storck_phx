@@ -4,11 +4,17 @@
   <div class="container w-50 text-left" style="padding-top: 120px; padding-bottom: 80px;">
     <h3 class="display-text text-blue">Privacy Policy</h3>
 
-    <p>Our privacy policy is very simple, since we do not store your information.</p>
+    <p>
+      Our privacy policy is very simple, since we do not store your information.
+    </p>
 
-    <p>If you choose to contact us, your name and email will be sent to William Storck and nobody else. We will not share your information with any third party, nor do we store it in any database.</p>
+    <p>
+      If you choose to contact us, your name and email will be sent to the artist, William Storck, and nobody else. We will not share your information with any third party, nor do we store it in any database.
+    </p>
 
-    <p>Finally, we do not track user behavior.</p>
+    <p>
+      Finally, we do not track user behavior.
+    </p>
   </div>
 </div>
 

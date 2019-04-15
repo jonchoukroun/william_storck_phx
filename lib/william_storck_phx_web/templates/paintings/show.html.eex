@@ -12,7 +12,7 @@
     </a>
 
   <div class="d-flex d-lg-none flex-column align-items-center justify-content-center">
-    <div class="my-2 mx-3">
+    <div class="my-2">
       <img
         src="<%= @painting.src %>"
         alt="@painting.name"
@@ -25,7 +25,7 @@
         <%= @painting.name %>
       </h1>
 
-      <div class="text-center">
+      <div class="text-center border-top border-secondary mt-2 pt-2">
         <h5 class="display-text text-black">
           <%= @painting.material %>, <%= @painting.year %>
         </h5>
