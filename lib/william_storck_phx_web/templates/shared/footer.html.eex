@@ -1,28 +1,31 @@
-<div id="footer" class="container-fluid px-4 py-2 border-top border-dark">
+<div
+  id="footer"
+  class="container-fluid px-4 py-2 border-top border-secondary"
+>
   <div class="d-flex align-items-center justify-content-between">
-    <p class="mb-0 text-dark">
+    <p class="mb-0">
       <i class="far fa-copyright"></i>
       <%= DateTime.utc_now.year %>
       William Penniman Storck
     </p>
 
-    <a href="https://instagram.com/wpstorck" class="text-dark">
+    <a href="https://instagram.com/wpstorck" class="text-secondary">
       <i class="fab fa-instagram"></i>
     </a>
 
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a href="<%= Routes.privacy_path(@conn, :index) %>" class="nav-link text-dark">
+        <a href="<%= Routes.privacy_path(@conn, :index) %>" class="nav-link">
           Privacy Policy
         </a>
       </li>
       <li class="nav-item">
-        <a href="<%= Routes.sitemap_path(@conn, :index) %>" class="nav-link text-dark">
+        <a href="<%= Routes.sitemap_path(@conn, :index) %>" class="nav-link">
           Sitemap
         </a>
       </li>
       <li class="nav-item">
-        <a href="<%= Routes.contact_path(@conn, :index) %>" class="nav-link text-dark">
+        <a href="<%= Routes.contact_path(@conn, :index) %>" class="nav-link">
           Contact
         </a>
       </li>

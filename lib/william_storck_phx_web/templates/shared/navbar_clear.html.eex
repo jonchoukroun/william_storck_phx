@@ -1,10 +1,10 @@
 <div id="navbar" class="navbar navbar-expand-lg fixed-top navbar-clear">
   <a href="<%= Routes.home_path(@conn, :index) %>" class="navbar-brand">
-    <h2 class="d-md-none heading-text text-white">
+    <h2 class="d-md-none heading-text text-secondary">
       William Storck
     </h2>
 
-    <h1 class="d-none d-md-block display-4 heading-text text-grey">
+    <h1 class="d-none d-md-block display-4 heading-text text-secondary">
       William Penniman Storck
     </h1>
   </a>
@@ -19,11 +19,11 @@
     <ul class="navbar-nav ml-auto align-items-end">
       <li class="nav-item my-2 mr-lg-4">
         <a href="<%= Routes.home_path(@conn, :index) %>" class="nav-link">
-          <h4 class="d-lg-none heading-text text-white">
+          <h4 class="d-lg-none text-white">
             Home
           </h4>
 
-          <div class="d-none d-lg-inline-block heading-text text-grey">
+          <div class="d-none d-lg-inline-block text-grey">
             Home
           </div>
       </li>
@@ -31,11 +31,11 @@
 
       <li class="nav-item my-2 mr-lg-4">
         <a href="<%= Routes.paintings_path(@conn, :index) %>" class="nav-link">
-          <h4 class="d-lg-none heading-text text-white">
+          <h4 class="d-lg-none text-white">
             Portfolio
           </h4>
 
-          <div class="d-none d-lg-inline-block heading-text text-grey">
+          <div class="d-none d-lg-inline-block text-grey">
             Portfolio
           </div>
       </li>

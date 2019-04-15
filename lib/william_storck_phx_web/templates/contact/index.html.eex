@@ -1,4 +1,4 @@
-<%= render WilliamStorckPhxWeb.SharedView, "navbar_dark.html", assigns %>
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_default.html", assigns %>
 
 <div class="container-fluid mx-auto text-center" style="padding-top: 100px;">
   <div class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto py-5">
@@ -9,7 +9,7 @@
     <%= if assigns[:success] do %>
       <%= render WilliamStorckPhxWeb.ContactView, "_thank_you.html", assigns %>
     <% else %>
-      <h2 class="display-text text-grey my-5">We'd love to hear from you.</h2>
+      <h2 class="display-text text-secondary my-1">We'd love to hear from you.</h2>
       <%= render WilliamStorckPhxWeb.ContactView, "_capture_form.html", assigns %>
     <% end %>
 

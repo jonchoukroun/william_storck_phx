@@ -31,13 +31,14 @@
   transition: transform 0.2s ease-in-out;
 
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    @extend .elevation-1;
   }
 }
 
 figure.grid-image {
   margin: 0;
-  background-color: black;
+  background-color: $brand-primary;
 }
 
 figcaption.figure-caption {

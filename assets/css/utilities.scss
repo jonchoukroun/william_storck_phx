@@ -2,12 +2,8 @@
 // Backgrounds
 // -----------------------------------------------------------------------------
 
-.bg-beige {
-  background-color: $brand-beige;
-}
-
-.z-level-1 {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+.bg-white {
+  background-color: $brand-white;
 }
 
 
@@ -19,12 +15,12 @@
   border-top: 1px solid;
 }
 
-.border-dark {
-  border-color: $brand-dark !important;
+.border-primary {
+  border-color: $brand-primary !important;
 }
 
-.border-blue {
-  border-color: $brand-blue !important;
+.border-secondary {
+  border-color: $brand-secondary !important;
 }
 
 
@@ -36,27 +32,31 @@
   font-family: 'Lora', sans-serif;
 }
 
+.text-black {
+  color: $brand-black;
+}
+
 .text-white {
   color: $brand-white;
 }
 
-.text-muted {
-  color: $brand-muted !important;
+.text-primary {
+  color: $brand-primary !important;
 }
 
-.text-grey {
-  color: $light-grey
-}
-
-.text-blue {
-  color: $brand-blue;
+.text-secondary {
+  color: $brand-secondary !important;
 }
 
 
 // -----------------------------------------------------------------------------
-// Z-index
+// Lighting & Elevation
 // -----------------------------------------------------------------------------
 
-.z-level-3 {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+.elevation-1 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.elevation-5 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

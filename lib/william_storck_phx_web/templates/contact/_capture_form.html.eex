@@ -2,23 +2,19 @@
     Routes.contact_path(@conn, :capture_email),
     [as: :contact, class: "text-left"], fn f -> %>
 
-  <div class="form-group">
-    <label class="text-grey" for="contact_name">Your name</label>
-
+  <div class="form-group my-4">
     <%= text_input f, :name,
         required: true,
-        class: "form-control",
+        class: "form-control form-control-lg",
         autofocus: true,
         placeholder: "What's your name?" %>
 
   </div>
 
-  <div class="form-group">
-    <label class="text-grey" for="contact_email">Your email address</label>
-
+  <div class="form-group my-5">
     <%= email_input f, :email,
         required: true,
-        class: "form-control",
+        class: "form-control form-control-lg",
         placeholder: "Enter your email..." %>
 
     <small class="form-text text-muted">
@@ -26,15 +22,14 @@
     </small>
   </div>
 
-  <div class="form-group">
-    <label class="text-grey" for="messageInput">Tell us what you think!</label>
-
+  <div class="form-group my-5">
     <%= textarea f, :message,
         required: true,
         rows: "5",
-        class: "form-control" %>
+        class: "form-control form-control-lg",
+        placeholder: "Tell us what you think" %>
   </div>
 
-  <%= submit "Send", class: "btn btn-default btn-lg btn-block" %>
+  <%= submit "Send us a message", class: "btn btn-default btn-lg btn-block" %>
 
 <% end %>
