@@ -1,1 +1,1 @@
-web: echo "" > ./config/prod.secret.exs && MIX_ENV=staging mix phoenix.server
+web: MIX_ENV=staging mix phx.server
