@@ -15,7 +15,7 @@ config :william_storck_phx, WilliamStorckPhx.Repo,
   username: System.get_env("DATABASE_USERNAME"),
   password: System.get_env("DATABASE_PASSWORD"),
   database: System.get_env("DATABASE_NAME"),
-  pool_size: System.get_env("POOL_SIZE")
+  pool_size: 18
 
 config :ex_aws,
   access_key_id: [System.get_env("AWS_ACCESS_KEY_ID"), :instance_role],
