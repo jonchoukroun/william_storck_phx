@@ -8,10 +8,7 @@ config :william_storck_phx, WilliamStorckPhxWeb.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :william_storck_phx, WilliamStorckPhx.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: System.get_env("DATABASE_USERNAME"),
-  password: System.get_env("DATABASE_PASSWORD"),
-  database: System.get_env("DATABASE_NAME"),
+  url: System.get_env("DATABASE_URL"),
   pool_size: System.get_env("POOL_SIZE")
 
 config :ex_aws,
