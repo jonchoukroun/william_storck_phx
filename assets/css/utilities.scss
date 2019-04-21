@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .bg-white {
-  background-color: $brand-white;
+  background-color: $brand-white !important;
 }
 
 
@@ -51,6 +51,10 @@
 .text-underline {
   text-decoration: underline;
   text-decoration-style: dotted;
+}
+
+.text-shadow {
+  text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
 }
 
 
