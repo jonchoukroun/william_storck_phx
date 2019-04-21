@@ -5,28 +5,11 @@
     id="home-hero"
     class="jumbotron jumbotron-fluid d-flex justify-content-center"
   >
-    <div class="small-hero d-flex d-md-none flex-column justify-content-end mb-4">
-      <a
-        href="<%= Routes.paintings_path(@conn, :index) %>"
-        class="display-4 heading-text text-center text-white"
-      >
-        Portfolio
-      </a>
-
-      <a
-        href="https://www.hsprints.com/william-storck"
-        target="_blank"
-        class="display-4 heading-text text-center text-white"
-      >
-        Prints
-      </a>
-    </div>
-
     <div class="large-hero d-none d-md-flex flex-row align-self-end justify-content-center">
       <div class="first-link hero-link">
         <a
           href="<%= Routes.paintings_path(@conn, :index) %>"
-          class="align-self-end display-4 heading-text text-center text-grey"
+          class="align-self-end display-4 heading-text text-center text-white text-shadow"
         >
           Portfolio
         </a>
@@ -36,7 +19,7 @@
         <a
           href="https://www.hsprints.com/william-storck"
           target="_blank"
-          class="align-self-end display-4 heading-text text-center text-grey"
+          class="align-self-end display-4 heading-text text-center text-white text-shadow"
         >
           Prints
         </a>
