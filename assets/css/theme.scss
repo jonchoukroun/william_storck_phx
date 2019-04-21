@@ -45,6 +45,11 @@ a {
   }
 }
 
+.navbar-toggler:focus {
+  outline: none;
+  border-width: 2px;
+  border-color: $brand-secondary;
+}
 
 // -----------------------------------------------------------------------------
 // Form elements
