@@ -33,21 +33,6 @@
     <ul class="navbar-nav ml-auto align-items-end">
       <li class="nav-item mr-lg-4">
         <a
-          href="<%= Routes.home_path(@conn, :index) %>"
-          class="nav-link"
-        >
-          <h4 class="d-lg-none text-white text-shadow">
-            Home
-          </h4>
-
-          <div class="d-none d-lg-inline-block text-white text-shadow">
-            Home
-          </div>
-      </li>
-        </a>
-
-      <li class="nav-item mr-lg-4">
-        <a
           href="<%= Routes.paintings_path(@conn, :index) %>"
           class="nav-link"
         >

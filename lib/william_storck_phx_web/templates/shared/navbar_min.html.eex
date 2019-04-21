@@ -55,6 +55,21 @@
 
       <li class="nav-item my-2 mr-lg-4">
         <a
+          href="https://www.hsprints.com/william-storck"
+          target="_blank"
+          class="nav-lnk"
+        >
+          <h4 class="d-lg-none text-black">
+            Prints
+          </h4>
+          <span class="d-none d-lg-inline-block text-black">
+            Prints
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item my-2 mr-lg-4">
+        <a
           href="<%= Routes.contact_path(@conn, :index) %>"
           class="nav-link"
         >
