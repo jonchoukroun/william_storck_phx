@@ -6,11 +6,11 @@
     href="<%= Routes.home_path(@conn, :index) %>"
     class="navbar-brand"
   >
-    <h4 class="d-md-none heading-text text-secondary">
+    <h4 class="d-md-none heading-text text-white text-shadow">
       William Storck
     </h4>
 
-    <h1 class="d-none d-md-block display-4 heading-text text-secondary">
+    <h1 class="d-none d-md-block display-4 heading-text text-primary text-shadow">
       William Penniman Storck
     </h1>
   </a>
@@ -22,7 +22,7 @@
     class="navbar-toggler"
   >
     <span class="navbar-toggler-icon">
-      <i class="fa fa-bars text-secondary"></i>
+      <i class="fa fa-bars text-white"></i>
     </span>
   </button>
 
@@ -31,46 +31,46 @@
     class="collapse navbar-collapse"
   >
     <ul class="navbar-nav ml-auto align-items-end">
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item mr-lg-4">
         <a
           href="<%= Routes.home_path(@conn, :index) %>"
           class="nav-link"
         >
-          <h4 class="d-lg-none text-secondary">
+          <h4 class="d-lg-none text-white text-shadow">
             Home
           </h4>
 
-          <div class="d-none d-lg-inline-block text-white">
+          <div class="d-none d-lg-inline-block text-white text-shadow">
             Home
           </div>
       </li>
         </a>
 
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item mr-lg-4">
         <a
           href="<%= Routes.paintings_path(@conn, :index) %>"
           class="nav-link"
         >
-          <h4 class="d-lg-none text-secondary">
+          <h4 class="d-lg-none text-white text-shadow">
             Portfolio
           </h4>
 
-          <div class="d-none d-lg-inline-block text-white">
+          <div class="d-none d-lg-inline-block text-white text-shadow">
             Portfolio
           </div>
       </li>
         </a>
 
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item mr-lg-4">
         <a
           href="<%= Routes.contact_path(@conn, :index) %>"
           class="nav-link"
         >
-          <h4 class="d-lg-none heading-text text-secondary">
+          <h4 class="d-lg-none text-white text-shadow">
             Contact
           </h4>
 
-          <div class="d-none d-lg-inline-block heading-text text-white">
+          <div class="d-none d-lg-inline-block heading-text text-white text-shadow">
             Contact
           </div>
         </a>
