@@ -1,4 +1,4 @@
-<%= render WilliamStorckPhxWeb.SharedView, "navbar_default.html", assigns %>
+<%= render WilliamStorckPhxWeb.SharedView, "navbar_min.html", assigns %>
 
 <div
   class="container-fluid mx-auto text-center"
