@@ -1,17 +1,17 @@
 .navbar-clear {
   background-color: transparent;
 
-  a {
-    color: $brand-white;
-
-    &:hover {
-      color: $brand-secondary !important;
-    }
+  .navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(243,242,240,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
 }
 
 .navbar-min {
-  background-color: transparent;
+  background-color: $brand-white;
+
+  a:hover span {
+    color: $brand-secondary !important;
+  }
 
   .navbar-toggler {
     border: none;
@@ -27,13 +27,12 @@
   }
 }
 
-@media (max-width: 992px) {
-  .navbar-min {
-    background-color: $brand-white;
+@media (min-width: 992px) {
+  .navbar-clear ul.navbar-nav {
     border-bottom: 1px solid $brand-secondary;
+  }
 
-    .navbar-brand {
-      border-bottom: none;
-    }
+  .navbar-min {
+    background-color: transparent;
   }
 }

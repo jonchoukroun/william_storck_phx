@@ -25,58 +25,46 @@
     class="collapse navbar-collapse"
   >
     <ul class="navbar-nav ml-auto align-items-end">
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item my-2 mr-3">
         <a
           href="<%= Routes.home_path(@conn, :index) %>"
           class="nav-link"
         >
-          <h4 class="d-lg-none text-black">
-            Home
-          </h4>
-          <span class="d-none d-lg-inline-block text-black">
+          <span class="text-black">
             Home
           </span>
         </a>
       </li>
 
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item my-2 mr-3">
         <a
           href="<%= Routes.paintings_path(@conn, :index) %>"
           class="nav-link"
         >
-          <h4 class="d-lg-none text-black">
-            Portfolio
-          </h4>
-          <span class="d-none d-lg-inline-block text-black">
+          <span class="text-black">
             Portfolio
           </span>
         </a>
       </li>
 
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item my-2 mr-3">
         <a
           href="https://www.hsprints.com/william-storck"
           target="_blank"
           class="nav-lnk"
         >
-          <h4 class="d-lg-none text-black">
-            Prints
-          </h4>
-          <span class="d-none d-lg-inline-block text-black">
+          <span class="text-black">
             Prints
           </span>
         </a>
       </li>
 
-      <li class="nav-item my-2 mr-lg-4">
+      <li class="nav-item my-2 mr-3">
         <a
           href="<%= Routes.contact_path(@conn, :index) %>"
           class="nav-link"
         >
-          <h4 class="d-lg-none text-black">
-            Contact
-          </h4>
-          <span class="d-none d-lg-inline-block text-black">
+          <span class="text-black">
             Contact
           </span>
         </a>
