@@ -1,9 +1,11 @@
 defmodule WilliamStorckPhxWeb.PaintingsController do
   use WilliamStorckPhxWeb, :controller
   alias WilliamStorckPhx.{Repo, Painting}
+  import Ecto.Query
 
   def index(conn, _params) do
-    render conn, "index.html", paintings: Repo.all(Painting)
+    query = from p in Painting, order_by: fragment("RANDOM()")
+    render conn, "index.html", paintings: Repo.all(query)
   end
 
   def show(conn, %{"id" => slug}) do
