@@ -2,7 +2,11 @@
     Routes.contact_path(@conn, :capture_email),
     [as: :contact, class: "text-left"], fn f -> %>
 
-  <div class="form-group my-4">
+  <%= if assigns[:painting] do %>
+    <%= hidden_input f, :painting, value: assigns[:painting] %>
+  <% end %>
+
+  <div class="form-group my-5">
     <%= text_input f, :name,
         required: true,
         class: "form-control form-control-lg",
@@ -30,9 +34,9 @@
   <div class="form-group my-5">
     <%= textarea f, :message,
         required: true,
-        rows: "5",
+        rows: "1",
         class: "form-control form-control-lg",
-        placeholder: "Tell us what you think" %>
+        placeholder: text_area_placeholder(assigns[:painting]) %>
   </div>
 
   <%= submit "Send us a message", class: "btn btn-default btn-lg btn-block" %>
