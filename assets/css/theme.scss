@@ -92,9 +92,5 @@ textarea {
 // -----------------------------------------------------------------------------
 
 .alert {
-  position: fixed;
-  margin-top: 5vh;
-  z-index: 10000;
-  padding: 2vh 10vw;
   @extend .elevation-5;
 }
