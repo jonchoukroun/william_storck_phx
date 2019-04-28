@@ -12,6 +12,7 @@ defmodule WilliamStorckPhx.Painting do
     field :size, :string
     field :src, :string
     field :status, :string
+    field :price, :integer
     field :width, :integer
     field :year, :integer
 
@@ -22,7 +23,7 @@ defmodule WilliamStorckPhx.Painting do
   def changeset(painting, attrs) do
     painting
     |> cast(attrs, [
-      :slug, :name, :src, :material, :year, :size, :status, :featured, :height, :width])
+      :slug, :name, :src, :material, :year, :size, :status, :price, :featured, :height, :width])
     |> validate_required([:name, :src, :material, :year, :size, :status, :featured, :height, :width])
   end
 end
