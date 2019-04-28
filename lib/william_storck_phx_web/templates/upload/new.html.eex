@@ -47,7 +47,8 @@
           <%= label f, :name, class: "control-label" %>
           <%= text_input f, :name,
               class: "form-control form-control-lg",
-              placeholder: "Name of the painting" %>
+              placeholder: "Name of the painting",
+              autofocus: true %>
           <%= error_tag f, :name %>
         </div>
 
@@ -104,7 +105,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">$</span>
             </div>
-            
+
             <%= number_input f, :price,
               class: "form-control form-control-lg",
               placeholder: "in dollars" %>
