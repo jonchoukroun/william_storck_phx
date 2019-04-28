@@ -22,6 +22,7 @@
       <h2 class="display-text text-secondary my-1">
         We'd love to hear from you.
       </h2>
+
       <%= render WilliamStorckPhxWeb.ContactView, "_capture_form.html", assigns %>
     <% end %>
   </div>

@@ -56,10 +56,16 @@ a {
 // -----------------------------------------------------------------------------
 
 input {
-  border-radius: 3px !important;
   background-color: $brand-white !important;
-  border: 2px solid rgba($brand-secondary, 0.5) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba($brand-secondary, 0.6) !important;
   color: $brand-black !important;
+
+  &::placeholder {
+    color: rgba($brand-black, 0.5) !important;
+    font-weight: 200;
+  }
 }
 
 select {
@@ -72,6 +78,5 @@ textarea {
 
 .form-control:focus {
   box-shadow: none;
-  border: 3px solid $brand-secondary !important;
-
+  border-bottom: 2px solid $brand-secondary !important;
 }
