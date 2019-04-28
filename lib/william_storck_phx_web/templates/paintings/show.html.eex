@@ -75,6 +75,9 @@
                 class="text-underline"
               >
                 Available
+                <%= if @painting.price do %>
+                  $<%= @painting.price %>
+                <% end %>
               </a>
             <% end %>
           </div>

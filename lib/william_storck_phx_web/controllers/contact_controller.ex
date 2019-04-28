@@ -3,7 +3,7 @@ defmodule WilliamStorckPhxWeb.ContactController do
   alias SendGrid.Email
 
   def index(conn, %{"painting" => painting}), do: render conn, "index.html", painting: painting
-  def index(conn, params), do: render conn, "index.html"
+  def index(conn, _params), do: render conn, "index.html"
 
   def capture_email(conn, params) do
     contact = params["contact"]

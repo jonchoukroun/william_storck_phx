@@ -15,6 +15,7 @@ defmodule WilliamStorckPhxWeb.UploadController do
     "painting_width" => _painting_width,
     "year" => _year,
     "status" => _status,
+    "price" => _price,
     "image_file" => file} = params}) do
     with {:ok, source_url, dimensions} <- UploadService.upload_file(%{name: name, file: file}),
     {:ok} <- DBService.create_and_persist_painting(params, source_url, dimensions) do
