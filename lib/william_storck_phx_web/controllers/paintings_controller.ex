@@ -13,7 +13,7 @@ defmodule WilliamStorckPhxWeb.PaintingsController do
       nil ->
         index(conn, %{})
       painting ->
-        render conn, "show.html", painting: Repo.get_by!(Painting, slug: slug)
+        render conn, "show.html", painting: painting
     end
   end
 end
