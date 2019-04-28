@@ -31,13 +31,14 @@
   transition: transform 0.2s ease-in-out;
 
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    @extend .elevation-1;
   }
 }
 
 figure.grid-image {
   margin: 0;
-  background-color: black;
+  background-color: $brand-primary;
 }
 
 figcaption.figure-caption {
@@ -48,4 +49,11 @@ figcaption.figure-caption {
   z-index: 1000;
   background: rgba(0,0,0,0.5);
   padding: 1rem;
+}
+
+@media (min-width: 992px) {
+  .painting-grid {
+    max-width: 80vw;
+    margin: 0 auto 40px;
+  }
 }

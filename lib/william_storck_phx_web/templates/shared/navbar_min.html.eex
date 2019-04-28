@@ -1,18 +1,14 @@
 <div
   id="navbar"
-  class="navbar navbar-expand-lg fixed-top navbar-clear"
+  class="navbar fixed-top navbar-min"
 >
   <a
     href="<%= Routes.home_path(@conn, :index) %>"
     class="navbar-brand"
   >
-    <h4 class="d-md-none heading-text text-white text-shadow mb-0">
-      William Storck
+    <h4 class="heading-text text-primary mb-0">
+      WS
     </h4>
-
-    <h1 class="d-none d-md-block display-4 heading-text text-primary text-shadow">
-      William Penniman Storck
-    </h1>
   </a>
 
   <button
@@ -28,36 +24,47 @@
     id="navbar-menu"
     class="collapse navbar-collapse"
   >
-    <ul class="navbar-nav ml-auto align-items-end mr-lg-4">
-      <li class="nav-item mr-lg-4">
+    <ul class="navbar-nav ml-auto align-items-end">
+      <li class="nav-item my-2 mr-3">
+        <a
+          href="<%= Routes.home_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <span class="text-black">
+            Home
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item my-2 mr-3">
         <a
           href="<%= Routes.paintings_path(@conn, :index) %>"
           class="nav-link"
         >
-          <span class="text-white text-shadow">
+          <span class="text-black">
             Portfolio
           </span>
         </a>
       </li>
 
-      <li class="nav-item mr-lg-4">
+      <li class="nav-item my-2 mr-3">
         <a
           href="https://www.hsprints.com/william-storck"
           target="_blank"
-          class="nav-link"
+          class="nav-lnk"
         >
-          <span class="text-white text-shadow">
+          <span class="text-black">
             Prints
           </span>
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item my-2 mr-3">
         <a
           href="<%= Routes.contact_path(@conn, :index) %>"
           class="nav-link"
         >
-          <span class="text-white text-shadow">
+          <span class="text-black">
             Contact
           </span>
         </a>

@@ -1,29 +1,36 @@
 <div id="painting-page">
 
   <div class="navbar navbar_light justify-content-end py-0">
-    <a style="font-size: 1.24rem;" href="<%= Routes.paintings_path(@conn, :index) %>" class="navbar-brand">
-      <p class="m-0 text-grey">
+    <a
+      href="<%= Routes.paintings_path(@conn, :index) %>"
+      class="navbar-brand"
+    >
+      <p class="m-0">
         <i class="fas fa-long-arrow-alt-left"></i>
         Portfolio
       </p>
     </a>
 
   <div class="d-flex d-lg-none flex-column align-items-center justify-content-center">
-    <div class="my-2 mx-3">
-      <img src="<%= @painting.src %>" alt="@painting.name" class="img-fluid">
+    <div class="my-2">
+      <img
+        src="<%= @painting.src %>"
+        alt="@painting.name"
+        class="img-fluid"
+      >
     </div>
 
     <div class="mt-3">
-      <h1 class="display-5 text-center text-blue">
+      <h1 class="display-5 text-center text-primary">
         <%= @painting.name %>
       </h1>
 
-      <div class="text-center">
-        <h5 class="display-text text-blue">
+      <div class="text-center border-top border-secondary mt-2 pt-2">
+        <h5 class="display-text text-black">
           <%= @painting.material %>, <%= @painting.year %>
         </h5>
 
-        <h5 class="display-text text-blue">
+        <h5 class="display-text text-black">
           <%= @painting.size %>
         </h5>
       </div>
@@ -35,23 +42,30 @@
   <div class="d-none d-lg-block container-fluid mt-3">
     <div class="row">
       <div class="col-lg-8 col-xl-9 pr-0">
-        <div id="painting-image-full" class="d-flex align-items-center justify-content-center">
-          <img src="<%= @painting.src %>" alt="@painting.name" class="z-level-3">
+        <div
+          id="painting-image-full"
+          class="d-flex align-items-center justify-content-center"
+        >
+          <img
+            src="<%= @painting.src %>"
+            alt="@painting.name"
+            class="elevation-5"
+          >
         </div>
       </div>
 
       <div class="col-lg-4 col-xl-3 pl-0 pr-5">
         <div class="h-100 d-flex flex-column align-items-end justify-content-center">
-          <h1 class="display-5 text-right text-blue mr-2">
+          <h1 class="display-5 text-right text-primary mr-2">
             <%= @painting.name %>
           </h1>
 
-          <div class="mr-2 pt-4 pr-3 text-right border-right border-grey">
-            <h5 class="display-text text-blue">
+          <div class="mr-2 pt-4 pr-3 text-right border-right border-secondary">
+            <h5 class="display-text text-black">
               <%= @painting.material %>, <%= @painting.year %>
             </h5>
 
-            <h5 class="display-text text-blue">
+            <h5 class="display-text text-black">
               <%= @painting.size %>
             </h5>
           </div>

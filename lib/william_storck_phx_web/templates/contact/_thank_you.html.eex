@@ -1,14 +1,27 @@
-<h2 class="text-display text-grey mt-5">Thank you <%= @conn.params["contact"]["name"] %>!</h2>
-<p class="lead text-grey mb-0">Do you want to see more of my work?</p>
+<h2 class="text-display text-grey mt-5">
+  Thank you
+  <%= @conn.params["contact"]["name"] %>!
+</h2>
+
+<p class="lead text-grey mb-0">
+  Do you want to see more of my work?
+</p>
+
 <p class="lead text-grey">
-  <a class= "text-blue" href="https://www.instagram.com/wpstorck/">Follow me</a>&nbsp;
+  <a
+    href="https://www.instagram.com/wpstorck/"
+    class="text-underline"
+  >
+    Follow me</a>
   for a look at my newest pieces.
 </p>
 
 <div style="margin-top: 80px;">
-  <a class="display-text text-grey"
-  style="font-size: 1.2em;"
-  href="<%= Routes.paintings_path(@conn, :index) %>">
-    <i class="fas fa-long-arrow-alt-left"></i> Return to Portfolio
+  <a
+    href="<%= Routes.paintings_path(@conn, :index) %>"
+    class="display-text text-grey"
+  >
+    <i class="fas fa-long-arrow-alt-left"></i>
+    Return to Portfolio
   </a>
 </div>
