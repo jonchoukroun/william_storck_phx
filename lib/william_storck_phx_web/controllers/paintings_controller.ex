@@ -9,6 +9,11 @@ defmodule WilliamStorckPhxWeb.PaintingsController do
   end
 
   def show(conn, %{"id" => slug}) do
-    render conn, "show.html", painting: Repo.get_by!(Painting, slug: slug)
+    case Repo.get_by(Painting, slug: slug) do
+      nil ->
+        index(conn, %{})
+      painting ->
+        render conn, "show.html", painting: Repo.get_by!(Painting, slug: slug)
+    end
   end
 end
