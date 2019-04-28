@@ -28,6 +28,7 @@ defmodule WilliamStorckPhx.DBService do
       material: params["material"],
       year:     params["year"],
       status:   params["status"],
+      price:    params["price"],
       featured: false,
       src:      src,
       size:     size,
