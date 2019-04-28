@@ -11,7 +11,8 @@ defmodule WilliamStorckPhxWeb.PageControllerTest do
       painting_height: 200,
       painting_width: 300,
       year: 2001,
-      status: "sold",
+      status: "availabled",
+      price: 3000,
       image_file: %Plug.Upload{
         path: "test/fixtures/test-image.jpg",
         filename: "test-image.jpg"
