@@ -49,7 +49,7 @@ defmodule WilliamStorckPhx.Mixfile do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6.5"},
-      {:fastimage, "~> 0.0.7"},
+      {:fastimage, "~> 1.0.0-rc4"},
       {:hashids, "~> 2.0"},
       {:sendgrid, "~> 1.8.0"},
       {:distillery, "~> 2.0", warn_missing: false},
