@@ -4,8 +4,8 @@ defmodule WilliamStorckPhx.Mixfile do
   def project do
     [
       app: :william_storck_phx,
-      version: "0.3.1",
-      elixir: "~> 1.7.4",
+      version: "0.3.2",
+      elixir: "~> 1.8.2",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
@@ -34,7 +34,7 @@ defmodule WilliamStorckPhx.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.0"},
+      {:phoenix, "~> 1.4.8"},
       {:phoenix_pubsub, "~> 1.0"},
       {:ecto_sql, "~> 3.0"},
       {:phoenix_ecto, "~> 4.0"},
