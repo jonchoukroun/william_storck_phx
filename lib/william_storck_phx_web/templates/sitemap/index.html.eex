@@ -19,7 +19,7 @@
             <li>
               <a href="<%= Routes.paintings_path(@conn, :show, painting.slug) %>">
                 <span class="text-blue">
-                  <%= painting.name %>, <%= painting.year %>
+                  <%= painting.name %>
                 </span>
               </a>
             </li>

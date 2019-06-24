@@ -27,7 +27,7 @@
 
       <div class="text-center border-top border-secondary mt-2 pt-2">
         <h5 class="display-text text-black">
-          <%= @painting.material %>, <%= @painting.year %>
+          <%= @painting.material %>
         </h5>
 
         <h5 class="display-text text-black">
@@ -62,7 +62,7 @@
 
           <div class="mr-2 pt-4 pr-3 text-right border-right border-secondary">
             <h5>
-              <%= @painting.material %>, <%= @painting.year %>
+              <%= @painting.material %>
             </h5>
 
             <h5>
