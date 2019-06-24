@@ -13,7 +13,6 @@ defmodule WilliamStorckPhxWeb.UploadController do
     "material" => _material,
     "painting_height" => _painting_height,
     "painting_width" => _painting_width,
-    "year" => _year,
     "status" => _status,
     "price" => _price,
     "image_file" => file} = params}) do

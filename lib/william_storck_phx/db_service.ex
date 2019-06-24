@@ -26,7 +26,6 @@ defmodule WilliamStorckPhx.DBService do
     %{
       name: params["name"],
       material: params["material"],
-      year:     params["year"],
       status:   params["status"],
       price:    params["price"],
       featured: false,

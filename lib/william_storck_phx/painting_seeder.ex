@@ -27,7 +27,6 @@ defmodule WilliamStorckPhx.PaintingSeeder do
       name: name,
       src: format_src(filename),
       material: format_material(Enum.at(painting_elements, 2)),
-      year: format_year(Enum.at(painting_elements, 3)),
       size: format_size(Enum.at(painting_elements, 1)),
       status: get_status(Enum.at(painting_elements, -1)),
       featured: is_featured?(name)
@@ -55,10 +54,6 @@ defmodule WilliamStorckPhx.PaintingSeeder do
     list = String.split(string, "_")
     insert_point = Enum.count(list) |> div(2)
     format_string(list, insert_point)
-  end
-
-  def format_year(string) do
-    String.split(string, ".") |> List.first() |> String.to_integer()
   end
 
   def format_size(string) do
