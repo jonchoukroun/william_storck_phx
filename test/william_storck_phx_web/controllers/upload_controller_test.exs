@@ -10,8 +10,7 @@ defmodule WilliamStorckPhxWeb.PageControllerTest do
       material: "oil on rye",
       painting_height: 200,
       painting_width: 300,
-      year: 2001,
-      status: "availabled",
+      status: "available",
       price: 3000,
       image_file: %Plug.Upload{
         path: "test/fixtures/test-image.jpg",
