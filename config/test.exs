@@ -18,4 +18,6 @@ config :william_storck_phx, WilliamStorckPhx.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+config :bcrypt_elixir, :log_rounds, 4
+
 System.put_env("HASHID_SALT", "too salty for me")
