@@ -4,7 +4,7 @@ defmodule WilliamStorckPhx.Mixfile do
   def project do
     [
       app: :william_storck_phx,
-      version: "0.3.3",
+      version: "0.4.0",
       elixir: "~> 1.8.2",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -52,7 +52,7 @@ defmodule WilliamStorckPhx.Mixfile do
       {:fastimage, "~> 1.0.0-rc4"},
       {:hashids, "~> 2.0"},
       {:sendgrid, "~> 1.8.0"},
-      {:distillery, "~> 2.0", warn_missing: false},
+      {:distillery, "~> 2.0"},
       {:edeliver, ">= 1.6.0"}
     ]
   end
