@@ -53,7 +53,8 @@ defmodule WilliamStorckPhx.Mixfile do
       {:hashids, "~> 2.0"},
       {:sendgrid, "~> 1.8.0"},
       {:distillery, "~> 2.0"},
-      {:edeliver, ">= 1.6.0"}
+      {:edeliver, ">= 1.6.0"},
+      {:bcrypt_elixir, "~> 1.0"}
     ]
   end
 
