@@ -4,8 +4,8 @@ defmodule WilliamStorckPhx.Mixfile do
   def project do
     [
       app: :william_storck_phx,
-      version: "0.3.3",
-      elixir: "~> 1.8.2",
+      version: "0.4.0",
+      elixir: "~> 1.9.0",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
