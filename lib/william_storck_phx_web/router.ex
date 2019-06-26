@@ -12,6 +12,12 @@ defmodule WilliamStorckPhxWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
+  
+  scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
+    pipe_through :browser
+    
+    resources "/users", UserController
+  end
 
   scope "/", WilliamStorckPhxWeb do
     pipe_through :browser # Use the default browser stack
