@@ -65,12 +65,12 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
       {:ok, user} ->
         conn
         |> put_status(:ok)
-#        |> put_flash(:info, "Welcome #{user.name}")
-#        |> redirect(to: Route.admin_user_path(conn, :show, user))
+        |> put_flash(:info, "Welcome, #{user.name}")
+        |> redirect(to: Routes.admin_user_path(conn, :show, user))
       {:error, message} ->
         conn
-#        |> put_status(:unauthorized)
-#        |> put_flash(:error, message)
+        |> put_status(:unauthorized)
+        |> put_flash(:error, message)
     end
   end
 end
