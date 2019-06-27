@@ -21,7 +21,7 @@ defmodule WilliamStorckPhx.Mixfile do
   def application do
     [
       mod: {WilliamStorckPhx.Application, []},
-      extra_applications: [:logger, :runtime_tools, :httpotion]
+      extra_applications: [:logger, :runtime_tools, :httpotion, :corsica]
     ]
   end
 
@@ -43,6 +43,7 @@ defmodule WilliamStorckPhx.Mixfile do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:plug_cowboy, "~> 2.0"},
+      {:corsica, "~> 1.0"},
       {:httpotion, "~> 3.1.0"},
       {:jason, "~> 1.0"},
       {:ex_aws, "~> 2.0"},
