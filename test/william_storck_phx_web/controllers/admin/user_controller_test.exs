@@ -3,8 +3,10 @@ defmodule WilliamStorckPhxWeb.Admin.UserControllerTest do
 
   alias WilliamStorckPhx.Auth
 
-  @create_attrs %{email: "some email", is_active: true, password: "some password"}
-  @update_attrs %{email: "some updated email", is_active: false, password: "some updated password"}
+  @create_attrs %{email: "some email", name: "some name", is_active: true, password: "some password"}
+  @update_attrs %{
+    email: "some updated email", name: "some new name", is_active: false, password: "some new password"
+  }
   @invalid_attrs %{email: nil, is_active: nil, password: nil}
 
   def fixture(:user) do

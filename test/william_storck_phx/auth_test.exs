@@ -6,8 +6,10 @@ defmodule WilliamStorckPhx.AuthTest do
   describe "users" do
     alias WilliamStorckPhx.Auth.User
 
-    @valid_attrs %{email: "some email", is_active: true, password: "some password"}
-    @update_attrs %{email: "some updated email", is_active: false, password: "some new password"}
+    @valid_attrs %{email: "some email", name: "some name", is_active: true, password: "some password"}
+    @update_attrs %{
+      email: "some updated email", name: "some new name", is_active: false, password: "some new password"
+    }
     @invalid_attrs %{email: nil, is_active: nil}
 
     def user_fixture(attrs \\ %{}) do

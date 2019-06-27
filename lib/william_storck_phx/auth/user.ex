@@ -4,6 +4,7 @@ defmodule WilliamStorckPhx.Auth.User do
 
   schema "users" do
     field :email, :string
+    field :name, :string
     field :is_active, :boolean, default: false
     field :password, :string, virtual: true
     field :password_hash, :string
@@ -14,8 +15,8 @@ defmodule WilliamStorckPhx.Auth.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :is_active, :password])
-    |> validate_required([:email, :is_active, :password])
+    |> cast(attrs, [:email, :name, :is_active, :password])
+    |> validate_required([:email, :name, :is_active, :password])
     |> unique_constraint(:email)
     |> put_password_hash()
   end
