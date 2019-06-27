@@ -59,4 +59,18 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: Routes.admin_user_path(conn, :index))
   end
+  
+  def sign_in(conn, %{"email" => email, "password" => password}) do
+    case WilliamStorckPhx.Auth.authenticate_user(email, password) do
+      {:ok, user} ->
+        conn
+        |> put_status(:ok)
+#        |> put_flash(:info, "Welcome #{user.name}")
+#        |> redirect(to: Route.admin_user_path(conn, :show, user))
+      {:error, message} ->
+        conn
+#        |> put_status(:unauthorized)
+#        |> put_flash(:error, message)
+    end
+  end
 end

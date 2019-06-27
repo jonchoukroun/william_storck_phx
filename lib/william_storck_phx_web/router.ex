@@ -17,6 +17,7 @@ defmodule WilliamStorckPhxWeb.Router do
     pipe_through :browser
     
     resources "/users", UserController
+    post "/users/signin", UserController, :sign_in
   end
 
   scope "/", WilliamStorckPhxWeb do
