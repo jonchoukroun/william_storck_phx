@@ -41,6 +41,8 @@ defmodule WilliamStorckPhxWeb do
 
       import WilliamStorckPhxWeb.ErrorHelpers
       import WilliamStorckPhxWeb.Gettext
+      import WilliamStorckPhx.Auth, only: [signed_in?: 1]
+      
       alias WilliamStorckPhxWeb.Router.Helpers, as: Routes
     end
   end
