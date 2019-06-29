@@ -3,26 +3,39 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
 
   alias WilliamStorckPhx.Auth
   alias WilliamStorckPhx.Auth.User
-
+  
   def index(conn, _params) do
     users = Auth.list_users()
     render(conn, "index.html", users: users)
   end
-
+  
   def new(conn, _params) do
     changeset = Auth.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"user" => user_params}) do
-    case Auth.create_user(user_params) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info, "User created successfully.")
-        |> redirect(to: Routes.admin_user_path(conn, :show, user))
+    with {:ok} <- validate_password(user_params) do
+      case Auth.create_user(user_params) do
+        {:ok, user} ->
+          conn
+          |> put_flash(:info, "User created successfully.")
+          |> redirect(to: Routes.admin_landing_path(conn, :index))
+    
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, "new.html", changeset: changeset)
+      end
+    else
+      {:error, message} ->
+        render(conn, "new.html", changeset: Auth.change_user(%User{}), error_message: message)
+    end
+  end
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+  defp validate_password(%{"password" => password, "password_confirm" => confirm}) do
+    if password == confirm do
+      {:ok}
+    else
+      {:error, "Passwords must match."}
     end
   end
 
