@@ -15,9 +15,16 @@ defmodule WilliamStorckPhxWeb.Router do
   
   scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
     pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Auth]
-
+    
+    get "/", LandingController, :index
+    resources "/users", UserController, only: [:index, :show, :edit, :update, :delete]
+  end
+  
+  scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
+    pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Guest]
+    
     resources "/login", SessionController, only: [:new, :create, :delete]
-    resources "/users", UserController
+    resources "/users", UserController, only: [:new, :create]
   end
   
   scope "/", WilliamStorckPhxWeb do
