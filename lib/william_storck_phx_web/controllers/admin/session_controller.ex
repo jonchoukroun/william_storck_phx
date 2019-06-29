@@ -6,8 +6,8 @@ defmodule WilliamStorckPhxWeb.Admin.SessionController do
   end
 
   @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
-  def create(conn, %{"email" => email, "password" => password}) do
-    case WilliamStorckPhxWeb.Auth.authenticate_user(email, password) do
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+    case WilliamStorckPhx.Auth.authenticate_user(email, password) do
       {:ok, user} ->
         conn
         |> put_session(:current_user_id, user.id)
