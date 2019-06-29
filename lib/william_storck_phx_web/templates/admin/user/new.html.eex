@@ -1,5 +1,61 @@
-<h1>New User</h1>
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div
+    class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto py-5"
+  >
+    <%= if assigns[:error_message] do %>
+      <div
+        class="alert alert-danger"
+        role="alert"
+      >
+        <%= assigns[:error_message] %>
+      </div>
+    <% end %>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.admin_user_path(@conn, :create)) %>
+    <h3>Create an Admin User</h3>
 
-<span><%= link "Back", to: Routes.admin_user_path(@conn, :index) %></span>
+    <%= form_for @conn,
+        Routes.admin_user_path(@conn, :create),
+        [as: :user, class: "text-left"], fn f -> %>
+
+      <div class="form-group my-5">
+        <%= email_input f, :email,
+            required: true,
+            class: "form-control form-control-lg",
+            placeholder: "Your email" %>
+
+        <small class="form-text text-muted">
+          Used to log in
+        </small>
+      </div>
+
+      <div class="form-group my-5">
+        <%= text_input f, :name,
+            required: true,
+            class: "form-control form-control-lg",
+            placeholder: "What is your name?" %>
+      </div>
+
+      <div class="form-group my-5">
+        <%= password_input f, :password,
+            required: true,
+            class: "form-control form-control-lg",
+            placeholder: "Choose a password" %>
+      </div>
+
+      <div class="form-group my-5">
+        <%= password_input f, :password_confirm,
+            required: true,
+            class: "form-control form-control-lg",
+            placeholder: "Confirm your password" %>
+      </div>
+
+      <%= submit "Create a user", class: "btn btn-default btn-lg btn-block" %>
+    <% end %>
+
+    <%= link "I already have a user", to: Routes.admin_session_path(@conn, :new),
+        class: "nav-link text-muted text-underline" %>
+  </div>
+</div>
