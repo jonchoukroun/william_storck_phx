@@ -109,6 +109,8 @@ defmodule WilliamStorckPhx.Auth do
     query = from(u in User, where: u.email == ^email)
     query |> Repo.one |> verify_password(password)
   end
+
+  def signed_in?(conn), do: conn.assigns[:current_user]
   
   defp verify_password(nil, _), do: {:error, "Wrong email or password"}
   defp verify_password(user, password) do
