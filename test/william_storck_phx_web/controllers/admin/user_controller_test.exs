@@ -7,7 +7,7 @@ defmodule WilliamStorckPhxWeb.Admin.UserControllerTest do
   @update_attrs %{
     email: "some updated email", name: "some new name", is_active: false, password: "some new password"
   }
-  @invalid_attrs %{email: nil, is_active: nil, password: nil}
+  @invalid_attrs %{email: nil, name: nil, is_active: nil, password: nil}
 
   def fixture(:user) do
     {:ok, user} = Auth.create_user(@create_attrs)
