@@ -14,12 +14,12 @@ defmodule WilliamStorckPhxWeb.Router do
   end
   
   scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
-    pipe_through :browser
-    
-    resources "/users", UserController
-    post "/users/signin", UserController, :sign_in
-  end
+    pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Auth]
 
+    resources "/login", SessionController, only: [:new, :create, :delete]
+    resources "/users", UserController
+  end
+  
   scope "/", WilliamStorckPhxWeb do
     pipe_through :browser # Use the default browser stack
 
@@ -37,5 +37,4 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/*path", PaintingsController, :index
   end
-
 end
