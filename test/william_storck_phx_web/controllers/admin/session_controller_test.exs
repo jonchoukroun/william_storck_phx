@@ -1,13 +1,11 @@
 defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
   use WilliamStorckPhxWeb.ConnCase
 
-  alias WilliamStorckPhxWeb.Admin
-
   @create_attrs %{email: "some email", password: "some password"}
   @invalid_attrs %{email: nil, password: nil}
 
   def fixture(:user) do
-    {:ok, user} = Auth.create_user(@create_attrs)
+    {:ok, user} = WilliamStorckPhx.Auth.create_user(@create_attrs)
     user
   end
 
