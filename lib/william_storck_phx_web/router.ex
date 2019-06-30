@@ -1,27 +1,19 @@
 defmodule WilliamStorckPhxWeb.Router do
   use WilliamStorckPhxWeb, :router
 
+  alias WilliamStorckPhxWeb.Plugs.{RequireLogin, Authenticate}
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Authenticate
   end
 
   pipeline :api do
     plug :accepts, ["json"]
-  end
-
-  # Must be logged in
-  scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
-    pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Auth]
-
-    get "/", LandingController, :index
-
-    resources "/users", UserController
-
-    delete "/login", SessionController, :delete
   end
 
   # Must be logged out
@@ -30,6 +22,16 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
+  end
+
+  # Must be logged in
+  scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
+    pipe_through [:browser, RequireLogin]
+
+    delete "/login", SessionController, :delete
+
+    get "/", LandingController, :index
+    resources "/users", UserController
   end
 
   scope "/", WilliamStorckPhxWeb do
