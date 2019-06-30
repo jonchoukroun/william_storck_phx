@@ -15,7 +15,7 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    with {:ok} <- validate_password(user_params) do
+    with {:ok} <- validate_password(user_params["password"], user_params["password_confirm"]) do
       case Auth.create_user(user_params) do
         {:ok, user} ->
           conn
@@ -31,13 +31,12 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
     end
   end
 
-  defp validate_password(%{"password" => password, "password_confirm" => confirm}) do
-    if password == confirm do
-      {:ok}
-    else
-      {:error, "Passwords must match."}
-    end
+  defp validate_password(password, confirm) when is_nil(password) or is_nil(confirm) do
+    {:error, "Password cannot be blank."}
   end
+
+  defp validate_password(password, password), do: {:ok}
+  defp validate_password(_password, _confirm), do: {:error, "Passwords must match."}
 
   def show(conn, %{"id" => id}) do
     user = Auth.get_user!(id)
