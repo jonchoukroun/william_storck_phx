@@ -58,11 +58,13 @@
         </a>
       </li>
 
-      <li class="nav-item my-2 mr-3">
-        <%= link to: "/admin/login", method: :delete, class: "nav-link" do %>
-          <span class="text-black">Log Out</span>
-        <% end %>
-      </li>
+      <%= if signed_in?(@conn) do %>
+        <li class="nav-item my-2 mr-3">
+          <%= link to: "/admin/login", method: :delete, class: "nav-link" do %>
+            <span class="text-black">Log Out</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
