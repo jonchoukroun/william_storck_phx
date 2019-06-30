@@ -39,6 +39,8 @@ defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
 
       conn = delete(conn, admin_session_path(conn, :delete))
       refute get_session(conn, :current_user_id)
+
+      assert redirected_to(conn) === admin_session_path(conn, :new)
     end
   end
 
