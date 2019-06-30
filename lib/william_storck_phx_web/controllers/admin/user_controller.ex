@@ -3,12 +3,12 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
 
   alias WilliamStorckPhx.Auth
   alias WilliamStorckPhx.Auth.User
-  
+
   def index(conn, _params) do
     users = Auth.list_users()
     render(conn, "index.html", users: users)
   end
-  
+
   def new(conn, _params) do
     changeset = Auth.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
@@ -20,8 +20,8 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
         {:ok, user} ->
           conn
           |> put_flash(:info, "User created successfully.")
-          |> redirect(to: Routes.admin_landing_path(conn, :index))
-    
+          |> redirect(to: Routes.admin_user_path(conn, :show, user))
+
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "new.html", changeset: changeset)
       end
