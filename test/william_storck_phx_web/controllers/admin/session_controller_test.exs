@@ -4,7 +4,6 @@ defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
   alias WilliamStorckPhxWeb.Admin
 
   @create_attrs %{email: "some email", is_active: true, password: "some password"}
-  @update_attrs %{email: "some updated email", is_active: false, password: "some new password"}
   @invalid_attrs %{email: nil, is_active: nil, password: nil}
 
   describe "new session" do
