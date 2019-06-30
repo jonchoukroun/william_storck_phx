@@ -1,8 +1,6 @@
 defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
   use WilliamStorckPhxWeb.ConnCase
 
-  import Plug.Test
-
   alias WilliamStorckPhx.Auth
 
   @user_attrs %{email: "some email", name: "some name", password: "some password"}
@@ -15,19 +13,21 @@ defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
   end
 
   describe "create session" do
-    test "redirects to admin landing page when data is valid", %{conn: conn} do
+    test "creates session and redirects to admin when data is valid", %{conn: conn} do
+      user = fixture(:user)
+
       conn = post(conn, admin_session_path(conn, :create), session: @valid_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == admin_session_path(conn, :show, id)
+      assert redirected_to(conn) == admin_landing_path(conn, :index)
+      assert get_session(conn, :current_user_id) === user.id
 
-      conn = get(conn, admin_session_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Session"
+      conn = get(conn, admin_user_path(conn, :index))
+      assert conn.assigns[:current_user].id === user.id
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, admin_session_path(conn, :create), session: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Session"
+      assert conn.assigns[:error_message]
     end
   end
 
@@ -48,7 +48,7 @@ defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
     user = fixture(:user)
 
     conn = build_conn(:get, "/admin")
-    |> init_test_session(current_user_id: user.id)
+    conn = post(conn, admin_session_path(conn, :create), session: @valid_attrs)
 
     {:ok, conn: conn, user: user}
   end
