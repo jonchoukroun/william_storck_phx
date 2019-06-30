@@ -18,43 +18,13 @@
 
     <h3>Create an Admin User</h3>
 
-    <%= form_for @conn,
-        Routes.admin_user_path(@conn, :create),
-        [as: :user, class: "text-left"], fn f -> %>
-
-      <div class="form-group my-5">
-        <%= email_input f, :email,
-            required: true,
-            class: "form-control form-control-lg",
-            placeholder: "Your email" %>
-
-        <small class="form-text text-muted">
-          Used to log in
-        </small>
-      </div>
-
-      <div class="form-group my-5">
-        <%= text_input f, :name,
-            required: true,
-            class: "form-control form-control-lg",
-            placeholder: "What is your name?" %>
-      </div>
-
-      <div class="form-group my-5">
-        <%= password_input f, :password,
-            required: true,
-            class: "form-control form-control-lg",
-            placeholder: "Choose a password (min: 8 chars)" %>
-      </div>
-
-      <div class="form-group my-5">
-        <%= password_input f, :password_confirm,
-            required: true,
-            class: "form-control form-control-lg",
-            placeholder: "Confirm your password" %>
-      </div>
-
-      <%= submit "Create a user", class: "btn btn-default btn-lg btn-block" %>
-    <% end %>
+    <%= render "form.html",
+        Map.put(assigns, :action, Routes.admin_user_path(@conn, :create)) %>
+        
+    <div class="mt-3">
+      <%= link "Back",
+          to: Routes.admin_user_path(@conn, :index),
+          class: "text-muted text-underline" %>
+    </div>
   </div>
 </div>
