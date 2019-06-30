@@ -38,9 +38,5 @@
 
       <%= submit "Log me in", class: "btn btn-default btn-lg btn-block" %>
     <% end %>
-
-    <%= link "I don't have a user yet", to: Routes.admin_user_path(@conn, :new),
-        class: "nav-link text-muted text-underline" %>
   </div>
 </div>
-
