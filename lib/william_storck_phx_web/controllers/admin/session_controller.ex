@@ -2,6 +2,12 @@ defmodule WilliamStorckPhxWeb.Admin.SessionController do
   use WilliamStorckPhxWeb, :controller
 
   def new(conn, _params) do
+    if conn.assigns[:current_user] do
+      conn
+      |> redirect(to: Routes.admin_landing_path(conn, :index))
+      |> halt()
+    end
+
     render(conn, "new.html")
   end
 
