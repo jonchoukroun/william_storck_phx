@@ -1,4 +1,4 @@
-defmodule WilliamStorckPhxWeb.Plug.RequireLoginTest do
+defmodule WilliamStorckPhxWeb.Plug.AuthenticateTest do
   use WilliamStorckPhxWeb.ConnCase
 
   import Plug.Test, only: [init_test_session: 2]
