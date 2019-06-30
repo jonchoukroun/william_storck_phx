@@ -101,17 +101,21 @@ defmodule WilliamStorckPhx.Auth do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
-  
+
   @doc """
   Verifies a user based on their password.
   """
+  def authenticate_user(email, password) when is_nil(email) or is_nil(password) do
+    {:error, "Invalid attributes"}
+  end
+
   def authenticate_user(email, password) do
     query = from(u in User, where: u.email == ^email)
     query |> Repo.one |> verify_password(password)
   end
 
   def signed_in?(conn), do: conn.assigns[:current_user]
-  
+
   defp verify_password(nil, _), do: {:error, "Wrong email or password"}
   defp verify_password(user, password) do
     if Bcrypt.verify_pass(password, user.password_hash) do
