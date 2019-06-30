@@ -12,13 +12,12 @@ defmodule WilliamStorckPhxWeb.Admin.SessionController do
         conn
         |> put_session(:current_user_id, user.id)
         |> put_flash(:info, "Welcome, #{user.name}!")
-        |> redirect(to: Routes.admin_user_path(conn, :show, user))
+        |> redirect(to: Routes.admin_landing_path(conn, :index))
 
       {:error, message} ->
         conn
         |> delete_session(:current_user_id)
-        |> put_flash(:error, message)
-        |> render(conn, "new.html")
+        |> render("new.html", error_message: message)
     end
   end
 
@@ -26,6 +25,6 @@ defmodule WilliamStorckPhxWeb.Admin.SessionController do
     conn
     |> delete_session(:current_user_id)
     |> put_flash(:info, "You are logged out.")
-    |> redirect(to: Routes.admin_user_path(conn, :index))
+    |> redirect(to: Routes.admin_session_path(conn, :new))
   end
 end
