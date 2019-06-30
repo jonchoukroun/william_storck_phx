@@ -16,6 +16,7 @@ defmodule WilliamStorckPhx.Auth.User do
     user
     |> cast(attrs, [:email, :name, :password])
     |> validate_required([:email, :name, :password])
+    |> validate_length(:password, min: 6)
     |> unique_constraint(:email)
     |> put_password_hash()
   end
