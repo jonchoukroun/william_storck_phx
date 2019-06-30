@@ -12,21 +12,26 @@ defmodule WilliamStorckPhxWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
-  
+
+  # Must be logged in
   scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
     pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Auth]
-    
+
     get "/", LandingController, :index
-    resources "/users", UserController, only: [:index, :show, :edit, :update, :delete]
+
+    resources "/users", UserController
+
+    delete "/login", SessionController, :delete
   end
-  
+
+  # Must be logged out
   scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
     pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Guest]
-    
-    resources "/login", SessionController, only: [:new, :create, :delete]
-    resources "/users", UserController, only: [:new, :create]
+
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
   end
-  
+
   scope "/", WilliamStorckPhxWeb do
     pipe_through :browser # Use the default browser stack
 
