@@ -18,7 +18,7 @@ defmodule WilliamStorckPhxWeb.Router do
 
   # Must be logged out
   scope "/admin", WilliamStorckPhxWeb.Admin, as: :admin do
-    pipe_through [:browser, WilliamStorckPhxWeb.Plugs.Guest]
+    pipe_through [:browser]
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
