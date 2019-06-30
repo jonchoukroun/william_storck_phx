@@ -3,18 +3,16 @@ defmodule WilliamStorckPhxWeb.Admin.SessionControllerTest do
 
   alias WilliamStorckPhxWeb.Admin
 
-  @create_attrs %{email: "some email", is_active: true, password: "some password"}
-  @invalid_attrs %{email: nil, is_active: nil, password: nil}
+  @create_attrs %{email: "some email", password: "some password"}
+  @invalid_attrs %{email: nil, password: nil}
 
-  describe "new session" do
-    test "renders form", %{conn: conn} do
-      conn = get(conn, admin_session_path(conn, :new))
-      assert html_response(conn, 200) =~ "New Session"
-    end
+  def fixture(:user) do
+    {:ok, user} = Auth.create_user(@create_attrs)
+    user
   end
 
   describe "create session" do
-    test "redirects to show when data is valid", %{conn: conn} do
+    test "redirects to admin landing page when data is valid", %{conn: conn} do
       conn = post(conn, admin_session_path(conn, :create), session: @create_attrs)
 
       assert %{id: id} = redirected_params(conn)

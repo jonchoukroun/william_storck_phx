@@ -5,7 +5,6 @@ defmodule WilliamStorckPhx.Auth.User do
   schema "users" do
     field :email, :string
     field :name, :string
-    field :is_active, :boolean, default: false
     field :password, :string, virtual: true
     field :password_hash, :string
 
@@ -15,8 +14,8 @@ defmodule WilliamStorckPhx.Auth.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :name, :is_active, :password])
-    |> validate_required([:email, :name, :is_active, :password])
+    |> cast(attrs, [:email, :name, :password])
+    |> validate_required([:email, :name, :password])
     |> unique_constraint(:email)
     |> put_password_hash()
   end
@@ -24,6 +23,6 @@ defmodule WilliamStorckPhx.Auth.User do
   defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, password_hash: Bcrypt.hash_pwd_salt(password))
   end
-  
+
   defp put_password_hash(changeset), do: changeset
 end

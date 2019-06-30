@@ -6,11 +6,9 @@ defmodule WilliamStorckPhx.AuthTest do
   describe "users" do
     alias WilliamStorckPhx.Auth.User
 
-    @valid_attrs %{email: "some email", name: "some name", is_active: true, password: "some password"}
-    @update_attrs %{
-      email: "some updated email", name: "some new name", is_active: false, password: "some new password"
-    }
-    @invalid_attrs %{email: nil, is_active: nil}
+    @valid_attrs %{email: "some email", name: "some name", password: "some password"}
+    @update_attrs %{email: "some new email", name: "some new name", password: "some new password"}
+    @invalid_attrs %{email: nil, name: nil, password: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -33,8 +31,9 @@ defmodule WilliamStorckPhx.AuthTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Auth.create_user(@valid_attrs)
+      assert user.name == "some name"
       assert user.email == "some email"
-      assert user.is_active == true
+      assert user.name == "some name"
       assert Bcrypt.verify_pass("some password", user.password_hash)
     end
 
@@ -45,8 +44,8 @@ defmodule WilliamStorckPhx.AuthTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Auth.update_user(user, @update_attrs)
-      assert user.email == "some updated email"
-      assert user.is_active == false
+      assert user.email == "some new email"
+      assert user.name == "some new name"
       assert Bcrypt.verify_pass("some new password", user.password_hash)
     end
 

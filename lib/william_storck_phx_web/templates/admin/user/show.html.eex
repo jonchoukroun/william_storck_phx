@@ -3,6 +3,11 @@
 <ul>
 
   <li>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </li>
+
+  <li>
     <strong>Email:</strong>
     <%= @user.email %>
   </li>
@@ -10,11 +15,6 @@
   <li>
     <strong>Password:</strong>
     <%= @user.password %>
-  </li>
-
-  <li>
-    <strong>Is active:</strong>
-    <%= @user.is_active %>
   </li>
 
 </ul>
