@@ -72,16 +72,12 @@ defmodule WilliamStorckPhxWeb.Admin.UserControllerTest do
       assert conn.assigns[:error_message]
     end
 
-    test "creates user and redirects to show when data is valid", %{conn: conn} do
+    test "creates user and redirects to index when data is valid", %{conn: conn} do
       conn = post(conn, Routes.admin_user_path(conn, :create), user: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.admin_user_path(conn, :show, id)
+      assert redirected_to(conn) == Routes.admin_user_path(conn, :index)
 
-      conn = get(conn, Routes.admin_user_path(conn, :show, id))
-      assert html_response(conn, 200)
-
-      new_user = Auth.get_user!(id)
+      new_user = Auth.find_user(:email, @create_attrs.email)
       assert new_user.name === @create_attrs.name
       assert new_user.email === @create_attrs.email
     end
@@ -99,12 +95,12 @@ defmodule WilliamStorckPhxWeb.Admin.UserControllerTest do
   describe "update user" do
     setup [:sign_in_admin, :create_user]
 
-    test "redirects when data is valid", %{conn: conn, user: user} do
+    test "updates user redirects to index when data is valid", %{conn: conn, user: user} do
       conn = put(conn, Routes.admin_user_path(conn, :update, user), user: @update_attrs)
-      assert redirected_to(conn) == Routes.admin_user_path(conn, :show, user)
+      assert redirected_to(conn) == Routes.admin_user_path(conn, :index)
 
       updated_user = Auth.get_user!(user.id)
-      conn = get(conn, Routes.admin_user_path(conn, :show, updated_user))
+      conn = get(conn, Routes.admin_user_path(conn, :index))
       assert html_response(conn, 200)
       assert updated_user.name === @update_attrs.name
       assert updated_user.email === @update_attrs.email
