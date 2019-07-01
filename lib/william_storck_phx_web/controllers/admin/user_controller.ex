@@ -17,7 +17,7 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   def create(conn, %{"user" => user_params}) do
     with {:ok} <- validate_password(user_params["password"], user_params["password_confirm"]) do
       case Auth.create_user(user_params) do
-        {:ok, user} ->
+        {:ok, _user} ->
           conn
           |> put_flash(:info, "User created successfully.")
           |> redirect(to: Routes.admin_user_path(conn, :index))
@@ -48,7 +48,7 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
     user = Auth.get_user!(id)
 
     case Auth.update_user(user, user_params) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
         |> redirect(to: Routes.admin_user_path(conn, :index))
