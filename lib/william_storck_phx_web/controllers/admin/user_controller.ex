@@ -20,7 +20,7 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
         {:ok, user} ->
           conn
           |> put_flash(:info, "User created successfully.")
-          |> redirect(to: Routes.admin_user_path(conn, :show, user))
+          |> redirect(to: Routes.admin_user_path(conn, :index))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "new.html", changeset: changeset)
@@ -38,11 +38,6 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   defp validate_password(password, password), do: {:ok}
   defp validate_password(_password, _confirm), do: {:error, "Passwords must match."}
 
-  def show(conn, %{"id" => id}) do
-    user = Auth.get_user!(id)
-    render(conn, "show.html", user: user)
-  end
-
   def edit(conn, %{"id" => id}) do
     user = Auth.get_user!(id)
     changeset = Auth.change_user(user)
@@ -56,7 +51,7 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: Routes.admin_user_path(conn, :show, user))
+        |> redirect(to: Routes.admin_user_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
