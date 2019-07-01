@@ -38,6 +38,10 @@ defmodule WilliamStorckPhxWeb.Endpoint do
     key: "_william_storck_phx_key",
     signing_salt: "hTIV8X0Q"
 
+  plug Corsica,
+    origins: "http://localhost",
+    log: [rejected: :error, invalid: :warn, accepted: :debug]
+    
   plug WilliamStorckPhxWeb.Router
 
   @doc """

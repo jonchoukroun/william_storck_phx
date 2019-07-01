@@ -1,0 +1,70 @@
+<div
+  id="navbar"
+  class="navbar fixed-top navbar-min"
+>
+  <a
+    href="<%= Routes.admin_landing_path(@conn, :index) %>"
+    class="navbar-brand"
+  >
+    <h4 class="heading-text text-primary mb-0">
+      Admin
+    </h4>
+  </a>
+
+  <button
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbar-menu"
+    class="navbar-toggler"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    id="navbar-menu"
+    class="collapse navbar-collapse"
+  >
+    <ul class="navbar-nav ml-auto align-items-end">
+      <li class="nav-item my-2 mr-3">
+        <a
+          href="<%= Routes.paintings_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <span class="text-black">
+            Portfolio
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item my-2 mr-3">
+        <a
+          href="<%= Routes.admin_landing_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <span class="text-black">
+            Admin Home
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item my-2 mr-3">
+        <a
+          href="<%= Routes.admin_user_path(@conn, :index) %>"
+          class="nav-lnk"
+        >
+          <span class="text-black">
+            Manage Users
+          </span>
+        </a>
+      </li>
+
+      <%= if signed_in?(@conn) do %>
+        <li class="nav-item my-2 mr-3">
+          <%= link to: "/admin/login", method: :delete, class: "nav-link" do %>
+            <span class="text-black">Log Out</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

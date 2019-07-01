@@ -4,7 +4,7 @@ defmodule WilliamStorckPhx.Mixfile do
   def project do
     [
       app: :william_storck_phx,
-      version: "0.3.3",
+      version: "0.4.0",
       elixir: "~> 1.8.2",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -21,7 +21,7 @@ defmodule WilliamStorckPhx.Mixfile do
   def application do
     [
       mod: {WilliamStorckPhx.Application, []},
-      extra_applications: [:logger, :runtime_tools, :httpotion]
+      extra_applications: [:logger, :runtime_tools, :httpotion, :corsica]
     ]
   end
 
@@ -43,6 +43,7 @@ defmodule WilliamStorckPhx.Mixfile do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:plug_cowboy, "~> 2.0"},
+      {:corsica, "~> 1.0"},
       {:httpotion, "~> 3.1.0"},
       {:jason, "~> 1.0"},
       {:ex_aws, "~> 2.0"},
@@ -52,8 +53,9 @@ defmodule WilliamStorckPhx.Mixfile do
       {:fastimage, "~> 1.0.0-rc4"},
       {:hashids, "~> 2.0"},
       {:sendgrid, "~> 1.8.0"},
-      {:distillery, "~> 2.0", warn_missing: false},
-      {:edeliver, ">= 1.6.0"}
+      {:distillery, "~> 2.0"},
+      {:edeliver, ">= 1.6.0"},
+      {:bcrypt_elixir, "~> 1.0"}
     ]
   end
 

@@ -1,0 +1,42 @@
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
+
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div
+    class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto py-5"
+  >
+    <%= if assigns[:error_message] do %>
+      <div
+        class="alert alert-danger"
+        role="alert"
+      >
+        <%= assigns[:error_message] %>
+      </div>
+    <% end %>
+
+    <h3>Log In</h3>
+
+    <%= form_for @conn,
+        Routes.admin_session_path(@conn, :create),
+        [as: :session, class: "text-left"], fn f -> %>
+
+      <div class="form-group my-5">
+        <%= email_input f, :email,
+            required: true,
+            class: "form-control form-control-lg",
+            placeholder: "Email" %>
+      </div>
+
+      <div class="form-group my-5">
+        <%= password_input f, :password,
+            required: true,
+            class: "form-control form-control-lg",
+            placeholder: "Password" %>
+      </div>
+
+      <%= submit "Log me in", class: "btn btn-default btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>
