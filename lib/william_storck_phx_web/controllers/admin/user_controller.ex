@@ -17,10 +17,10 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   def create(conn, %{"user" => user_params}) do
     with {:ok} <- validate_password(user_params["password"], user_params["password_confirm"]) do
       case Auth.create_user(user_params) do
-        {:ok, user} ->
+        {:ok, _user} ->
           conn
           |> put_flash(:info, "User created successfully.")
-          |> redirect(to: Routes.admin_user_path(conn, :show, user))
+          |> redirect(to: Routes.admin_user_path(conn, :index))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "new.html", changeset: changeset)
@@ -38,11 +38,6 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   defp validate_password(password, password), do: {:ok}
   defp validate_password(_password, _confirm), do: {:error, "Passwords must match."}
 
-  def show(conn, %{"id" => id}) do
-    user = Auth.get_user!(id)
-    render(conn, "show.html", user: user)
-  end
-
   def edit(conn, %{"id" => id}) do
     user = Auth.get_user!(id)
     changeset = Auth.change_user(user)
@@ -53,10 +48,10 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
     user = Auth.get_user!(id)
 
     case Auth.update_user(user, user_params) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: Routes.admin_user_path(conn, :show, user))
+        |> redirect(to: Routes.admin_user_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
@@ -64,11 +59,28 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = Auth.get_user!(id)
-    {:ok, _user} = Auth.delete_user(user)
+    with {:ok, user} <- validate_user(conn, id),
+         true <- invalidate_superuser(user) do
+      {:ok, _user} = Auth.delete_user(user)
 
-    conn
-    |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: Routes.admin_user_path(conn, :index))
+      conn
+      |> put_flash(:info, "User delete successfully.")
+      |> redirect(to: Routes.admin_user_path(conn, :index))
+    else
+      _ ->
+        conn
+        |> redirect(to: Routes.admin_user_path(conn, :index))
+    end
   end
+
+  defp validate_user(conn, id) do
+    user = Auth.get_user!(id)
+
+    case user === Auth.get_user!(get_session(conn, :current_user_id)) do
+      true -> {:error, :forbidden}
+      false -> {:ok, user}
+    end
+  end
+
+  defp invalidate_superuser(user), do: user.email !== "jonchoukroun@gmail.com"
 end

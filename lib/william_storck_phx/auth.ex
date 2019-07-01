@@ -38,6 +38,30 @@ defmodule WilliamStorckPhx.Auth do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Finds a user with query param.
+
+  Returns nil if no user is found.
+
+  Raises `Ecto.QueryError` if the query param is invalid.
+
+  ## Examples
+
+      iex> find_user(:email, "bob@aol.com")
+      %User{}
+
+      iex> find_user(:name, "ronald")
+      %User{}
+
+      iex> find_user(:waist_size, 32)
+      ** (Ecto.QueryError)
+  """
+  @spec find_user(schema_field::atom(), Keyword.t())::EctoSchema.t() | nil
+  def find_user(query, identifier) do
+    from(u in User, where: field(u, ^query) == ^identifier)
+    |> Repo.one()
+  end
+
+  @doc """
   Creates a user.
 
   ## Examples
