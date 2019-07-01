@@ -7,35 +7,51 @@
   <div
     class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto py-5"
   >
-    <h1>Listing Users</h1>
+    <h1>Manage Users</h1>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Password</th>
+    <div class="container my-5">
+      <div class="row border-bottom border-secondary">
+        <div class="col d-flex flex-column justify-content-center">
+          <h5 class="text-primary">Name</h5>
+        </div>
 
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-    <%= for user <- @users do %>
-        <tr>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.password %></td>
+        <div class="col d-flex flex-column justify-content-center">
+          <h5 class="text-primary">Email</h5>
+        </div>
 
-          <td>
-            <%= link "Show", to: Routes.admin_user_path(@conn, :show, user) %>
-            <%= link "Edit", to: Routes.admin_user_path(@conn, :edit, user) %>
-            <%= link "Delete", to: Routes.admin_user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
-          </td>
-        </tr>
-    <% end %>
-      </tbody>
-    </table>
+        <div class="col d-flex flex-column justify-content-center">
+          <h5 class="text-primary">Options</h5>
+        </div>
+      </div>
 
-    <span><%= link "New User", to: Routes.admin_user_path(@conn, :new) %></span>
+      <%= for user <- @users do %>
+        <div class="row border-bottom my-1 py-2">
+          <div class="col d-flex flex-column justify-content-center">
+            <%= user.name %>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center">
+            <%= user.email %>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center">
+            <p class="text-underline mb-0">
+              <%= link "Edit", to: Routes.admin_user_path(@conn, :edit, user) %>
+            </p>
+
+            <p class="text-danger text-underline mb-0">
+              <%= link "Delete",
+                  to: Routes.admin_user_path(@conn, :delete, user),
+                  method: :delete %>
+            </p>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
+    <h5 class="text-underline">
+      <%= link "Create New User", to: Routes.admin_user_path(@conn, :new) %>
+    </h5>
   </div>
 </div>
