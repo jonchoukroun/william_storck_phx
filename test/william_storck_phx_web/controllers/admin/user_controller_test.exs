@@ -116,6 +116,13 @@ defmodule WilliamStorckPhxWeb.Admin.UserControllerTest do
   describe "delete user" do
     setup [:sign_in_admin, :create_user]
 
+    test "cannot delete super user", %{conn: conn} do
+      {:ok, super_user} = Auth.create_user(%{@create_attrs | email: "jonchoukroun@gmail.com"})
+      conn = delete(conn, Routes.admin_user_path(conn, :delete, super_user))
+      assert redirected_to(conn) == Routes.admin_user_path(conn, :index)
+      assert Auth.get_user!(super_user.id)
+    end
+
     test "cannot delete logged in user", %{conn: conn} do
       admin_user = Auth.get_user!(get_session(conn, :current_user_id))
       conn = delete(conn, Routes.admin_user_path(conn, :delete, admin_user))
