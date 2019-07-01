@@ -116,13 +116,19 @@ defmodule WilliamStorckPhxWeb.Admin.UserControllerTest do
   describe "delete user" do
     setup [:sign_in_admin, :create_user]
 
+    test "cannot delete logged in user", %{conn: conn} do
+      admin_user = Auth.get_user!(get_session(conn, :current_user_id))
+      conn = delete(conn, Routes.admin_user_path(conn, :delete, admin_user))
+      assert redirected_to(conn) == Routes.admin_user_path(conn, :index)
+      assert Auth.get_user!(admin_user.id)
+    end
+
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.admin_user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.admin_user_path(conn, :index)
-      assert_error_sent 404, fn ->
-        get(conn, Routes.admin_user_path(conn, :show, user))
+      assert_raise Ecto.NoResultsError, fn ->
+        Auth.get_user!(user.id)
       end
-      assert_raise Ecto.NoResultsError, fn -> Auth.get_user!(user.id) end
     end
   end
 

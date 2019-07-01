@@ -59,11 +59,35 @@ defmodule WilliamStorckPhxWeb.Admin.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = Auth.get_user!(id)
-    {:ok, _user} = Auth.delete_user(user)
+    with {:ok, user} <- validate_user(conn, id) do
+      {:ok, _user} = Auth.delete_user(user)
+      conn
+      |> put_flash(:info, "User delete successfully.")
+      |> redirect(to: Routes.admin_user_path(conn, :index))
+    else
+      {:error, _message} ->
+        conn
+        |> redirect(to: Routes.admin_user_path(conn, :index))
+    end
+  #   user = Auth.get_user!(id)
+  #   {:ok, _user} = Auth.delete_user(user)
+  #   case user == Auth.get_user!(get_session(conn, :current_user_id)) do
+  #     {:ok, _user} ->
+  #       conn
+  #       |> put_flash(:info, "User deleted successfully.")
+  #       |> redirect(to: Routes.admin_user_path(conn, :index))
+  #
+  #     {:error} ->
+  #       conn
+  #       |> redirect(to: Routes.admin_user_path(conn, :index))
+  #   end
+  end
 
-    conn
-    |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: Routes.admin_user_path(conn, :index))
+  defp validate_user(conn, id) do
+    user = Auth.get_user!(id)
+    case user === Auth.get_user!(get_session(conn, :current_user_id)) do
+      true -> {:error, :forbidden}
+      false -> {:ok, user}
+    end
   end
 end
