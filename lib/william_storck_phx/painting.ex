@@ -5,6 +5,8 @@ defmodule WilliamStorckPhx.Painting do
 
   alias WilliamStorckPhx.{UploadService, SlugGenerator}
 
+  @derive {Phoenix.Param, [:id, :slug]}
+
   schema "paintings" do
     field :name, :string
     field :material, :string
