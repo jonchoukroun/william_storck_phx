@@ -45,6 +45,18 @@ a {
   }
 }
 
+.btn-subtle {
+  background: transparent;
+  border-color: $brand-primary;
+  border-radius: 2px;
+  border-width: 2px;
+  color: $brand-primary;
+
+  &:hover {
+    border-color: $brand-secondary;
+  }
+}
+
 .navbar-toggler:focus {
   outline: none;
   border-width: 2px;
