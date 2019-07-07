@@ -23,65 +23,61 @@
 
     <div class="container my-5">
       <div class="row border-bottom border-secondary">
-        <div class="col-3 text-left">
+        <div class="col-4 text-left">
           <h5 class="text-primary">Name</h5>
         </div>
 
-        <div class="col-2">
+        <div class="col-4">
           <h5 class="text-primary">Preview</h5>
         </div>
 
-        <div class="col-2">
-          <h5 class="text-primary">Category</h5>
-        </div>
-
-        <div class="col-2">
-          <h5 class="text-primary">Price</h5>
-        </div>
-
-        <div class="col-3">
+        <div class="col-4">
           <h5 class="text-primary">Options</h5>
         </div>
       </div>
 
       <%= for painting <- @paintings do %>
         <div class="row border-bottom my-1 py-2">
-          <div class="col-3 text-left">
+          <div class="col-4 d-flex flex-column justify-content-center align-items-start">
             <p class="lead">
               <%= painting.name %>
             </p>
+
+            <p class="small text-muted">
+              category...
+            </p>
           </div>
 
-          <div class="col-2 text-left">
+          <div class="col-4 text-left">
             <img src="<%= painting.src %>"
             alt="<%= painting.name %>"
             class="img-fluid">
           </div>
 
-          <div class="col-2">
-            Category...
-          </div>
+          <div class="col-4 d-flex flex-column justify-content-center">
+            <p>
+              <%= button "View Details",
+                  to: Routes.admin_painting_path(@conn, :show, painting),
+                  method: :get,
+                  class: "btn btn-subtle btn-block" %>
+            </p>
 
-          <div class="col-2">
-            <%= if painting.status === "available" do %>
-              $<%= painting.price %>
-            <% else %>
-              N/A
-            <% end %>
-          </div>
+            <p>
+              <%= button "Edit Details",
+                  to: Routes.admin_painting_path(@conn, :edit, painting),
+                  method: :get,
+                  class: "btn btn-subtle btn-block" %>
+            </p>
 
-          <div class="col-3">
-            <%= link "Edit",
-                to: Routes.admin_painting_path(@conn, :edit, painting),
-                class: "text-underline" %>
-
-            <%= link "Delete",
-                to: Routes.admin_painting_path(@conn, :delete, painting),
-                class: "text-danger text-underline",
-                data: [
-                  confirm: "Danger!! Are you sure you want to permanently delete this painting?"
-                ],
-                method: :delete %>
+            <p>
+              <%= link "Delete Painting",
+                  to: Routes.admin_painting_path(@conn, :delete, painting),
+                  class: "text-danger text-underline",
+                  data: [
+                    confirm: "Danger!! Are you sure you want to permanently delete this painting?"
+                  ],
+                  method: :delete %>
+            </p>
           </div>
         </div>
       <% end %>

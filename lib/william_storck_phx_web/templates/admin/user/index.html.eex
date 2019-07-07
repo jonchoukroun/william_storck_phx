@@ -5,7 +5,7 @@
   style="padding-top: 30px;"
 >
   <div
-    class="col-sm-12 col-md-8 col-lg-6 col-xl-5 flex-column mx-auto py-5"
+    class="col-sm-12 col-md-8 col-lg-6 flex-column mx-auto py-5"
   >
     <h3 class="text-primary">
       Manage Users
@@ -34,31 +34,36 @@
 
       <%= for user <- @users do %>
         <div class="row border-bottom my-1 py-2">
-          <div class="col-4 text-left">
-            <%= user.name %>
+          <div class="col-4 d-flex flex-column justify-content-center align-items-start">
+            <p class="lead">
+              <%= user.name %>
+            </p>
           </div>
 
-          <div class="col-5 text-left">
+          <div class="col-5 d-flex flex-column justify-content-center align-items-start">
             <%= user.email %>
           </div>
 
           <div class="col-3">
-            <%= link "Edit",
+            <%= button "Edit User",
                 to: Routes.admin_user_path(@conn, :edit, user),
-                class: "text-underline" %>
+                method: :get,
+                class: "btn btn-subtle btn-block my-2" %>
 
             <%= if is_logged_in?(@conn, user) do %>
               <p class="text-muted mb-0">
                 Cannot delete
               </p>
             <% else %>
-              <%= link "Delete",
-                  to: Routes.admin_user_path(@conn, :delete, user),
-                  class: "text-danger text-underline",
-                  data: [
-                    confirm: "Danger!! Are you sure you want to permanently delete this user?"
-                  ],
-                  method: :delete %>
+              <p>
+                <%= link "Delete",
+                    to: Routes.admin_user_path(@conn, :delete, user),
+                    class: "text-danger text-underline",
+                    data: [
+                      confirm: "Danger!! Are you sure you want to permanently delete this user?"
+                    ],
+                    method: :delete %>
+              </p>
             <% end %>
           </div>
         </div>
