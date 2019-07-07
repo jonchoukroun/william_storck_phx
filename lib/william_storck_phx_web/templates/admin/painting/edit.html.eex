@@ -1,0 +1,32 @@
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
+
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div
+    class="col-sm-12 col-md-8 col-lg-6 col-xl-5 flex-column mx-auto py-5"
+  >
+    <%= if assigns[:error_message] do %>
+      <div
+        class="alert alert-danger"
+        role="alert"
+      >
+        <%= assigns[:error_message] %>
+      </div>
+    <% end %>
+
+    <h3 class="text-primary">
+      Edit Painting
+    </h3>
+
+    <%= render "form.html",
+        Map.put(assigns, :action, Routes.admin_painting_path(@conn, :update, @painting)) %>
+
+    <div class="mt-3">
+      <%= link "Back",
+          to: Routes.admin_painting_path(@conn, :index),
+          class: "text-muted text-underline" %>
+    </div>
+  </div>
+</div>

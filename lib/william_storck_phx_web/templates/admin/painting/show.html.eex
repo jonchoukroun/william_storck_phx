@@ -1,0 +1,38 @@
+<h1>Show Painting</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @painting.name %>
+  </li>
+
+  <li>
+    <strong>Material:</strong>
+    <%= @painting.material %>
+  </li>
+
+  <li>
+    <strong>Painting height:</strong>
+    <%= @painting.painting_height %>
+  </li>
+
+  <li>
+    <strong>Painting width:</strong>
+    <%= @painting.painting_width %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @painting.status %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @painting.price %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.admin_painting_path(@conn, :edit, @painting) %></span>
+<span><%= link "Back", to: Routes.admin_painting_path(@conn, :index) %></span>
