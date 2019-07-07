@@ -32,6 +32,7 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/", LandingController, :index
     resources "/users", UserController
+    resources "/paintings", PaintingController
   end
 
   scope "/", WilliamStorckPhxWeb do
