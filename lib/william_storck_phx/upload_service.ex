@@ -2,8 +2,7 @@ defmodule WilliamStorckPhx.UploadService do
   alias ExAws.S3
 
   @bucket_name "storck/paintings"
-
-  def upload_file(%{file: file}) when is_nil(file), do: {:error, :invalid_image_file}
+  @base_url "https://s3.amazonaws.com/#{@bucket_name}"
 
   def upload_file(%{name: name, file: file}) do
     with {:ok, source} <- build_filename(name, file),
@@ -12,7 +11,7 @@ defmodule WilliamStorckPhx.UploadService do
       if Application.get_all_env(:ex_aws) |> Enum.count() > 0 do
         upload_to_s3(file, image_binary, source, dimensions)
       else
-        {:ok, source, dimensions}
+        %{src: build_source_url(source), height: dimensions.height, width: dimensions.width}
       end
     else
       {:error, msg} -> {:error, msg}
@@ -26,8 +25,10 @@ defmodule WilliamStorckPhx.UploadService do
     payload = S3.put_object(@bucket_name, source, image_binary, opts)
 
     case ExAws.request(payload) do
-      {:ok, _} -> {:ok, source, dimensions}
-      {:error, msg} -> {:error, msg}
+      {:ok, _} ->
+        %{src: build_source_url(source), height: dimensions.height, width: dimensions.width}
+      {:error, msg} ->
+        {:error, msg}
     end
   end
 
@@ -39,4 +40,6 @@ defmodule WilliamStorckPhx.UploadService do
   end
 
   defp format(string), do: String.downcase(string) |> String.split() |> Enum.join("-")
+
+  defp build_source_url(source_url) when is_binary(source_url), do: "#{@base_url}/#{source_url}"
 end
