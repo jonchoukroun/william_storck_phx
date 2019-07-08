@@ -38,9 +38,12 @@
               <% end %>
 
               <div class="d-flex flex-row justify-content-end my-2">
-                <%= button "Back",
+                <%= link "Back",
                     to: Routes.admin_painting_path(@conn, :index),
-                    method: :get,
+                    class: "btn btn-subtle mx-1" %>
+
+                <%= link "View Live",
+                    to: Routes.paintings_path(@conn, :show, @painting.slug),
                     class: "btn btn-subtle mx-1" %>
 
                 <%= button "Edit Painting",
