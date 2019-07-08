@@ -23,11 +23,7 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
     painting_height: 400,
     painting_width: 800,
     status: "sold",
-    price: nil,
-    image_file: %Plug.Upload{
-      path: "test/fixtures/test-image.jpg",
-      filename: "test-image.jpg"
-    }
+    price: nil
   }
   @invalid_attrs %{
     name: nil,
@@ -107,11 +103,6 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
       assert redirected_to(conn) == Routes.admin_painting_path(conn, :show, painting)
 
       conn = get(conn, Routes.admin_painting_path(conn, :show, painting))
-      assert html_response(conn, 200)
-    end
-
-    test "renders errors when data is invalid", %{conn: conn, painting: painting} do
-      conn = put(conn, Routes.admin_painting_path(conn, :update, painting), painting: @invalid_attrs)
       assert html_response(conn, 200)
     end
   end

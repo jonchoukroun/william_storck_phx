@@ -31,7 +31,7 @@ defmodule WilliamStorckPhx.Painting do
   end
 
   @doc false
-  def changeset(painting, attrs) do
+  def insert_changeset(painting, attrs) do
     painting
     |> cast(attrs, [
       :name, :material, :painting_height, :painting_width, :price, :status, :image_file])
@@ -48,6 +48,14 @@ defmodule WilliamStorckPhx.Painting do
     |> generate_slug()
     |> cast(attrs, [:slug])
     |> validate_required([:slug])
+  end
+
+  def update_changeset(painting, attrs) do
+    painting
+    |> cast(attrs, [:name, :material, :painting_height, :painting_width, :price, :status])
+    |> format_size()
+    |> generate_slug()
+    |> cast(attrs, [:slug])
   end
 
   defp upload_painting(%Ecto.Changeset{valid?: true,
@@ -70,7 +78,8 @@ defmodule WilliamStorckPhx.Painting do
 
   defp format_size(changeset), do: changeset
 
-  defp generate_slug(%Ecto.Changeset{valid?: true, changes: %{name: name}} = changeset) do
+  defp generate_slug(%Ecto.Changeset{valid?: true,
+  changes: %{name: name}} = changeset) when not is_nil(name) do
     change(changeset, slug: SlugGenerator.generate_slug(name))
   end
 

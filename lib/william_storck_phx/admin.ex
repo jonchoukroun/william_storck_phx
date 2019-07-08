@@ -51,7 +51,7 @@ defmodule WilliamStorckPhx.Admin do
   """
   def create_painting(attrs \\ %{}) do
     %Painting{}
-    |> Painting.changeset(attrs)
+    |> Painting.insert_changeset(attrs)
     |> Repo.insert()
   end
 
@@ -69,7 +69,7 @@ defmodule WilliamStorckPhx.Admin do
   """
   def update_painting(%Painting{} = painting, attrs) do
     painting
-    |> Painting.changeset(attrs)
+    |> Painting.update_changeset(attrs)
     |> Repo.update()
   end
 
@@ -99,6 +99,6 @@ defmodule WilliamStorckPhx.Admin do
 
   """
   def change_painting(%Painting{} = painting) do
-    Painting.changeset(painting, %{})
+    Painting.update_changeset(painting, %{})
   end
 end

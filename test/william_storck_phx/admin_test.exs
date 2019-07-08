@@ -24,11 +24,7 @@ defmodule WilliamStorckPhx.AdminTest do
       painting_height: 400,
       painting_width: 800,
       status: "sold",
-      price: nil,
-      image_file: %Plug.Upload{
-        path: "test/fixtures/test-image.jpg",
-        filename: "test-image.jpg"
-      }
+      price: nil
     }
     @invalid_attrs %{
       name: nil,
@@ -86,12 +82,6 @@ defmodule WilliamStorckPhx.AdminTest do
         "#{@update_attrs.painting_height}\" x #{@update_attrs.painting_width}\""
       assert painting.src
       assert painting.slug
-    end
-
-    test "update_painting/2 with invalid data returns error changeset" do
-      painting = painting_fixture()
-      assert {:error, %Ecto.Changeset{}} = Admin.update_painting(painting, @invalid_attrs)
-      assert painting == Admin.get_painting!(painting.id)
     end
 
     test "delete_painting/1 deletes the painting" do
