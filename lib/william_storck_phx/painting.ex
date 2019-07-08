@@ -52,7 +52,8 @@ defmodule WilliamStorckPhx.Painting do
 
   def update_changeset(painting, attrs) do
     painting
-    |> cast(attrs, [:name, :material, :painting_height, :painting_width, :price, :status])
+    |> cast(attrs, [
+      :name, :material, :painting_height, :painting_width, :price, :status])
     |> format_size()
     |> generate_slug()
     |> cast(attrs, [:slug])
@@ -74,6 +75,14 @@ defmodule WilliamStorckPhx.Painting do
   defp format_size(%Ecto.Changeset{valid?: true,
   changes: %{painting_height: height, painting_width: width}} = changeset) do
     change(changeset, size: "#{height}\" x #{width}\"")
+  end
+
+  defp format_size(%Ecto.Changeset{valid?: true, changes: %{painting_height: _}} = changeset) do
+    add_error(changeset, :painting_width, "Cannot be blank")
+  end
+
+  defp format_size(%Ecto.Changeset{valid?: true, changes: %{painting_width: _}} = changeset) do
+    add_error(changeset, :painting_height, "Cannot be blank")
   end
 
   defp format_size(changeset), do: changeset

@@ -1,38 +1,57 @@
-<h1>Show Painting</h1>
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
 
-<ul>
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div class="d-flex flex-row justify-content-center">
+    <div
+      class="card my-5"
+      style="max-width: 67vw;"
+    >
+      <div class="row no-gutters">
+        <div class="col-5 d-flex flex-column justify-content-center p-3">
+          <img
+            class="card-img-top"
+            src="<%= @painting.src %>"
+            alt="<%= @painting.name %>"
+          >
+        </div>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @painting.name %>
-  </li>
+        <div class="col-7">
+          <div class="card-body">
+            <h3 class="card-title text-primary">
+              <%= @painting.name %>
+            </h3>
 
-  <li>
-    <strong>Material:</strong>
-    <%= @painting.material %>
-  </li>
+            <div class="container-fluid">
+              <%= for key <- painting_attrs() do %>
+                <div class="d-flex flex-row py-1">
+                  <div class="col-sm-3 text-right">
+                    <strong class="text-capitalize"><%= key %></strong>
+                  </div>
 
-  <li>
-    <strong>Painting height:</strong>
-    <%= @painting.painting_height %>
-  </li>
+                  <div class="col text-left">
+                    <%= Map.get(@painting, key) %>
+                  </div>
+                </div>
+              <% end %>
 
-  <li>
-    <strong>Painting width:</strong>
-    <%= @painting.painting_width %>
-  </li>
+              <div class="d-flex flex-row justify-content-end my-2">
+                <%= button "Back",
+                    to: Routes.admin_painting_path(@conn, :index),
+                    method: :get,
+                    class: "btn btn-subtle mx-1" %>
 
-  <li>
-    <strong>Status:</strong>
-    <%= @painting.status %>
-  </li>
-
-  <li>
-    <strong>Price:</strong>
-    <%= @painting.price %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.admin_painting_path(@conn, :edit, @painting) %></span>
-<span><%= link "Back", to: Routes.admin_painting_path(@conn, :index) %></span>
+                <%= button "Edit Painting",
+                    to: Routes.admin_painting_path(@conn, :edit, @painting),
+                    method: :get,
+                    class: "btn btn-default mx-1" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

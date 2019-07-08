@@ -4,29 +4,145 @@
   class="container-fluid mx-auto text-center"
   style="padding-top: 30px;"
 >
-  <div
-    class="col-sm-12 col-md-8 col-lg-6 col-xl-5 flex-column mx-auto py-5"
-  >
-    <%= if assigns[:error_message] do %>
-      <div
-        class="alert alert-danger"
-        role="alert"
-      >
-        <%= assigns[:error_message] %>
+  <div class="d-flex flex-row justify-content-center">
+    <div
+      class="card my-5"
+      style="max-width: 67vw;"
+    >
+      <div class="row no-gutters">
+        <div class="col-5 d-flex flex-column justify-content-center p-3">
+          <img
+            class="card-img-top"
+            src="<%= @painting.src %>"
+            alt="<%= @painting.name %>"
+          >
+        </div>
+
+        <div class="col-7">
+          <div class="card-body">
+            <h3 class="card-title text-primary">
+              <%= @painting.name %>
+            </h3>
+
+            <%= if assigns[:error_message] do %>
+              <div
+                class="alert alert-danger"
+                role="alert"
+              >
+                <%= assigns[:error_message] %>
+              </div>
+            <% end %>
+
+            <%= if @changeset.action do %>
+              <div class="alert alert-danger">
+                <p>Oops, something went wrong! Please check the errors below.</p>
+              </div>
+            <% end %>
+
+            <%= form_for @changeset,
+              Routes.admin_painting_path(@conn, :update, @painting), [multipart: true], fn f -> %>
+
+              <div class="form-group row">
+                <%= label f, :name, class: "col-sm-2 col-form-label text-right" %>
+
+                <div class="col-sm-10">
+                  <%= text_input f, :name,
+                      class: "form-control form-control-lg",
+                      placeholder: "Name of the painting",
+                      autofocus: true %>
+
+                  <%= error_tag f, :name %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= label f, :material, class: "col-sm-2 col-form-label text-right" %>
+
+                <div class="col-sm-10">
+                  <%= text_input f, :material,
+                      class: "form-control form-control-lg",
+                      placeholder: "e.g. Oil on canvas",
+                      autofocus: true %>
+
+                  <%= error_tag f, :material %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= label f, :status, class: "col-sm-2 col-form-label text-right" %>
+
+                <div class="col-sm-10">
+                  <%= select f, :status,
+                      ["Available": "available", "Sold": "sold"],
+                      prompt: "Select one below",
+                      class: "form-control form-control-lg"
+                      %>
+                  <%= error_tag f, :status %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= label f, :price, class: "col-sm-2 col-form-label text-right" %>
+
+                <div class="col-sm-10">
+                  <%= number_input f, :price,
+                      class: "form-control form-control-lg",
+                      placeholder: "in dollars" %>
+
+                  <%= error_tag f, :status %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-2 col-form-label text-right">
+                  Size
+                </div>
+
+                <div class="col-sm-10 col-form-label text-left">
+                  <div class="row">
+                    <div class="col-sm-6 form-group">
+                      <%= label f, :painting_height do %>
+                        Height
+                      <% end %>
+
+                      <%= number_input f, :painting_height,
+                          class: "form-control form-control-lg",
+                          placeholder: current_height(@painting.size) %>
+
+                      <%= error_tag f, :painting_height %>
+                    </div>
+
+                    <div class="col-sm-6 form-group">
+                      <%= label f, :painting_width do %>
+                        Width
+                      <% end %>
+
+                      <%= number_input f, :painting_width,
+                          class: "form-control form-control-lg",
+                          placeholder: current_width(@painting.size) %>
+
+                      <%= error_tag f, :painting_width %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row justify-content-end">
+                <div class="col-5">
+                  <%= button "Cancel",
+                      to: Routes.admin_painting_path(@conn, :show, @painting),
+                      method: :get,
+                      class: "btn btn-subtle btn-block" %>
+                </div>
+
+                <div class="col-5">
+                  <%= submit "Update Painting", class: "btn btn-default btn-block" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-    <% end %>
-
-    <h3 class="text-primary">
-      Edit Painting
-    </h3>
-
-    <%= render "form.html",
-        Map.put(assigns, :action, Routes.admin_painting_path(@conn, :update, @painting)) %>
-
-    <div class="mt-3">
-      <%= link "Back",
-          to: Routes.admin_painting_path(@conn, :index),
-          class: "text-muted text-underline" %>
     </div>
   </div>
 </div>
