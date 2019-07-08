@@ -56,6 +56,13 @@
 
           <div class="col-4 d-flex flex-column justify-content-center">
             <p>
+              <%= button "View Live",
+                  to: Routes.paintings_path(@conn, :show, painting.slug),
+                  method: :get,
+                  class: "btn btn-subtle btn-block" %>
+            </p>
+
+            <p>
               <%= button "View Details",
                   to: Routes.admin_painting_path(@conn, :show, painting),
                   method: :get,
