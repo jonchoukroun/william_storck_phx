@@ -48,7 +48,7 @@
             </p>
           </div>
 
-          <div class="col-4 text-left">
+          <div class="col-4 d-flex align-items-center justify-content-start">
             <img src="<%= painting.src %>"
             alt="<%= painting.name %>"
             class="img-fluid">
