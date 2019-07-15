@@ -124,7 +124,14 @@ defmodule WilliamStorckPhx.AdminTest do
 
     test "create_category/1 with valid data creates a category" do
       assert {:ok, %Category{} = category} = Admin.create_category(@valid_attrs)
-      assert category.name == "some name"
+      assert category.name == @valid_attrs.name
+    end
+
+    test "create_category/1 with existing name returns error changeset" do
+      category = category_fixture()
+      assert category.name == @valid_attrs.name
+
+      assert {:error, %Ecto.Changeset{}} = Admin.create_category(@valid_attrs)
     end
 
     test "create_category/1 with invalid data returns error changeset" do
