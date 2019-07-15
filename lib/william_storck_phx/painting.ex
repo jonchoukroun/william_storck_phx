@@ -25,6 +25,8 @@ defmodule WilliamStorckPhx.Painting do
     field :size, :string
     field :slug
 
+    belongs_to :category, WilliamStorckPhx.Admin.Category
+
     field :featured, :boolean, default: false
 
     timestamps()
