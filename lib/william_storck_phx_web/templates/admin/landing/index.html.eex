@@ -50,12 +50,15 @@
                 Categories
               </h5>
 
-              <div class="btn btn-default btn-block mt-4">
-                New Category
-              </div>
-              <div class="btn btn-subtle btn-block">
-                View Categories
-              </div>
+              <%= button "New Category",
+                  to: Routes.admin_category_path(@conn, :new),
+                  method: :get,
+                  class: "btn btn-default btn-block mt-4" %>
+
+              <%= button "View Categories",
+                  to: Routes.admin_category_path(@conn, :index),
+                  class: "btn btn-subtle btn-block" %>
+
             </div>
           </div>
         </div>
