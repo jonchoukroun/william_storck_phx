@@ -1,26 +1,57 @@
-<h1>Listing Categories</h1>
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div
+    class="col-sm-12 col-md-8 col-lg-6 flex-column mx-auto py-5"
+  >
+    <h3 class="text-primary">
+      Manage Categories
+    </h3>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for category <- @categories do %>
-    <tr>
-      <td><%= category.name %></td>
+    <div class="d-flex justify-content-start">
+      <%= link "New Category",
+          to: Routes.admin_category_path(@conn, :new),
+          class: "btn btn-subtle" %>
+    </div>
 
-      <td>
-        <%= link "Show", to: Routes.admin_category_path(@conn, :show, category) %>
-        <%= link "Edit", to: Routes.admin_category_path(@conn, :edit, category) %>
-        <%= link "Delete", to: Routes.admin_category_path(@conn, :delete, category), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+    <div class="container my-5">
+      <div class="row border-bottom border-secondary">
+        <div class="col-6 text-left">
+          <h5 class="text-primary">Name</h5>
+        </div>
 
-<span><%= link "New Category", to: Routes.admin_category_path(@conn, :new) %></span>
+        <div class="col-6">
+          <h5 class="text-primary">Options</h5>
+        </div>
+      </div>
+
+      <%= for category <- @categories do %>
+        <div class="row border-bottom my-1 py-2">
+          <div class="col-6 d-flex flex-column justify-content-center align-items-start">
+            <p class="lead">
+              <%= category.name %>
+            </p>
+          </div>
+
+          <div class="col-6">
+            <%= button "Edit Category",
+                to: Routes.admin_category_path(@conn, :edit, category),
+                method: :get,
+                class: "btn btn-subtle btn-block my-2" %>
+
+            <%= link "Delete",
+                to: Routes.admin_category_path(@conn, :delete, category),
+                class: "text-danger text-underline",
+                data: [
+                  confirm: "Danger!! Are you sure you want to permanently delete this category?"
+                ],
+                method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
