@@ -8,6 +8,7 @@ defmodule WilliamStorckPhx.AdminTest do
 
     @valid_attrs %{
       name: "sandwich",
+      category_id: nil,
       material: "ham on rye",
       painting_height: 200,
       painting_width: 300,
@@ -20,6 +21,7 @@ defmodule WilliamStorckPhx.AdminTest do
     }
     @update_attrs %{
       name: "new sandwich",
+      category_id: nil,
       material: "turkey on wheat",
       painting_height: 400,
       painting_width: 800,
@@ -28,6 +30,7 @@ defmodule WilliamStorckPhx.AdminTest do
     }
     @invalid_attrs %{
       name: nil,
+      category_id: nil,
       material: nil,
       painting_height: nil,
       painting_width: nil,
@@ -46,13 +49,24 @@ defmodule WilliamStorckPhx.AdminTest do
     end
 
     test "list_paintings/0 returns all paintings" do
-      painting = painting_fixture()
-      assert Admin.list_paintings() == [painting]
+      category = category_fixture()
+      painting = painting_fixture(category_id: category.id)
+
+      paintings_list = Admin.list_paintings()
+      assert Enum.count(paintings_list) == 1
+
+      db_painting = Enum.at(paintings_list, 0)
+      assert db_painting.id == painting.id
+      assert db_painting.category_id == category.id
     end
 
     test "get_painting!/1 returns the painting with given id" do
-      painting = painting_fixture()
-      assert Admin.get_painting!(painting.id) == painting
+      category = category_fixture()
+      painting = painting_fixture(category_id: category.id)
+
+      db_painting = Admin.get_painting!(painting.id)
+      assert db_painting.id == painting.id
+      assert db_painting.category_id == category.id
     end
 
     test "create_painting/1 with valid data creates a painting" do

@@ -20,7 +20,7 @@ defmodule WilliamStorckPhx.Admin do
 
   """
   def list_paintings do
-    Repo.all(Painting)
+    Painting |> preload([:category]) |> Repo.all
   end
 
   @doc """
@@ -37,7 +37,7 @@ defmodule WilliamStorckPhx.Admin do
       ** (Ecto.NoResultsError)
 
   """
-  def get_painting!(id), do: Repo.get!(Painting, id)
+  def get_painting!(id), do: Painting |> preload([:category]) |> Repo.get!(id)
 
   @doc """
   Creates a painting.

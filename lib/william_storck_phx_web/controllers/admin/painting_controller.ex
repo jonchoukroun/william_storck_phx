@@ -11,7 +11,8 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingController do
 
   def new(conn, _params) do
     changeset = Admin.change_painting(%Painting{})
-    render(conn, "new.html", changeset: changeset)
+    categories = Admin.list_categories()
+    render(conn, "new.html", changeset: changeset, categories: categories)
   end
 
   def create(conn, %{"painting" => painting_params}) do
@@ -34,7 +35,8 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingController do
   def edit(conn, %{"id" => id}) do
     painting = Admin.get_painting!(id)
     changeset = Admin.change_painting(painting)
-    render(conn, "edit.html", painting: painting, changeset: changeset)
+    categories = Admin.list_categories()
+    render(conn, "edit.html", painting: painting, changeset: changeset, categories: categories)
   end
 
   def update(conn, %{"id" => id, "painting" => painting_params}) do

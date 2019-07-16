@@ -25,17 +25,79 @@
             </h3>
 
             <div class="container-fluid">
-              <%= for key <- painting_attrs() do %>
-                <div class="d-flex flex-row py-1">
-                  <div class="col-sm-3 text-right">
-                    <strong class="text-capitalize"><%= key %></strong>
-                  </div>
-
-                  <div class="col text-left">
-                    <%= Map.get(@painting, key) %>
-                  </div>
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Name
+                  </strong>
                 </div>
-              <% end %>
+
+                <div class="col text-left">
+                  <%= @painting.name %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Category
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= if @painting.category do %>
+                    <%= @painting.category.name %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Material
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.material %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Status
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.status %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Price
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.price %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Size
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.size %>
+                </div>
+              </div>
 
               <div class="d-flex flex-row justify-content-end my-2">
                 <%= link "Back",

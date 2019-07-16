@@ -43,8 +43,14 @@
               <%= painting.name %>
             </p>
 
-            <p class="small text-muted">
-              category...
+            <p class="text-muted">
+              <%= if painting.category do %>
+                <%= painting.category.name %>
+              <% else %>
+                <span class="small font-italic text-danger">
+                  No category assigned
+                </span>
+              <% end %>
             </p>
           </div>
 

@@ -10,7 +10,7 @@
       style="max-width: 67vw;"
     >
       <div class="row no-gutters">
-        <div class="col-5 d-flex flex-column justify-content-center p-3">
+        <div class="col-sm-5 d-flex flex-column justify-content-center p-3">
           <img
             class="card-img-top"
             src="<%= @painting.src %>"
@@ -18,7 +18,7 @@
           >
         </div>
 
-        <div class="col-7">
+        <div class="col-sm-7">
           <div class="card-body">
             <h3 class="card-title text-primary">
               <%= @painting.name %>
@@ -43,9 +43,9 @@
               Routes.admin_painting_path(@conn, :update, @painting), [multipart: true], fn f -> %>
 
               <div class="form-group row">
-                <%= label f, :name, class: "col-sm-2 col-form-label text-right" %>
+                <%= label f, :name, class: "col-sm-3 col-form-label text-right" %>
 
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <%= text_input f, :name,
                       class: "form-control form-control-lg",
                       placeholder: "Name of the painting",
@@ -56,9 +56,22 @@
               </div>
 
               <div class="form-group row">
-                <%= label f, :material, class: "col-sm-2 col-form-label text-right" %>
+                <%= label f, :category, class: "col-sm-3 col-form-label text-right" %>
 
-                <div class="col-sm-10">
+                <div class="col-sm-9">
+                  <%= select f, :category_id,
+                      Enum.map(assigns[:categories], fn c -> {c.name, c.id} end),
+                      prompt: "Select a category",
+                      class: "form-control form-control-lg" %>
+
+                  <%= error_tag f, :category %>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= label f, :material, class: "col-sm-3 col-form-label text-right" %>
+
+                <div class="col-sm-9">
                   <%= text_input f, :material,
                       class: "form-control form-control-lg",
                       placeholder: "e.g. Oil on canvas",
@@ -69,9 +82,9 @@
               </div>
 
               <div class="form-group row">
-                <%= label f, :status, class: "col-sm-2 col-form-label text-right" %>
+                <%= label f, :status, class: "col-sm-3 col-form-label text-right" %>
 
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <%= select f, :status,
                       ["Available": "available", "Sold": "sold"],
                       prompt: "Select one below",
@@ -82,9 +95,9 @@
               </div>
 
               <div class="form-group row">
-                <%= label f, :price, class: "col-sm-2 col-form-label text-right" %>
+                <%= label f, :price, class: "col-sm-3 col-form-label text-right" %>
 
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                   <%= number_input f, :price,
                       class: "form-control form-control-lg",
                       placeholder: "in dollars" %>
@@ -94,11 +107,11 @@
               </div>
 
               <div class="form-group row">
-                <div class="col-sm-2 col-form-label text-right">
+                <div class="col-sm-3 col-form-label text-right">
                   Size
                 </div>
 
-                <div class="col-sm-10 col-form-label text-left">
+                <div class="col-sm-9 col-form-label text-left">
                   <div class="row">
                     <div class="col-sm-6 form-group">
                       <%= label f, :painting_height do %>
@@ -128,14 +141,14 @@
               </div>
 
               <div class="d-flex flex-row justify-content-end">
-                <div class="col-5">
+                <div class="col-sm-5">
                   <%= button "Cancel",
                       to: Routes.admin_painting_path(@conn, :show, @painting),
                       method: :get,
                       class: "btn btn-subtle btn-block" %>
                 </div>
 
-                <div class="col-5">
+                <div class="col-sm-5">
                   <%= submit "Update Painting", class: "btn btn-default btn-block" %>
                 </div>
               </div>

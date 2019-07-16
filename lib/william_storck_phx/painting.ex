@@ -7,6 +7,28 @@ defmodule WilliamStorckPhx.Painting do
 
   @derive {Phoenix.Param, [:id, :slug]}
 
+  @insert_params [
+    :name,
+    :category_id,
+    :material,
+    :painting_height,
+    :painting_width,
+    :price,
+    :status,
+    :image_file
+  ]
+  @insert_required [:name, :material, :painting_height, :painting_width, :status, :image_file]
+
+  @update_params [
+    :name,
+    :category_id,
+    :material,
+    :painting_height,
+    :painting_width,
+    :price,
+    :status
+  ]
+
   schema "paintings" do
     field :name, :string
     field :material, :string
@@ -35,10 +57,9 @@ defmodule WilliamStorckPhx.Painting do
   @doc false
   def insert_changeset(painting, attrs) do
     painting
-    |> cast(attrs, [
-      :name, :material, :painting_height, :painting_width, :price, :status, :image_file])
-    |> validate_required([
-      :name, :material, :painting_height, :painting_width, :status, :image_file])
+    |> cast(attrs, @insert_params)
+    |> validate_required(@insert_required)
+    |> foreign_key_constraint(:category_id)
     |> upload_painting()
     |> cast(attrs, [:src, :height, :width])
     |> validate_required([:src, :height, :width])
@@ -54,8 +75,7 @@ defmodule WilliamStorckPhx.Painting do
 
   def update_changeset(painting, attrs) do
     painting
-    |> cast(attrs, [
-      :name, :material, :painting_height, :painting_width, :price, :status])
+    |> cast(attrs, @update_params)
     |> format_size()
     |> generate_slug()
     |> cast(attrs, [:slug])

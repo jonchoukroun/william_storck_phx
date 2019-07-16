@@ -7,6 +7,7 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
   @admin_attrs %{email: "admin@aol.com", name: "admin", password: "password"}
   @create_attrs %{
     name: "sandwich",
+    category_id: nil,
     material: "ham on rye",
     painting_height: 200,
     painting_width: 300,
@@ -19,6 +20,7 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
   }
   @update_attrs %{
     name: "new sandwich",
+    category_id: nil,
     material: "turkey on wheat",
     painting_height: 400,
     painting_width: 800,
@@ -27,6 +29,7 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
   }
   @invalid_attrs %{
     name: nil,
+    category_id: nil,
     material: nil,
     painting_height: nil,
     painting_width: nil,
@@ -35,9 +38,14 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
     image_file: nil
   }
 
-  def fixture(:painting) do
-    {:ok, painting} = Admin.create_painting(@create_attrs)
+  def fixture(:painting, category_id) do
+    {:ok, painting} = Admin.create_painting(%{@create_attrs | category_id: category_id})
     painting
+  end
+
+  def fixture(:category) do
+    {:ok, category} = Admin.create_category(%{name: "metal"})
+    category
   end
 
   def fixture(:admin), do: Auth.create_user(@admin_attrs)
@@ -68,7 +76,7 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
   end
 
   describe "create painting" do
-    setup [:sign_in_admin, :create_painting]
+    setup [:sign_in_admin, :create_category]
 
     test "redirects to show when data is valid", %{conn: conn} do
       conn = post(conn, Routes.admin_painting_path(conn, :create), painting: @create_attrs)
@@ -78,6 +86,16 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
 
       conn = get(conn, Routes.admin_painting_path(conn, :show, id))
       assert html_response(conn, 200)
+
+      painting = Admin.get_painting!(id)
+      assert painting.name == @create_attrs.name
+      assert painting.material == @create_attrs.material
+      assert painting.status == @create_attrs.status
+      assert painting.price == @create_attrs.price
+      assert painting.size ==
+        "#{@create_attrs.painting_height}\" x #{@create_attrs.painting_width}\""
+      refute painting.category_id
+      refute painting.category
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -119,7 +137,7 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
     end
   end
 
-  defp sign_in_admin(__) do
+  defp sign_in_admin(_) do
     fixture(:admin)
 
     conn = build_conn(:get, "/")
@@ -131,7 +149,14 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingControllerTest do
   end
 
   defp create_painting(_) do
-    painting = fixture(:painting)
+    category = fixture(:category)
+    painting = fixture(:painting, category.id)
     {:ok, painting: painting}
+  end
+
+  defp create_category(context) do
+    category = fixture(:category)
+    assigns = Map.put(context.conn.assigns, :categories, [category])
+    {:ok, conn: %{context.conn | assigns: assigns}}
   end
 end

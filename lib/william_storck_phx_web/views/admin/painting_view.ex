@@ -21,4 +21,9 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingView do
     |> Enum.reverse()
     |> Enum.at(0)
   end
+
+  def category_options(categories) when is_nil(categories), do: []
+  def category_options(categories) do
+    Enum.map(categories, fn c -> {c.name, c.id} end)
+  end
 end
