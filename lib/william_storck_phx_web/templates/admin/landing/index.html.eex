@@ -57,6 +57,7 @@
 
               <%= button "View Categories",
                   to: Routes.admin_category_path(@conn, :index),
+                  method: :get,
                   class: "btn btn-subtle btn-block" %>
 
             </div>
