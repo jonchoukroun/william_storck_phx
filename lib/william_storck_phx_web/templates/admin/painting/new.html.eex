@@ -65,6 +65,7 @@
         <%= label f, :category, class: "control-label" %>
         <%= select f, :category_id,
             category_options(assigns[:categories]),
+            prompt: "Select a category below",
             class: "form-control form-control-lg" %>
       </div>
 
