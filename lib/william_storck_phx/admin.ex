@@ -24,6 +24,22 @@ defmodule WilliamStorckPhx.Admin do
   end
 
   @doc """
+  Returns the list of paintings filtered by category
+
+  ## Examples
+
+      iex> list_paintings(category_id)
+      [%Painting{}, ...]
+
+  """
+  def list_paintings(category_id) do
+    Painting
+    |> preload([:category])
+    |> where([p], p.category_id == ^category_id)
+    |> Repo.all
+  end
+
+  @doc """
   Gets a single painting.
 
   Raises `Ecto.NoResultsError` if the Painting does not exist.

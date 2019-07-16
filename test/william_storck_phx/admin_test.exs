@@ -60,6 +60,18 @@ defmodule WilliamStorckPhx.AdminTest do
       assert db_painting.category_id == category.id
     end
 
+    test "list_paintings/1 returns only paintings associated with given category" do
+      category = category_fixture()
+      painting = painting_fixture(category_id: category.id)
+      painting_fixture()
+
+      assert Enum.count(Admin.list_paintings()) == 2
+
+      fetched_paintings = Admin.list_paintings(category.id)
+      assert Enum.count(fetched_paintings) == 1
+      assert Enum.at(fetched_paintings, 0).id == painting.id
+    end
+
     test "get_painting!/1 returns the painting with given id" do
       category = category_fixture()
       painting = painting_fixture(category_id: category.id)
