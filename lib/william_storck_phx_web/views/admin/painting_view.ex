@@ -3,12 +3,6 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingView do
 
   alias WilliamStorckPhx.Painting
 
-  def painting_attrs do
-    screened_attrs = [:id, :inserted_at, :updated_at, :src, :slug, :featured, :height, :width]
-    Painting.__schema__(:fields)
-    |> Enum.reject(fn(key) -> Enum.member?(screened_attrs, key) end)
-  end
-
   def current_height(size) do
     size
     |> String.split()
