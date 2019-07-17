@@ -4,9 +4,16 @@ defmodule WilliamStorckPhxWeb.Admin.PaintingController do
   alias WilliamStorckPhx.Admin
   alias WilliamStorckPhx.Painting
 
+  def index(conn, %{"category_id" => category_id}) do
+    paintings = Admin.list_paintings(category_id)
+    categories = Admin.list_categories()
+    render(conn, "index.html", paintings: paintings, categories: categories)
+  end
+
   def index(conn, _params) do
     paintings = Admin.list_paintings()
-    render(conn, "index.html", paintings: paintings)
+    categories = Admin.list_categories()
+    render(conn, "index.html", paintings: paintings, categories: categories)
   end
 
   def new(conn, _params) do
