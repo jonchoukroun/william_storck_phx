@@ -31,12 +31,21 @@
       <%= for category <- @categories do %>
         <div class="row border-bottom my-1 py-2">
           <div class="col-6 d-flex flex-column justify-content-center align-items-start">
-            <p class="lead">
+            <p class="lead mb-0">
               <%= category.name %>
+            </p>
+
+            <p class="small">
+              Total paintings:
+              <%= Enum.count(category.paintings) %>
             </p>
           </div>
 
           <div class="col-6">
+            <%= link "View Category",
+                to: Routes.admin_category_path(@conn, :show, category),
+                class: "btn btn-subtle btn-block my-2" %>
+
             <%= button "Edit Category",
                 to: Routes.admin_category_path(@conn, :edit, category),
                 method: :get,

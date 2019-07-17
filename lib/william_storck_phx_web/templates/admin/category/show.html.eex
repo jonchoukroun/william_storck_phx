@@ -1,13 +1,69 @@
-<h1>Show Category</h1>
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
 
-<ul>
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div class="d-flex flex-row justify-content-center">
+    <div
+      class="card my-5"
+      style="min-width: 50vw;"
+    >
+      <div class="card-body">
+        <h3 class="card-title">
+          <%= @category.name %>
+        </h3>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @category.name %>
-  </li>
+        <%= if Enum.count(@category.paintings) === 0 do %>
+          <h5
+            class="my-4"
+          >
+            This category does not have any paintings yet.
+          </h5>
 
-</ul>
+          <%= link "Add new painting",
+              to: Routes.admin_painting_path(@conn, :new),
+              class: "btn btn-default btn-lg mt-2" %>
 
-<span><%= link "Edit", to: Routes.admin_category_path(@conn, :edit, @category) %></span>
-<span><%= link "Back", to: Routes.admin_category_path(@conn, :index) %></span>
+        <% else %>
+          <p class="lead card-subtitle">
+            Total paintings:
+            <%= Enum.count(@category.paintings) %>
+          </p>
+
+          <div class="container mt-5 p-0">
+            <%= for painting <- @category.paintings do %>
+              <div class="d-flex flex-row align-items-center my-2">
+                <div class="m-2">
+                  <img
+                    src="<%= painting.src %>"
+                    alt="<%= painting.name %>"
+                    style="width: 15rem;"
+                  >
+                </div>
+
+                <div class="my-2 ml-3 mr-5">
+                  <h5>
+                    <%= painting.name %>
+                  </h5>
+                </div>
+
+                <div class="my-2 ml-auto">
+                  <%= link "View Details",
+                      to: Routes.admin_painting_path(@conn, :show, painting),
+                      class: "btn btn-subtle" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="d-flex flex-row justify-content-end">
+            <%= link "Back",
+                to: Routes.admin_category_path(@conn, :index),
+                class: "btn btn-subtle" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
