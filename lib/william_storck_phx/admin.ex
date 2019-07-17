@@ -130,7 +130,7 @@ defmodule WilliamStorckPhx.Admin do
 
   """
   def list_categories do
-    Repo.all(Category)
+    Category |> preload([:paintings]) |> Repo.all()
   end
 
   @doc """
@@ -147,7 +147,7 @@ defmodule WilliamStorckPhx.Admin do
       ** (Ecto.NoResultsError)
 
   """
-  def get_category!(id), do: Repo.get!(Category, id)
+  def get_category!(id), do: Category |> preload([:paintings]) |> Repo.get!(id)
 
   @doc """
   Creates a category.
