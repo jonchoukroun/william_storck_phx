@@ -17,15 +17,15 @@
     <% end %>
 
     <h3 class="text-primary">
-      Edit an Admin User
+      Edit Category
     </h3>
 
     <%= render "form.html",
-        Map.put(assigns, :action, Routes.admin_user_path(@conn, :update, @user)) %>
+        Map.put(assigns, :action, Routes.admin_category_path(@conn, :update, @category)) %>
 
     <div class="mt-3">
       <%= link "Back",
-          to: Routes.admin_user_path(@conn, :index),
+          to: Routes.admin_category_path(@conn, :index),
           class: "text-muted text-underline" %>
     </div>
   </div>

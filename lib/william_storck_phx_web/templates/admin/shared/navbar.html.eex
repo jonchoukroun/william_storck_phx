@@ -31,7 +31,7 @@
           class="nav-link"
         >
           <span class="text-black">
-            Portfolio
+            Live Portfolio
           </span>
         </a>
       </li>
@@ -49,8 +49,30 @@
 
       <li class="nav-item my-2 mr-3">
         <a
+          href="<%= Routes.admin_painting_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <span class="text-black">
+            Manage Paintings
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item my-2 mr-3">
+        <a
+          href="<%= Routes.admin_category_path(@conn, :index) %>"
+          class="nav-link"
+        >
+          <span class="text-black">
+            Manage Categories
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item my-2 mr-3">
+        <a
           href="<%= Routes.admin_user_path(@conn, :index) %>"
-          class="nav-lnk"
+          class="nav-link"
         >
           <span class="text-black">
             Manage Users

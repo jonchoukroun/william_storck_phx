@@ -1,0 +1,81 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+
+  <div class="form-group text-left">
+    <%= label f, :name, class: "control-label" %>
+    <%= text_input f, :name,
+        class: "form-control form-control-lg",
+        placeholder: "Name of the painting",
+        autofocus: true %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="form-group text-left">
+    <%= label f, :material, class: "control-label" %>
+    <%= text_input f, :material,
+        class: "form-control form-control-lg",
+        placeholder: "e.g. Oil on canvas" %>
+    <%= error_tag f, :material %>
+  </div>
+
+  <div class="form-group text-left">
+    <div class="row">
+      <div class="col">
+        <%= label f, :painting_height, class: "control-label" %>
+        <%= number_input f, :painting_height,
+            class: "form-control form-control-lg",
+            placeholder: "in inches..." %>
+        <%= error_tag f, :painting_height %>
+      </div>
+
+      <div class="col">
+        <%= label f, :painting_width, class: "control-label" %>
+        <%= number_input f, :painting_width,
+            class: "form-control form-control-lg",
+            placeholder: "in inches..." %>
+        <%= error_tag f, :painting_width %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <div class="row">
+      <div class="col">
+        <%= label f, :status, class: "control-label" %>
+        <%= select f, :status,
+            ["Available": "available", "Sold": "sold"],
+            prompt: "Select one below",
+            class: "form-control form-control-lg"
+            %>
+      </div>
+
+      <div class="col">
+        <%= label f, "Price (if available)", class: "control-label" %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+
+          <%= number_input f, :price,
+            class: "form-control form-control-lg",
+            placeholder: "in dollars" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <%= label f, :image_file, class: "control-label" %>
+    <%= file_input f, :image_file, class: "form-control-file form-control-lg" %>
+    <%= error_tag f, :image_file %>
+  </div>
+
+  <div class="form-group text-left">
+    <%= submit "Upload Painting", class: "btn btn-default btn-lg btn-block" %>
+  </div>
+<% end %>

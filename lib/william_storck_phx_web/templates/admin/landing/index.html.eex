@@ -2,11 +2,93 @@
 
 <div
   class="container-fluid mx-auto text-center"
-  style="padding-top: 20px;"
+  style="padding-top: 30px;"
 >
   <div
-    class="col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 flex-column mx-auto py-5"
+    class="col-sm-12 col-md-8 flex-column mx-auto py-5"
   >
-    <h1>Admin</h1>
+    <h3 class="text-primary">
+      Admin
+    </h3>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-lg-4 d-flex flex-column justify-content-center">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://storck.s3.amazonaws.com/paintings/c1f38690-3fea-43fb-91d6-6c11e8aaebe4-spring-storm.jpeg"
+              alt="Paintings"
+            >
+            <div class="card-body">
+              <h5 class="card-title">
+                Paintings
+              </h5>
+
+              <%= button "New Painting",
+                  to: Routes.admin_painting_path(@conn, :new),
+                  method: :get,
+                  class: "btn btn-default btn-block mt-4" %>
+
+              <%= button "View Paintings",
+                  to: Routes.admin_painting_path(@conn, :index),
+                  method: :get,
+                  class: "btn btn-subtle btn-block" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 d-flex flex-column justify-content-center">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://storck.s3.amazonaws.com/paintings/still_life_with_lemons-16x20-oil_linen-2017-available.jpg"
+              alt="categories"
+            >
+            <div class="card-body">
+              <h5 class="card-title">
+                Categories
+              </h5>
+
+              <%= button "New Category",
+                  to: Routes.admin_category_path(@conn, :new),
+                  method: :get,
+                  class: "btn btn-default btn-block mt-4" %>
+
+              <%= button "View Categories",
+                  to: Routes.admin_category_path(@conn, :index),
+                  method: :get,
+                  class: "btn btn-subtle btn-block" %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 d-flex flex-column justify-content-center">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://storck.s3.amazonaws.com/paintings/high_meadow-9x12-oil_linen-2016-sold.jpg"
+              alt="users"
+            >
+            <div class="card-body">
+              <h5>
+                Users
+              </h5>
+
+              <%= button "Add User",
+                  to: Routes.admin_user_path(@conn, :new),
+                  method: :get,
+                  class: "btn btn-default btn-block mt-3" %>
+
+              <%= button "View Users",
+                  to: Routes.admin_user_path(@conn, :index),
+                  method: :get,
+                  class: "btn btn-subtle btn-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

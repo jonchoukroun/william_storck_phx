@@ -32,6 +32,8 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/", LandingController, :index
     resources "/users", UserController
+    resources "/paintings", PaintingController
+    resources "/categories", CategoryController
   end
 
   scope "/", WilliamStorckPhxWeb do
@@ -40,7 +42,6 @@ defmodule WilliamStorckPhxWeb.Router do
     get "/", HomeController, :index
 
     resources "/paintings", PaintingsController, only: [:index, :show]
-    resources "/upload", UploadController, only: [:create, :new]
 
     get "/contact", ContactController, :index
     post "/contact", ContactController, :capture_email

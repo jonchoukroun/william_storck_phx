@@ -1,0 +1,122 @@
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
+
+<div
+  class="container-fluid mx-auto text-center"
+  style="padding-top: 30px;"
+>
+  <div class="d-flex flex-row justify-content-center">
+    <div
+      class="card my-5"
+      style="max-width: 67vw;"
+    >
+      <div class="row no-gutters">
+        <div class="col-5 d-flex flex-column justify-content-center p-3">
+          <img
+            class="card-img-top"
+            src="<%= @painting.src %>"
+            alt="<%= @painting.name %>"
+          >
+        </div>
+
+        <div class="col-7">
+          <div class="card-body">
+            <h3 class="card-title text-primary">
+              <%= @painting.name %>
+            </h3>
+
+            <div class="container-fluid">
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Name
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.name %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Category
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= if @painting.category do %>
+                    <%= @painting.category.name %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Material
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.material %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Status
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.status %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Price
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.price %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row py-1">
+                <div class="col-sm-3 text-right">
+                  <strong class="text-capitalize">
+                    Size
+                  </strong>
+                </div>
+
+                <div class="col text-left">
+                  <%= @painting.size %>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row justify-content-end my-2">
+                <%= link "Back",
+                    to: Routes.admin_painting_path(@conn, :index),
+                    class: "btn btn-subtle mx-1" %>
+
+                <%= link "View Live",
+                    to: Routes.paintings_path(@conn, :show, @painting.slug),
+                    class: "btn btn-subtle mx-1" %>
+
+                <%= button "Edit Painting",
+                    to: Routes.admin_painting_path(@conn, :edit, @painting),
+                    method: :get,
+                    class: "btn btn-default mx-1" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
