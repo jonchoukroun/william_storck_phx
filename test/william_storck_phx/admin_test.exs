@@ -138,14 +138,21 @@ defmodule WilliamStorckPhx.AdminTest do
       category
     end
 
-    test "list_categories/0 returns all categories" do
+    test "list_categories/0 returns all categories with preloaded paintings" do
       category = category_fixture()
-      assert Admin.list_categories() == [category]
+      fetched_categories = Admin.list_categories()
+
+      assert Enum.count(fetched_categories) === 1
+      assert Enum.at(fetched_categories, 0).id === category.id
+      refute is_nil(Enum.at(fetched_categories, 0).paintings)
     end
 
-    test "get_category!/1 returns the category with given id" do
+    test "get_category!/1 returns the category with given id and preloaded paintings" do
       category = category_fixture()
-      assert Admin.get_category!(category.id) == category
+      fetched_category = Admin.get_category!(category.id)
+
+      assert fetched_category.id === category.id
+      refute is_nil(fetched_category.paintings)
     end
 
     test "create_category/1 with valid data creates a category" do
@@ -173,7 +180,9 @@ defmodule WilliamStorckPhx.AdminTest do
     test "update_category/2 with invalid data returns error changeset" do
       category = category_fixture()
       assert {:error, %Ecto.Changeset{}} = Admin.update_category(category, @invalid_attrs)
-      assert category == Admin.get_category!(category.id)
+      
+      unchanged_category = Admin.get_category!(category.id)
+      assert category.id == unchanged_category.id
     end
 
     test "delete_category/1 deletes the category" do
