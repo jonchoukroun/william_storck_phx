@@ -41,6 +41,8 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/", HomeController, :index
 
+    resources "/categories", CategoryController, only: [:show]
+
     resources "/paintings", PaintingsController, only: [:index, :show]
 
     get "/contact", ContactController, :index
