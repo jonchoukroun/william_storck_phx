@@ -27,6 +27,12 @@
     <h3 class="text-primary text-left text-capitalize">
       <%= @category.name %>
       Collection
+
+      <span class="small float-right">
+        <%= link "Back",
+            to: Routes.portfolio_path(@conn, :index),
+            class: "text-muted font-italic" %>
+      </span>
     </h3>
   </div>
 
