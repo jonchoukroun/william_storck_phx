@@ -14,6 +14,14 @@
   background-color: $brand-white !important;
 }
 
+.bg-grey {
+  background-color: rgba($brand-grey, 0.7) !important;
+}
+
+.bg-gradient-grey {
+  background: linear-gradient(90deg, $brand-grey, $brand-white);
+}
+
 
 // -----------------------------------------------------------------------------
 // Borders
