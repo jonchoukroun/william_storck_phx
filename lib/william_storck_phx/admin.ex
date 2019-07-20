@@ -134,6 +134,22 @@ defmodule WilliamStorckPhx.Admin do
   end
 
   @doc """
+  Returns a randomized list of paintings for each category
+
+  ## Examples
+
+      iex > fetch_categories_preview(count = 3)
+      [%Painting{}, %Painting{}, %Painting{}]
+  """
+  def fetch_categories_preview(count) do
+    paintings = Painting |> order_by(fragment("RANDOM()"))
+    Category
+    |> preload([paintings: ^paintings])
+    |> Repo.all()
+    |> Enum.map(fn c -> Map.put(c, :paintings, Enum.slice(c.paintings, 0, count)) end)
+  end
+
+  @doc """
   Gets a single category.
 
   Raises `Ecto.NoResultsError` if the Category does not exist.
@@ -147,6 +163,7 @@ defmodule WilliamStorckPhx.Admin do
       ** (Ecto.NoResultsError)
 
   """
+
   def get_category!(id), do: Category |> preload([:paintings]) |> Repo.get!(id)
 
   @doc """
