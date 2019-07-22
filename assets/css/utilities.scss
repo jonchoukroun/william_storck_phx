@@ -19,7 +19,11 @@
 }
 
 .bg-gradient-grey {
-  background: linear-gradient(90deg, $brand-white, $brand-grey);
+  background: linear-gradient(90deg, $brand-white 60%, $brand-grey);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(90deg, $brand-white 60%, $brand-primary);
 }
 
 

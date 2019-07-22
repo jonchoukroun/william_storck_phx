@@ -30,8 +30,9 @@
 
       <span class="small float-right">
         <%= link "Back",
-            to: Routes.portfolio_path(@conn, :index),
-            class: "text-muted font-italic" %>
+            to: Routes.admin_portfolio_path(@conn, :portfolio_1),
+            class: "text-muted font-italic",
+            style: "font-size: 1rem;" %>
       </span>
     </h3>
   </div>
