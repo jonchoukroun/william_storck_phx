@@ -34,14 +34,15 @@ defmodule WilliamStorckPhxWeb.Router do
     resources "/users", UserController
     resources "/paintings", PaintingController
     resources "/categories", CategoryController
+
+    get "/portfolio-1", PortfolioController, :portfolio_1
+    get "/portfolio-2", PortfolioController, :portfolio_2
   end
 
   scope "/", WilliamStorckPhxWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", HomeController, :index
-
-    get "/portfolio", PortfolioController, :index
 
     resources "/categories", CategoryController, only: [:show]
 
