@@ -1,10 +1,31 @@
 <%= render WilliamStorckPhxWeb.SharedView, "navbar_min.html", assigns %>
 
 <div
-  class="d-none d-md-block container mx-auto mt-3 text-center"
+  class="container-fluid my-5 text-center full-page"
   style="padding-top: 100px;"
 >
+
   <%= for category <- @categories do %>
+    <div class="row justify-content-center mb-5 px-2">
+      <%= link to: Routes.category_path(@conn, :show, category),
+          class: "category-preview col-12 col-sm-8 col-md-6 col-xl-5 elevation-5" do %>
+          <span class="category-name d-flex flex-column justify-content-center">
+            <h1 class="text-secondary text-capitalize mb-0">
+              <%= category.name %>
+              collection
+            </h1>
+          </span>
+
+          <img
+            src="<%= Enum.at(category.paintings, 0).src %>"
+            alt="<%= Enum.at(category.paintings, 0).name %>"
+            class="category-image img-fluid rounded"
+          >
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- <%= for category <- @categories do %>
     <div class="container-fluid px-0 mb-5">
       <div class="mb-2 border-bottom border-secondary">
         <h4 class="text-primary text-capitalize text-left">
@@ -13,7 +34,7 @@
       </div>
 
       <div class="d-flex flex-row justify-content-start">
-        <%= for painting <- category.paintings do %>
+        <%= for painting <- Enum.slice(category.paintings, 0, 2) do %>
           <img
             src="<%= painting.src %>"
             alt="<%= painting.name %>"
@@ -38,7 +59,7 @@
         </div>
       </div>
     </div>
-  <% end %>
+  <% end %> -->
 </div>
 
 <%= render WilliamStorckPhxWeb.SharedView, "footer.html", assigns %>
