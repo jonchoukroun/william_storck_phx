@@ -1,8 +1,12 @@
 <%= if assigns[:painting].height do %>
   <div class="painting-grid-item align-self-center" style="<%= compute_style(assigns[:painting]) %>">
     <a href="<%= Routes.paintings_path(@conn, :show, assigns[:painting].slug) %>" class="grid-image">
-      <span class="shade-overlay d-none d-lg-block"></span>
-      <img src="<%= assigns[:painting].src %>" alt="<%= assigns[:painting].name %>" class="img-fluid">
+      <span class="shade-overlay d-none d-lg-block rounded"></span>
+      <img
+        src="<%= assigns[:painting].src %>"
+        alt="<%= assigns[:painting].name %>"
+        class="img-fluid rounded"
+      >
     </a>
   </div>
 <% end %>
