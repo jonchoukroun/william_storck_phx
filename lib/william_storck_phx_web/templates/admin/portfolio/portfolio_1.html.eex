@@ -1,0 +1,29 @@
+<%= render WilliamStorckPhxWeb.Admin.SharedView, "navbar.html", assigns %>
+
+<div
+  class="container-fluid my-5 text-center full-page"
+  style="padding-top: 100px;"
+>
+
+  <%= for category <- @categories do %>
+    <div class="row justify-content-center mb-5 px-2">
+      <%= link to: Routes.category_path(@conn, :show, category),
+          class: "category-preview col-12 col-sm-8 col-md-6 col-xl-5 elevation-5" do %>
+          <span class="category-name d-flex flex-column justify-content-center">
+            <h1 class="text-secondary text-capitalize mb-0">
+              <%= category.name %>
+              collection
+            </h1>
+          </span>
+
+          <img
+            src="<%= Enum.at(category.paintings, 0).src %>"
+            alt="<%= Enum.at(category.paintings, 0).name %>"
+            class="category-image img-fluid rounded"
+          >
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= render WilliamStorckPhxWeb.SharedView, "footer.html", assigns %>

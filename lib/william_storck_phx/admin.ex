@@ -121,16 +121,42 @@ defmodule WilliamStorckPhx.Admin do
   end
 
   @doc """
-  Returns the list of categories.
+  Returns the list of categories with preloaded paintings.
+
+  Orders the paintings by random if argument is present.
 
   ## Examples
 
       iex> list_categories()
       [%Category{}, ...]
 
+      iex> list_categories(:random)
+      [%Category{}, ...]
+
   """
   def list_categories do
     Category |> preload([:paintings]) |> Repo.all()
+  end
+
+  def list_categories(:random) do
+    paintings_query = Painting |> order_by(fragment("RANDOM()"))
+    Category |> preload([paintings: ^paintings_query]) |> Repo.all()
+  end
+
+  @doc """
+  Returns a randomized list of paintings for each category
+
+  ## Examples
+
+      iex > fetch_categories_preview(count = 3)
+      [%Painting{}, %Painting{}, %Painting{}]
+  """
+  def fetch_categories_preview(count) do
+    paintings = Painting |> order_by(fragment("RANDOM()"))
+    Category
+    |> preload([paintings: ^paintings])
+    |> Repo.all()
+    |> Enum.map(fn c -> Map.put(c, :paintings, Enum.slice(c.paintings, 0, count)) end)
   end
 
   @doc """
@@ -147,6 +173,7 @@ defmodule WilliamStorckPhx.Admin do
       ** (Ecto.NoResultsError)
 
   """
+
   def get_category!(id), do: Category |> preload([:paintings]) |> Repo.get!(id)
 
   @doc """

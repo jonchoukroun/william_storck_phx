@@ -1,7 +1,7 @@
 <%= render WilliamStorckPhxWeb.SharedView, "navbar_min.html", assigns %>
 
 <div
-  class="container-fluid mx-auto text-center"
+  class="full-page container-fluid mx-auto text-center"
   style="padding-top: 100px;"
 >
   <div

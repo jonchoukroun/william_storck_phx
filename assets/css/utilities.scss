@@ -1,9 +1,29 @@
 // -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+
+.full-page {
+  min-height: 90vh;
+}
+
+// -----------------------------------------------------------------------------
 // Backgrounds
 // -----------------------------------------------------------------------------
 
 .bg-white {
   background-color: $brand-white !important;
+}
+
+.bg-grey {
+  background-color: rgba($brand-grey, 0.7) !important;
+}
+
+.bg-gradient-grey {
+  background: linear-gradient(90deg, $brand-white 60%, $brand-grey);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(90deg, $brand-white 60%, $brand-primary);
 }
 
 
