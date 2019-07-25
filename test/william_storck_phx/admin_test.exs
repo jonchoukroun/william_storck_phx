@@ -125,14 +125,15 @@ defmodule WilliamStorckPhx.AdminTest do
   describe "categories" do
     alias WilliamStorckPhx.Admin.Category
 
-    @valid_attrs %{name: Faker.Pizza.style()}
-    @update_attrs %{name: Faker.Pizza.pizza()}
+    @valid_attrs %{name: Faker.Beer.name()}
+    @update_attrs %{name: Faker.Beer.style()}
     @invalid_attrs %{name: nil}
 
     def category_fixture(attrs \\ %{}) do
+      create_attrs = %{name: Faker.Beer.name()}
       {:ok, category} =
         attrs
-        |> Enum.into(@valid_attrs)
+        |> Enum.into(create_attrs)
         |> Admin.create_category()
 
       category
@@ -174,9 +175,8 @@ defmodule WilliamStorckPhx.AdminTest do
 
     test "create_category/1 with existing name returns error changeset" do
       category = category_fixture()
-      assert category.name == @valid_attrs.name
 
-      assert {:error, %Ecto.Changeset{}} = Admin.create_category(@valid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Admin.create_category(%{name: category.name})
     end
 
     test "create_category/1 with invalid data returns error changeset" do
