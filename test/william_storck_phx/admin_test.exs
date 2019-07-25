@@ -147,6 +147,18 @@ defmodule WilliamStorckPhx.AdminTest do
       refute is_nil(Enum.at(fetched_categories, 0).paintings)
     end
 
+    test "fetch_categories_preview/1 returns all categories with `count` preloaded paintings" do
+      (1..3)
+      |> Enum.map(fn _i -> category_fixture() end)
+      |> Enum.each(fn c ->
+        (1..3) |> Enum.each(fn _i -> painting_fixture(category_id: c.id) end) end)
+
+      categories = Admin.fetch_categories_preview(1)
+      assert Enum.count(categories) === 3
+
+      Enum.map(categories, fn c -> assert Enum.count(c.paintings) === 1 end)
+    end
+
     test "get_category!/1 returns the category with given id and preloaded paintings" do
       category = category_fixture()
       fetched_category = Admin.get_category!(category.id)

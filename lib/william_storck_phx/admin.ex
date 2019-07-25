@@ -149,7 +149,7 @@ defmodule WilliamStorckPhx.Admin do
   ## Examples
 
       iex > fetch_categories_preview(count = 3)
-      [%Painting{}, %Painting{}, %Painting{}]
+      [%Category{paintings: [%Painting{}, %Painting{}, %Painting{}], ...}, ...]
   """
   def fetch_categories_preview(count) do
     paintings = Painting |> order_by(fragment("RANDOM()"))
