@@ -1,8 +1,6 @@
 defmodule WilliamStorckPhxWeb.Admin.PaintingView do
   use WilliamStorckPhxWeb, :view
 
-  alias WilliamStorckPhx.Painting
-
   def current_height(size) do
     size
     |> String.split()
