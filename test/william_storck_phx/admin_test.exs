@@ -7,9 +7,9 @@ defmodule WilliamStorckPhx.AdminTest do
     alias WilliamStorckPhx.Painting
 
     @valid_attrs %{
-      name: "sandwich",
+      name: Faker.Pizza.company(),
       category_id: nil,
-      material: "ham on rye",
+      material: Faker.Pizza.topping(),
       painting_height: 200,
       painting_width: 300,
       status: "available",
@@ -20,9 +20,9 @@ defmodule WilliamStorckPhx.AdminTest do
       }
     }
     @update_attrs %{
-      name: "new sandwich",
+      name: Faker.StarWars.character(),
       category_id: nil,
-      material: "turkey on wheat",
+      material: Faker.StarWars.planet(),
       painting_height: 400,
       painting_width: 800,
       status: "sold",
@@ -125,8 +125,8 @@ defmodule WilliamStorckPhx.AdminTest do
   describe "categories" do
     alias WilliamStorckPhx.Admin.Category
 
-    @valid_attrs %{name: "some name"}
-    @update_attrs %{name: "some updated name"}
+    @valid_attrs %{name: Faker.Pizza.style()}
+    @update_attrs %{name: Faker.Pizza.pizza()}
     @invalid_attrs %{name: nil}
 
     def category_fixture(attrs \\ %{}) do
@@ -174,13 +174,13 @@ defmodule WilliamStorckPhx.AdminTest do
     test "update_category/2 with valid data updates the category" do
       category = category_fixture()
       assert {:ok, %Category{} = category} = Admin.update_category(category, @update_attrs)
-      assert category.name == "some updated name"
+      assert category.name == @update_attrs.name
     end
 
     test "update_category/2 with invalid data returns error changeset" do
       category = category_fixture()
       assert {:error, %Ecto.Changeset{}} = Admin.update_category(category, @invalid_attrs)
-      
+
       unchanged_category = Admin.get_category!(category.id)
       assert category.id == unchanged_category.id
     end
