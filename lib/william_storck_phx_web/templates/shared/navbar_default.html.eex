@@ -45,7 +45,7 @@
 
       <li class="nav-item my-2 mr-lg-4">
         <a
-          href="<%= Routes.paintings_path(@conn, :index) %>"
+          href="<%= Routes.portfolio_path(@conn, :index) %>"
           class="nav-link"
         >
           <h4 class="d-lg-none text-black">

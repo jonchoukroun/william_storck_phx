@@ -29,10 +29,12 @@
       Collection
 
       <span class="small float-right">
-        <%= link "Back",
-            to: Routes.admin_portfolio_path(@conn, :portfolio_1),
+        <%= link to: Routes.portfolio_path(@conn, :index),
             class: "text-muted font-italic",
-            style: "font-size: 1rem;" %>
+            style: "font-size: 1rem;" do %>
+          <i class="fas fa-long-arrow-alt-left"></i>
+          Portfolio
+        <% end %>
       </span>
     </h3>
   </div>

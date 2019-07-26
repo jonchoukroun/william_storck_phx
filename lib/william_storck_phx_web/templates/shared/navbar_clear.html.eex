@@ -31,7 +31,7 @@
     <ul class="navbar-nav ml-auto align-items-end mr-lg-4">
       <li class="nav-item mr-lg-4">
         <a
-          href="<%= Routes.paintings_path(@conn, :index) %>"
+          href="<%= Routes.portfolio_path(@conn, :index) %>"
           class="nav-link"
         >
           <span class="text-white text-shadow">

@@ -11,7 +11,7 @@
         </a>
       </li>
       <li>
-        <a href="<%= Routes.paintings_path(@conn, :index) %>">
+        <a href="<%= Routes.portfolio_path(@conn, :index) %>">
           <span class="text-blue">Portfolio:</span>
         </a>
         <ul>

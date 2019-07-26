@@ -18,7 +18,7 @@
 
 <div style="margin-top: 80px;">
   <a
-    href="<%= Routes.paintings_path(@conn, :index) %>"
+    href="<%= Routes.portfolio_path(@conn, :index) %>"
     class="display-text text-grey"
   >
     <i class="fas fa-long-arrow-alt-left"></i>

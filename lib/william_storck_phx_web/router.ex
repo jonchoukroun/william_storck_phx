@@ -44,9 +44,11 @@ defmodule WilliamStorckPhxWeb.Router do
 
     get "/", HomeController, :index
 
+    get "/portfolio", PortfolioController, :index
+
     resources "/categories", CategoryController, only: [:show]
 
-    resources "/paintings", PaintingsController, only: [:index, :show]
+    resources "/paintings", PaintingsController, only: [:show]
 
     get "/contact", ContactController, :index
     post "/contact", ContactController, :capture_email

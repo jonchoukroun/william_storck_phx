@@ -27,7 +27,7 @@
     <ul class="navbar-nav ml-auto align-items-end">
       <li class="nav-item my-2 mr-3">
         <a
-          href="<%= Routes.paintings_path(@conn, :index) %>"
+          href="<%= Routes.portfolio_path(@conn, :index) %>"
           class="nav-link"
         >
           <span class="text-black">
@@ -67,24 +67,6 @@
             Manage Categories
           </span>
         </a>
-      </li>
-
-      <li class="nav-item my-2 mr-3">
-        <%= link to: Routes.admin_portfolio_path(@conn, :portfolio_1),
-            class: "nav-link" do %>
-          <span class="text-black">
-            Portfolio Option 1
-          </span>
-        <% end %>
-      </li>
-
-      <li class="nav-item my-2 mr-3">
-        <%= link to: Routes.admin_portfolio_path(@conn, :portfolio_2),
-            class: "nav-link" do %>
-          <span class="text-black">
-            Portfolio Option 2
-          </span>
-        <% end %>
       </li>
 
       <li class="nav-item my-2 mr-3">

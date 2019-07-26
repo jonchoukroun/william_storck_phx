@@ -38,7 +38,7 @@
 
       <li class="nav-item my-2 mr-3">
         <a
-          href="<%= Routes.paintings_path(@conn, :index) %>"
+          href="<%= Routes.portfolio_path(@conn, :index) %>"
           class="nav-link"
         >
           <span class="text-black">
