@@ -63,7 +63,7 @@
         <%= for painting <- @paintings do %>
           <div class="row border-bottom my-1 py-2">
             <div class="col-4 d-flex flex-column justify-content-center align-items-start">
-              <p class="lead text-center">
+              <p class="lead text-left">
                 <%= painting.name %>
               </p>
 
